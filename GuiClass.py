@@ -54,19 +54,19 @@ class DiceRollFrame(tk.Frame):
         self.RecentRolls = ctk.CTkLabel(self, font=self.special_font, text="Recent Rolls")
         self.Recent1 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
                                     text_color="white",
-                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+                                    text="Total: 0, Dice: [], Modifier: 0, Advantage: False, Disadvantage: False")
         self.Recent2 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
                                     text_color="white",
-                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+                                    text="Total: 0, Dice: [], Modifier: 0, Advantage: False, Disadvantage: False")
         self.Recent3 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
                                     text_color="white",
-                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+                                    text="Total: 0, Dice: [], Modifier: 0, Advantage: False, Disadvantage: False")
         self.Recent4 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
                                     text_color="white",
-                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+                                    text="Total: 0, Dice: [], Modifier: 0, Advantage: False, Disadvantage: False")
         self.Recent5 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
                                     text_color="white",
-                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+                                    text="Total: 0, Dice: [], Modifier: 0, Advantage: False, Disadvantage: False")
         self.Status = ctk.CTkLabel(self, font=self.special_font, text="Status: {}")
 
         # radio buttons
@@ -207,6 +207,7 @@ class DiceRollFrame(tk.Frame):
         self.EnterNumDice.delete(0, ctk.END)
         self.num_dice.set(value="1")
         if storage.isdigit():
+            self.Status.configure(text="Status: {Working Properly}")
             storage = int(storage)
             if storage < 0:
                 storage = abs(storage)
@@ -229,6 +230,7 @@ class DiceRollFrame(tk.Frame):
         self.EnterModifier.delete(0, ctk.END)
         self.modifier.set(value="0")
         if storage.isdigit():
+            self.Status.configure(text="Status: {Working Properly}")
             storage = int(storage)
             if storage > 2 ** 16:
                 return 2 ** 16

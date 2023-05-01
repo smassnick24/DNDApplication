@@ -21,7 +21,7 @@ class DiceRoller(object):
                 rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
                 total += (dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
+                rolls.append(dice1 + self.modifier)
                 total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
         if len(rolls) > 12:
             rolls = rolls[0: 11]
@@ -42,8 +42,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                             dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
@@ -63,8 +63,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                             dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
@@ -84,8 +84,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                             dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
@@ -105,8 +105,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                             dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
@@ -126,8 +126,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                             dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
@@ -147,8 +147,8 @@ class DiceRoller(object):
                 total += (dice1 + self.modifier) if dice1 < dice2 else (
                         dice2 + self.modifier)  # add to the total the smaller of two values from dice
             else:
-                rolls.append((dice1 + self.modifier) if dice1 < dice2 else (dice2 + self.modifier))
-                total += dice1 + self.modifier  # add to total the default dice given that advantage and disadvantage are both false
+                rolls.append(dice1 + self.modifier)
+                total += dice1 + self.modifier
         if len(rolls) > 12:
             rolls = rolls[0:11]
         return total, self.modifier, self.advantage, self.disadvantage, rolls
