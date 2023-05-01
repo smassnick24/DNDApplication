@@ -1,7 +1,7 @@
 import requests
 
 
-class CharacterSheet:
+class CharacterSheet(object):
     def __init__(self):
         self.url = "https://media.wizards.com/2016/dnd/downloads/5E_CharacterSheet_Fillable.pdf"
         self.character_pdf = None

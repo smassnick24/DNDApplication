@@ -1,6 +1,10 @@
 import tkinter as tk
+
+import customtkinter
 import customtkinter as ctk
 from DiceRollerClass import DiceRoller
+
+customtkinter.set_appearance_mode("Light")
 
 
 class DiceRollFrame(tk.Frame):
@@ -42,9 +46,9 @@ class DiceRollFrame(tk.Frame):
         self.AdvantageLabel = ctk.CTkLabel(self, font=self.special_font, text="{False}")
         self.DisadvantageLabel = ctk.CTkLabel(self, font=self.special_font, text="{False}")
         self.Result = ctk.CTkLabel(self, font=self.header_font, text="Result: {}")
-        self.LastModifier = ctk.CTkLabel(self, font=self.header_font, text="Modifier: {}")
-        self.VantageLabelADV = ctk.CTkLabel(self, font=self.header_font, text="Advantage: {}")
-        self.VantageLabelDIS = ctk.CTkLabel(self, font=self.header_font, text="Disadvantage: {}")
+        self.LastModifier = ctk.CTkLabel(self, font=self.special_font, text="Modifier: {}")
+        self.VantageLabelADV = ctk.CTkLabel(self, font=self.special_font, text="Advantage: {}")
+        self.VantageLabelDIS = ctk.CTkLabel(self, font=self.special_font, text="Disadvantage: {}")
         self.RecentRolls = ctk.CTkLabel(self, font=self.font, text="Recent Rolls")
         self.Recent1 = ctk.CTkLabel(self, font=self.font, text="1")
         self.Recent2 = ctk.CTkLabel(self, font=self.font, text="2")
