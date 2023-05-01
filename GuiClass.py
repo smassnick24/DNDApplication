@@ -182,8 +182,6 @@ class DiceRollFrame(tk.Frame):
             self.DiceRoller.disadvantage = False
             self.AdvantageLabel.configure(text="{True}")
             self.DisadvantageLabel.configure(text="{False}")
-            # print(f"Advantage: {self.advantage}")
-            # print(f"Disadvantage: {self.disadvantage}")
         else:
             self.advantage = False
             self.DiceRoller.advantage = False
@@ -198,8 +196,6 @@ class DiceRollFrame(tk.Frame):
             self.DiceRoller.disadvantage = False
             self.AdvantageLabel.configure(text="{False}")
             self.DisadvantageLabel.configure(text="{True}")
-            # print(f"Advantage: {self.advantage}")
-            # print(f"Disadvantage: {self.disadvantage}")
         else:
             self.disadvantage = False
             self.DiceRoller.disadvantage = False
@@ -210,7 +206,6 @@ class DiceRollFrame(tk.Frame):
         storage = self.num_dice.get()
         self.EnterNumDice.delete(0, ctk.END)
         self.num_dice.set(value="1")
-        # print(f"Num: {storage}")
         if storage.isdigit():
             storage = int(storage)
             if storage < 0:
@@ -233,7 +228,6 @@ class DiceRollFrame(tk.Frame):
         storage = self.modifier.get()
         self.EnterModifier.delete(0, ctk.END)
         self.modifier.set(value="0")
-        # print(f"Mod: {storage}")
         if storage.isdigit():
             storage = int(storage)
             if storage > 2 ** 16:
