@@ -1,5 +1,4 @@
 import tkinter as tk
-
 import customtkinter
 import customtkinter as ctk
 from DiceRollerClass import DiceRoller
@@ -8,10 +7,11 @@ customtkinter.set_appearance_mode("Light")
 
 
 class DiceRollFrame(tk.Frame):
-    def __init__(self, master=None):
+    def __init__(self, master=None, dm=False):
         super().__init__(master)
         # house-keeping
         self.master = master
+        self.dm = dm
         self.font = ctk.CTkFont(family="Rockwell", size=14)
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
@@ -20,6 +20,8 @@ class DiceRollFrame(tk.Frame):
         self.num_dice = ctk.StringVar(value="1")
         self.advantage = False
         self.disadvantage = False
+        self.count = 0
+        self.recent_rolls = []
 
         # button widgets
         self.RollD4 = ctk.CTkButton(self, text="Roll D4", font=self.font, width=20, corner_radius=8,
@@ -34,6 +36,8 @@ class DiceRollFrame(tk.Frame):
                                      command=self.RollD12)
         self.RollD20 = ctk.CTkButton(self, text="Roll D20", font=self.font, width=20, corner_radius=8,
                                      command=self.RollD20)
+        self.RollD100 = ctk.CTkButton(self, text="Roll D100", font=self.font, width=20, corner_radius=8,
+                                      command=self.RollD100)
 
         # entry widgets
         self.EnterModifier = ctk.CTkEntry(self, font=self.font, textvariable=self.modifier)
@@ -45,14 +49,24 @@ class DiceRollFrame(tk.Frame):
         self.NumDiceLabel = ctk.CTkLabel(self, font=self.font, text="Number of Dice: ")
         self.AdvantageLabel = ctk.CTkLabel(self, font=self.special_font, text="{False}")
         self.DisadvantageLabel = ctk.CTkLabel(self, font=self.special_font, text="{False}")
-        self.Result = ctk.CTkLabel(self, font=self.header_font, text="Result: {}")
-        self.LastModifier = ctk.CTkLabel(self, font=self.special_font, text="Modifier: {}")
-        self.VantageLabelADV = ctk.CTkLabel(self, font=self.special_font, text="Advantage: {}")
-        self.VantageLabelDIS = ctk.CTkLabel(self, font=self.special_font, text="Disadvantage: {}")
-        self.RecentRolls = ctk.CTkLabel(self, font=self.font, text="Recent Rolls")
-        self.Recent1 = ctk.CTkLabel(self, font=self.font, text="1")
-        self.Recent2 = ctk.CTkLabel(self, font=self.font, text="2")
-        self.Recent3 = ctk.CTkLabel(self, font=self.font, text="3")
+        self.Result = ctk.CTkLabel(self, width=200, height=75, corner_radius=50, font=self.header_font,
+                                   fg_color="#3B8ED0", text_color="white", text="Result: {}")
+        self.RecentRolls = ctk.CTkLabel(self, font=self.special_font, text="Recent Rolls")
+        self.Recent1 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
+                                    text_color="white",
+                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+        self.Recent2 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
+                                    text_color="white",
+                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+        self.Recent3 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
+                                    text_color="white",
+                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+        self.Recent4 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
+                                    text_color="white",
+                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
+        self.Recent5 = ctk.CTkLabel(self, font=self.special_font, width=500, corner_radius=25, fg_color="#3B8ED0",
+                                    text_color="white",
+                                    text="Total: 0, Dice: A x B, Modifier: 0, Advantage: False, Disadvantage: False")
         self.Status = ctk.CTkLabel(self, font=self.special_font, text="Status: {}")
 
         # radio buttons
@@ -70,6 +84,8 @@ class DiceRollFrame(tk.Frame):
         self.RollD10.place(x=20, y=214)
         self.RollD12.place(x=20, y=252)
         self.RollD20.place(x=20, y=290)
+        if self.dm:
+            self.RollD100.place(x=20, y=328)
 
         # radio group
         self.Advantage.place(x=100, y=100)
@@ -86,64 +102,77 @@ class DiceRollFrame(tk.Frame):
         self.DisadvantageLabel.place(x=220, y=138)
         self.Status.place(x=480, y=500)
 
-        self.Result.place(x=480, y=250)
-        self.LastModifier.place(x=480, y=300)
-        self.VantageLabelADV.place(x=480, y=350)
-        self.VantageLabelDIS.place(x=480, y=400)
+        self.Result.place(x=480, y=100)
+
+        self.RecentRolls.place(x=480, y=210)
+        self.Recent1.place(x=480, y=250)
+        self.Recent2.place(x=480, y=290)
+        self.Recent3.place(x=480, y=330)
+        self.Recent4.place(x=480, y=370)
+        self.Recent5.place(x=480, y=410)
 
     def RollD4(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD4()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD4()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
 
     def RollD6(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD6()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD6()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
 
     def RollD8(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD8()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD8()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
 
     def RollD10(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD10()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD10()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
 
     def RollD12(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD12()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD12()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
 
     def RollD20(self):
         self.DiceRoller.num_dice = self._set_num_dice()
         self.DiceRoller.modifier = self._set_modifier()
-        total, modifier, advantage, disadvantage = self.DiceRoller.RollD20()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD20()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
         self.Result.configure(text=f"Result: {total}")
-        self.LastModifier.configure(text=f"Modifier: {modifier}")
-        self.VantageLabelADV.configure(text=f"Advantage: {advantage}")
-        self.VantageLabelDIS.configure(text=f"Disadvantage: {disadvantage}")
+        self._update_roll_labels()
+
+    def RollD100(self):
+        self.DiceRoller.num_dice = self._set_num_dice()
+        self.DiceRoller.modifier = self._set_modifier()
+        total, modifier, advantage, disadvantage, info = self.DiceRoller.RollD100()
+        self.recent_rolls.append([total, modifier, advantage, disadvantage, info])
+        self.Result.configure(text=f"Result: {total}")
+        self._update_roll_labels()
+
+    def _update_roll_labels(self):
+        label_list = [self.Recent1, self.Recent2, self.Recent3, self.Recent4, self.Recent5]
+        to_display = self.recent_rolls.pop(len(self.recent_rolls) - 1)
+        label_list[self.count % 5].configure(
+            text=f"Total: {to_display[0]}, Dice: {to_display[4]}, Modifier: {to_display[1]}, Advantage: {to_display[2]}, Disadvantage: {to_display[3]}")
+        self.count += 1
 
     def _set_advantage(self):
         if not self.advantage:
@@ -220,7 +249,9 @@ class DiceRollFrame(tk.Frame):
 if __name__ == '__main__':
     t = ctk.CTk()
     f = DiceRollFrame(master=t)
-    t.geometry("1072x603")
+    t.geometry("1422x603")
+    t.iconbitmap("dice-icon.ico")
+    t.title("DND Application")
     f.pack(fill=ctk.BOTH, expand=True)
 
     t.mainloop()
