@@ -1,4 +1,6 @@
 from PyPDF2 import PdfReader, PdfWriter
+from PyPDF2.generic import IndirectObject, PdfObject
+import json
 
 
 def fill_form():
@@ -50,26 +52,34 @@ def fill_form():
         "CHamod": stat_mods[5]
     }
 
-    with open("Character-Sheet.pdf", "rb") as pdf:
-        page_container = []
 
-        reader = PdfReader(pdf)
-        writer = PdfWriter()
-        fields = reader.get_fields()
+with open("template/DnD_5E_CharacterSheet_FormFillable.pdf", "rb") as pdf:
+    page_container = []
 
-        page_one = reader.pages[0]
-        writer.add_page(page_one)
+    reader = PdfReader(pdf)
+    writer = PdfWriter()
+    fields = reader.get_fields()
 
-        # print(fields)
+    page_one = reader.pages[0]
+    writer.add_page(page_one)
 
-        for pages in reader.pages:
-            page_container.append(pages.extract_text())
+    for pages in reader.pages:
+        page_container.append(pages.extract_text())
 
-    fields.update(filled_fields)
-    writer.update_page_form_field_values(writer.pages[0], fields)
+for key in fields.keys():
+    for inner_key in fields[key].keys():
+        if isinstance(fields[key][inner_key], list):
+            for i in range(len(fields[key][inner_key])):
+                fields[key][inner_key][i] = 0
 
-    with open("Character-Sheet.pdf", "wb") as output:
-        writer.write(output)
+for key in fields.keys():
+    fields[key] = dict()
+
+with open("form_fields.json", "w") as form_fields:
+    fields = json.dumps(fields, indent=4)
+    form_fields.write(fields)
 
 
-fill_form()
+
+
+# fill_form()
