@@ -72,9 +72,6 @@ for key in fields.keys():
             for i in range(len(fields[key][inner_key])):
                 fields[key][inner_key][i] = 0
 
-for key in fields.keys():
-    fields[key] = dict()
-
 with open("form_fields.json", "w") as form_fields:
     fields = json.dumps(fields, indent=4)
     form_fields.write(fields)
