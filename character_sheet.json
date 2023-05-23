@@ -21,12 +21,12 @@
   "Attack_1_Type": "",
   "Attack_2_Type": "",
   "Attack_3_Type": "",
-  "STR": "0",
-  "DEX": "0",
-  "CON": "0",
-  "INT": "0",
-  "WIS": "0",
-  "CHA": "0",
+  "STR": "15",
+  "DEX": "20",
+  "CON": "6",
+  "INT": "4",
+  "WIS": "12",
+  "CHA": "10",
   "STR_Mod": "+0",
   "DEX_Mod": "+0",
   "CON_Mod": "+0",
@@ -46,6 +46,5 @@
   "Silver": "0",
   "Electrum": "0",
   "Gold": "0",
-  "Platinum": "0",
-
+  "Platinum": "0"
 }
