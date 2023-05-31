@@ -1,13 +1,12 @@
 import tkinter as tk
-import customtkinter
 import customtkinter as ctk
 from DiceRollerClass import DiceRoller
 
-customtkinter.set_appearance_mode("Light")
+ctk.set_appearance_mode("Light")
 
 
 class DiceRollFrame(tk.Frame):
-    def __init__(self, master=None, dm=False):
+    def __init__(self, master=None, dm=True):
         super().__init__(master)
         # house-keeping
         self.master = master
