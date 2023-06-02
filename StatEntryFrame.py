@@ -2,6 +2,9 @@ import tkinter as tk
 import customtkinter as ctk
 from CreateCharacterClass import CharacterCreator
 
+ctk.set_appearance_mode("Light")
+
+
 class StatEntryFrame(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -12,6 +15,9 @@ class StatEntryFrame(tk.Frame):
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
         # labels
+        self.test = ctk.CTkLabel(self, font=self.font, text="Testing")
+        self.test.pack()
+
         self.NameLabel = ctk.CTkLabel(self, font=self.font, text="Character Name")
         self.ClassLabel = ctk.CTkLabel(self, font=self.font, text="Class")
         self.LevelLabel = ctk.CTkLabel(self, font=self.font, text="Level")
@@ -55,3 +61,42 @@ class StatEntryFrame(tk.Frame):
         self.PlatinumLabel = ctk.CTkLabel(self, font=self.font, text="PP")
         self.CopperLabel = ctk.CTkLabel(self, font=self.font, text="CP")
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
+        self.SkillsLabel = ctk.CTkLabel(self, font=self.font, text="Skills")
+        self.AthleticsLabel = ctk.CTkLabel(self, font=self.font, text="Athletics")
+        self.AcrobaticsLabel = ctk.CTkLabel(self, font=self.font, text="Acrobatics")
+        self.SOFLabel = ctk.CTkLabel(self, font=self.font, text="Slight of Hand")
+        self.StealthLabel = ctk.CTkLabel(self, font=self.font, text="Stealth")
+        self.ArcanaLabel = ctk.CTkLabel(self, font=self.font, text="Arcana")
+        self.HistoryLabel = ctk.CTkLabel(self, font=self.font, text="History")
+        self.InvestigationLabel = ctk.CTkLabel(self, font=self.font, text="Investigation")
+        self.NatureLabel = ctk.CTkLabel(self, font=self.font, text="Nature")
+        self.ReligionLabel = ctk.CTkLabel(self, font=self.font, text="Religion")
+        self.AHLabel = ctk.CTkLabel(self, font=self.font, text="Animal Handling")
+        self.InsightLabel = ctk.CTkLabel(self, font=self.font, text="Insight")
+        self.MedicineLabel = ctk.CTkLabel(self, font=self.font, text="Medicine")
+        self.PerceptionLabel = ctk.CTkLabel(self, font=self.font, text="Perception")
+        self.SurvivalLabel = ctk.CTkLabel(self, font=self.font, text="Survival")
+        self.DeceptionLabel = ctk.CTkLabel(self, font=self.font, text="Deception")
+        self.IntimidationLabel = ctk.CTkLabel(self, font=self.font, text="Intimidation")
+        self.PerformanceLabel = ctk.CTkLabel(self, font=self.font, text="Performance")
+        self.PersuasionLabel = ctk.CTkLabel(self, font=self.font, text="Persuasion")
+        self.InspirationLabel = ctk.CTkLabel(self, font=self.font, text="Inspiration")
+        self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
+        self.SavingThrowsLabel = ctk.CTkLabel(self, font=self.font, text="Saving Throws")
+        self.Str_St_Label = ctk.CTkLabel(self, font=self.font, text="Strength")
+        self.Dex_St_Label = ctk.CTkLabel(self, font=self.font, text="Dexterity")
+        self.Con_St_Label = ctk.CTkLabel(self, font=self.font, text="Constitution")
+        self.Int_St_Label = ctk.CTkLabel(self, font=self.font, text="Intelligence")
+        self.Wis_St_Label = ctk.CTkLabel(self, font=self.font, text="Wisdom")
+        self.Cha_St_Label = ctk.CTkLabel(self, font=self.font, text="Charisma+")
+
+
+if __name__ == '__main__':
+    test = ctk.CTk()
+    frame = StatEntryFrame(master=test)
+    test.geometry("1422x603")
+    test.iconbitmap("dice-icon.ico")
+    test.title("DND App")
+    frame.pack(fill=ctk.BOTH, expand=True)
+
+    test.mainloop()

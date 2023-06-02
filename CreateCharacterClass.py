@@ -48,16 +48,19 @@ class CharacterCreator(object):
     def update_equipment(self, values: list):
         pass
 
-    def update_hp(self, values: list):
+    def update_hit_points(self, values: list):
         pass
 
-    def update_hd(self, values: list):
+    def update_hit_dice(self, values: list):
         pass
 
-    def update_ds(self, values: list):
+    def update_death_saves(self, values: list):
         pass
 
     def update_auxiliary(self, values: list):
+        pass
+
+    def update_saving_throws(self, values: list):
         pass
 
     def _update_json(self):
