@@ -17,24 +17,51 @@ class CharacterCreator(object):
         modifiers = {'20': '5', '19': '4', '18': '4', '17': '3', '16': '3', '15': '2', '14': '2', '13': '1', '12': '1',
                      '11': '0', '10': '0',
                      '9': '-1', '8': '-1', '7': '-2',
-                     '6': '-2', '5': '-3', '4': '-3', '3': '-4', '2': '-4', '1': '-5'}
+                     '6': '-2', '5': '-3', '4': '-3', '3': '-4', '2': '-4', '1': '-5', '0': '-5'}
 
         totals = []
         for stat in stats.keys():  # adding the stat values from the json file to the list for iteration
-            totals.append(self.fields[stat])
+            totals.append(self.fields["Stats"][stat])
 
         for val, stat_mod in zip(totals, stats.values()):  # calculating the stat modifier
-            self.fields[stat_mod] = "+" + modifiers[val] if int(modifiers[val]) >= 0 else modifiers[val]
+            if int(val) > 20:
+                val = "20"
+            elif int(val) < 0:
+                val = "0"
+            self.fields["Stat_Modifiers"][stat_mod] = "+" + modifiers[val] if int(modifiers[val]) >= 0 else modifiers[
+                val]
 
         updated = json.dumps(self.fields, indent=True)
         with open(self.data, 'w') as data:
             data.write(updated)
 
-    def update_fields(self, data: dict):
-        updated_data = json.dumps(self.fields, indent=True)
-        with open(self.data, 'w') as to_update:
-            to_update.write(updated_data)
+    def determine_skill(self):
+        skills = {"STR": self.fields["Skills"]["STR"], "DEX": self.fields["Skills"]["DEX"],
+                  "INT": self.fields["Skills"]["INT"], "WIS": self.fields["Skills"]["WIS"],
+                  "CHA": self.fields["Skills"]["CHA"]}
+        mods = []
+        prof_bonus = self.fields["Prof_Bonus"]
+
+        for key in self.fields["Stat_Modifiers"].keys():  # collecting modifiers for future use
+            if key == "CON":
+                continue
+            else:
+                mods.append(self.fields["Stat_Modifiers"][key])
+
+        for stat, mod in zip(skills.keys(), mods):
+            for skill in self.fields["Skills"][stat].keys():
+                if self.fields["Skills"][stat][skill]["Proficient"] == 1:
+                    total = int(mod) + int(prof_bonus)
+                    self.fields["Skills"][stat][skill]["Mod"] = "+" + str(total) if total >= 0 else str(total)
+                else:
+                    self.fields["Skills"][stat][skill]["Mod"] = mod
+
+        updated = json.dumps(self.fields, indent=True)
+        with open(self.data, 'w') as data:
+            data.write(updated)
+
 
 
 if __name__ == '__main__':
     CharacterCreator().determine_modifier()
+    CharacterCreator().determine_skill()

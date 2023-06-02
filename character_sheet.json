@@ -1,39 +1,48 @@
 {
- "Character_Name": "",
- "Class": "",
- "Level": "",
- "Race": "",
- "Background": "",
- "Alignment": "",
- "Experience": "",
- "Personality": "",
- "Ideals": "",
- "Bonds": "",
- "Flaws": "",
- "Features": "",
- "Traits": "",
- "Attack_1": "",
- "Attack_2": "",
- "Attack_3": "",
- "Attack_1_Bonus": "",
- "Attack_2_Bonus": "",
- "Attack_3_Bonus": "",
- "Attack_1_Type": "",
- "Attack_2_Type": "",
- "Attack_3_Type": "",
- "STR": "15",
- "DEX": "20",
- "CON": "6",
- "INT": "4",
- "WIS": "12",
- "CHA": "10",
- "STR_Mod": "+2",
- "DEX_Mod": "+5",
- "CON_Mod": "-2",
- "INT_Mod": "-3",
- "CHA_Mod": "+0",
+ "Attributes": {
+  "Character_Name": "",
+  "Class": "",
+  "Level": "",
+  "Race": "",
+  "Background": "",
+  "Alignment": "",
+  "Experience": "",
+  "Personality": "",
+  "Ideals": "",
+  "Bonds": "",
+  "Flaws": "",
+  "Features": "",
+  "Traits": ""
+ },
+ "Attacks": {
+  "Attack_1": "",
+  "Attack_2": "",
+  "Attack_3": "",
+  "Attack_1_Bonus": "",
+  "Attack_2_Bonus": "",
+  "Attack_3_Bonus": "",
+  "Attack_1_Type": "",
+  "Attack_2_Type": "",
+  "Attack_3_Type": ""
+ },
+ "Stats": {
+  "STR": "15",
+  "DEX": "20",
+  "CON": "20",
+  "INT": "4",
+  "WIS": "-2",
+  "CHA": "25"
+ },
+ "Stat_Modifiers": {
+  "STR_Mod": "+2",
+  "DEX_Mod": "+5",
+  "CON_Mod": "+5",
+  "INT_Mod": "-3",
+  "WIS_Mod": "-5",
+  "CHA_Mod": "+5"
+ },
  "Inspiration": "0",
- "Prof_Bonus": "+0",
+ "Prof_Bonus": "+2",
  "AC": "0",
  "Init": "0",
  "Speed": "0ft",
@@ -42,10 +51,97 @@
  "HP_Temp": "0",
  "HD_Total": "0",
  "HD_Curr": "0",
- "Copper": "0",
- "Silver": "0",
- "Electrum": "0",
- "Gold": "0",
- "Platinum": "0",
- "WIS_Mod": "+1"
+ "Equipment": {
+  "Copper": "0",
+  "Silver": "0",
+  "Electrum": "0",
+  "Gold": "0",
+  "Platinum": "0"
+ },
+ "Death_Saves_Successes": "0",
+ "Death_Saves_Failures": "3",
+ "Skills": {
+  "STR": {
+   "Athletics": {
+    "Mod": "+2",
+    "Proficient": 0
+   }
+  },
+  "DEX": {
+   "Acrobatics": {
+    "Mod": "+7",
+    "Proficient": 1
+   },
+   "Slight_of_Hang": {
+    "Mod": "+5",
+    "Proficient": 0
+   },
+   "Stealth": {
+    "Mod": "+7",
+    "Proficient": 1
+   }
+  },
+  "INT": {
+   "Arcana": {
+    "Mod": "+5",
+    "Proficient": 0
+   },
+   "History": {
+    "Mod": "+7",
+    "Proficient": 1
+   },
+   "Investigation": {
+    "Mod": "+5",
+    "Proficient": 0
+   },
+   "Nature": {
+    "Mod": "+5",
+    "Proficient": 0
+   },
+   "Religion": {
+    "Mod": "+5",
+    "Proficient": 0
+   }
+  },
+  "WIS": {
+   "Animal_Handling": {
+    "Mod": "-3",
+    "Proficient": 0
+   },
+   "Insight": {
+    "Mod": "-3",
+    "Proficient": 0
+   },
+   "Medicine": {
+    "Mod": "-3",
+    "Proficient": 0
+   },
+   "Perception": {
+    "Mod": "-3",
+    "Proficient": 0
+   },
+   "Survival": {
+    "Mod": "-3",
+    "Proficient": 0
+   }
+  },
+  "CHA": {
+   "Deception": {
+    "Mod": "-5",
+    "Proficient": 0
+   },
+   "Intimidation": {
+    "Mod": "-5",
+    "Proficient": 0
+   },
+   "Performance": {
+    "Mod": "-5",
+    "Proficient": 0
+   },
+   "Persuasion": {
+    "Mod": "-5",
+    "Proficient": 0
+   }
+  }
+ }
 }
