@@ -2,16 +2,77 @@ import json
 
 
 class CharacterCreator(object):
-    def __init__(self, character_name="default",):
+    def __init__(self, character_name="character_sheet", ):
         self.data = f"characters/{character_name}.json"
         self.fields = {}
 
         with open(self.data, 'r') as character:
             self.fields = json.loads(character.read())
 
-    def determine_modifier(self):
+    def update_stats(self, values: list):
         """
-        A class method which takes the values of the stats from the current json file
+        A class method which takes a list of ints, the value for stats,
+        and inserts them into self.fields and updates the json file which stores
+        the data for the character.
+
+        The method has some validation in case an edgecase makes it past the validation
+        from the StatEntryFrame methods.
+
+        :param values: list of int
+        :return:
+        """
+        stats = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+        for stat, val in zip(stats, values):
+            if not isinstance(val, int):
+                val = 10
+            self.fields["Stats"][stat] = str(val)
+
+        self._determine_modifier()
+        self._determine_skill()
+
+        self._update_json()
+
+    def update_attributes(self, values: list):
+        attributes = ["Character_Name", "Class", "Level", "Race", "Background",
+                      "Alignment", "Experience", "Personality", "Ideals", "Ideals",
+                      "Bonds", "Flaws", "Features", "Traits"]
+
+        for attr, val in zip(attributes, values):
+            self.fields["Attributes"][attr] = val
+
+        self._update_json()
+
+    def update_attacks(self, values: list):
+        pass
+
+    def update_equipment(self, values: list):
+        pass
+
+    def update_hp(self, values: list):
+        pass
+
+    def update_hd(self, values: list):
+        pass
+
+    def update_ds(self, values: list):
+        pass
+
+    def update_auxiliary(self, values: list):
+        pass
+
+    def _update_json(self):
+        """
+        Helper method to update the json file.
+        This method is mainly for reducing redundancy.
+        :return:
+        """
+        updated = json.dumps(self.fields, indent=True)
+        with open(self.data, 'w') as data:
+            data.write(updated)
+
+    def _determine_modifier(self):
+        """
+        A helper method which takes the values of the stats from the current json file
         and calculates the modifiers for each stat.
 
         This method uses dictionaries to hold stat and modifier values as accessing a dictionary is
@@ -41,13 +102,9 @@ class CharacterCreator(object):
             self.fields["Stat_Modifiers"][stat_mod] = "+" + modifiers[val] if int(modifiers[val]) >= 0 else modifiers[
                 val]
 
-        updated = json.dumps(self.fields, indent=True)
-        with open(self.data, 'w') as data:
-            data.write(updated)
-
-    def determine_skill(self):
+    def _determine_skill(self):
         """
-        A class method which calculates the skill modifiers using the previously calculated stat modifiers and
+        A helper method which calculates the skill modifiers using the previously calculated stat modifiers and
         the character's proficiency bonus.
 
         This method uses dictionaries for quicker access to leave some running time for the
@@ -77,12 +134,6 @@ class CharacterCreator(object):
                 else:
                     self.fields["Skills"][stat][skill]["Mod"] = mod
 
-        updated = json.dumps(self.fields, indent=True)
-        with open(self.data, 'w') as data:
-            data.write(updated)
-
-
 
 if __name__ == '__main__':
-    CharacterCreator().determine_modifier()
-    CharacterCreator().determine_skill()
+    CharacterCreator().update_attributes(["Test"] * 13)

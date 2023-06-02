@@ -1,18 +1,18 @@
 {
  "Attributes": {
-  "Character_Name": "",
-  "Class": "",
-  "Level": "",
-  "Race": "",
-  "Background": "",
-  "Alignment": "",
-  "Experience": "",
-  "Personality": "",
-  "Ideals": "",
-  "Bonds": "",
-  "Flaws": "",
-  "Features": "",
-  "Traits": ""
+  "Character_Name": "Test",
+  "Class": "Test",
+  "Level": "Test",
+  "Race": "Test",
+  "Background": "Test",
+  "Alignment": "Test",
+  "Experience": "Test",
+  "Personality": "Test",
+  "Ideals": "Test",
+  "Bonds": "Test",
+  "Flaws": "Test",
+  "Features": "Test",
+  "Traits": "test"
  },
  "Attacks": {
   "Attack_1": "",
@@ -26,31 +26,22 @@
   "Attack_3_Type": ""
  },
  "Stats": {
-  "STR": "10",
+  "STR": "20",
   "DEX": "20",
-  "CON": "17",
-  "INT": "14",
-  "WIS": "9",
-  "CHA": "12"
+  "CON": "20",
+  "INT": "20",
+  "WIS": "20",
+  "CHA": "20"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+0",
+  "STR_Mod": "+5",
   "DEX_Mod": "+5",
-  "CON_Mod": "+3",
-  "INT_Mod": "+2",
-  "WIS_Mod": "-1",
-  "CHA_Mod": "+1"
+  "CON_Mod": "+5",
+  "INT_Mod": "+5",
+  "WIS_Mod": "+5",
+  "CHA_Mod": "+5"
  },
- "Inspiration": "0",
- "Prof_Bonus": "+2",
- "AC": "0",
- "Init": "0",
- "Speed": "0ft",
- "HP_Max": "0",
- "HP_Curr": "0",
- "HP_Temp": "0",
- "HD_Total": "0",
- "HD_Curr": "0",
+
  "Equipment": {
   "Copper": "0",
   "Silver": "0",
@@ -58,12 +49,11 @@
   "Gold": "0",
   "Platinum": "0"
  },
- "Death_Saves_Successes": "0",
- "Death_Saves_Failures": "3",
+
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+0",
+    "Mod": "+5",
     "Proficient": 0
    }
   },
@@ -83,65 +73,85 @@
   },
   "INT": {
    "Arcana": {
-    "Mod": "+3",
+    "Mod": "+5",
     "Proficient": 0
    },
    "History": {
-    "Mod": "+5",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+3",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Nature": {
-    "Mod": "+3",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Religion": {
-    "Mod": "+3",
+    "Mod": "+5",
     "Proficient": 0
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Insight": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Medicine": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Perception": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Survival": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 0
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "-1",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Intimidation": {
-    "Mod": "-1",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Performance": {
-    "Mod": "-1",
+    "Mod": "+5",
     "Proficient": 0
    },
    "Persuasion": {
-    "Mod": "-1",
+    "Mod": "+5",
     "Proficient": 0
    }
   }
+ },
+ "HitPoints": {
+   "HP_Max": "0",
+   "HP_Curr": "0",
+   "HP_Temp": "0"
+ },
+ "HitDice": {
+  "HD_Total": "0",
+  "HD_Curr": "0"
+ },
+ "DeathSaves": {
+  "Death_Saves_Successes": "0",
+  "Death_Saves_Failures": "3"
+ },
+ "Auxiliary": {
+  "Inspiration": 0,
+  "Prof_Bonus": "+2",
+  "AC": "0",
+  "Init": "0",
+  "Speed": "0ft"
  }
 }
