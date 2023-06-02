@@ -26,20 +26,20 @@
   "Attack_3_Type": ""
  },
  "Stats": {
-  "STR": "15",
+  "STR": "10",
   "DEX": "20",
-  "CON": "20",
-  "INT": "4",
-  "WIS": "-2",
-  "CHA": "25"
+  "CON": "17",
+  "INT": "14",
+  "WIS": "9",
+  "CHA": "12"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+2",
+  "STR_Mod": "+0",
   "DEX_Mod": "+5",
-  "CON_Mod": "+5",
-  "INT_Mod": "-3",
-  "WIS_Mod": "-5",
-  "CHA_Mod": "+5"
+  "CON_Mod": "+3",
+  "INT_Mod": "+2",
+  "WIS_Mod": "-1",
+  "CHA_Mod": "+1"
  },
  "Inspiration": "0",
  "Prof_Bonus": "+2",
@@ -63,7 +63,7 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+2",
+    "Mod": "+0",
     "Proficient": 0
    }
   },
@@ -72,7 +72,7 @@
     "Mod": "+7",
     "Proficient": 1
    },
-   "Slight_of_Hang": {
+   "Slight_of_Hand": {
     "Mod": "+5",
     "Proficient": 0
    },
@@ -83,63 +83,63 @@
   },
   "INT": {
    "Arcana": {
-    "Mod": "+5",
+    "Mod": "+3",
     "Proficient": 0
    },
    "History": {
-    "Mod": "+7",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+5",
+    "Mod": "+3",
     "Proficient": 0
    },
    "Nature": {
-    "Mod": "+5",
+    "Mod": "+3",
     "Proficient": 0
    },
    "Religion": {
-    "Mod": "+5",
+    "Mod": "+3",
     "Proficient": 0
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "-3",
+    "Mod": "+2",
     "Proficient": 0
    },
    "Insight": {
-    "Mod": "-3",
+    "Mod": "+2",
     "Proficient": 0
    },
    "Medicine": {
-    "Mod": "-3",
+    "Mod": "+2",
     "Proficient": 0
    },
    "Perception": {
-    "Mod": "-3",
+    "Mod": "+2",
     "Proficient": 0
    },
    "Survival": {
-    "Mod": "-3",
+    "Mod": "+2",
     "Proficient": 0
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "-5",
+    "Mod": "-1",
     "Proficient": 0
    },
    "Intimidation": {
-    "Mod": "-5",
+    "Mod": "-1",
     "Proficient": 0
    },
    "Performance": {
-    "Mod": "-5",
+    "Mod": "-1",
     "Proficient": 0
    },
    "Persuasion": {
-    "Mod": "-5",
+    "Mod": "-1",
     "Proficient": 0
    }
   }

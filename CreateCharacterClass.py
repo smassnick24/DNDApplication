@@ -1,10 +1,8 @@
-from PyPDFForm import PyPDFForm
 import json
 
 
 class CharacterCreator(object):
-    def __init__(self, data_template="character_sheet.json"):
-        self.template = "template/DnD_5E_CharacterSheet_FormFillable.pdf"
+    def __init__(self, data_template="characters/character_sheet.json"):
         self.data = data_template
         self.fields = {}
 
@@ -12,6 +10,18 @@ class CharacterCreator(object):
             self.fields = json.loads(character.read())
 
     def determine_modifier(self):
+        """
+        A class method which takes the values of the stats from the current json file
+        and calculates the modifiers for each stat.
+
+        This method uses dictionaries to hold stat and modifier values as accessing a dictionary is
+        O(1) time, which is just as fast as a normal computation. This avenue removes error
+        from calculation as formulas are not always perfect.
+
+        Once all values have been assigned, the json file is updated.
+
+        :return: None
+        """
         stats = {"STR": "STR_Mod", "DEX": "DEX_Mod", "CON": "CON_Mod", "INT": "INT_Mod", "WIS": "WIS_Mod",
                  "CHA": "CHA_Mod"}
         modifiers = {'20': '5', '19': '4', '18': '4', '17': '3', '16': '3', '15': '2', '14': '2', '13': '1', '12': '1',
@@ -36,6 +46,17 @@ class CharacterCreator(object):
             data.write(updated)
 
     def determine_skill(self):
+        """
+        A class method which calculates the skill modifiers using the previously calculated stat modifiers and
+        the character's proficiency bonus.
+
+        This method uses dictionaries for quicker access to leave some running time for the
+        nested for loops which run at O(n*m) time.
+
+        Once all skills have been accounted for, the json file is updated.
+
+        :return: None
+        """
         skills = {"STR": self.fields["Skills"]["STR"], "DEX": self.fields["Skills"]["DEX"],
                   "INT": self.fields["Skills"]["INT"], "WIS": self.fields["Skills"]["WIS"],
                   "CHA": self.fields["Skills"]["CHA"]}
