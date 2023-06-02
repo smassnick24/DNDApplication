@@ -1,0 +1,147 @@
+{
+ "Attributes": {
+  "Character_Name": "",
+  "Class": "",
+  "Level": "",
+  "Race": "",
+  "Background": "",
+  "Alignment": "",
+  "Experience": "",
+  "Personality": "",
+  "Ideals": "",
+  "Bonds": "",
+  "Flaws": "",
+  "Features": "",
+  "Traits": ""
+ },
+ "Attacks": {
+  "Attack_1": "",
+  "Attack_2": "",
+  "Attack_3": "",
+  "Attack_1_Bonus": "",
+  "Attack_2_Bonus": "",
+  "Attack_3_Bonus": "",
+  "Attack_1_Type": "",
+  "Attack_2_Type": "",
+  "Attack_3_Type": ""
+ },
+ "Stats": {
+  "STR": "10",
+  "DEX": "10",
+  "CON": "10",
+  "INT": "10",
+  "WIS": "10",
+  "CHA": "10"
+ },
+ "Stat_Modifiers": {
+  "STR_Mod": "+0",
+  "DEX_Mod": "+0",
+  "CON_Mod": "+0",
+  "INT_Mod": "+0",
+  "WIS_Mod": "+0",
+  "CHA_Mod": "+0"
+ },
+ "Inspiration": "0",
+ "Prof_Bonus": "+2",
+ "AC": "0",
+ "Init": "0",
+ "Speed": "0ft",
+ "HP_Max": "0",
+ "HP_Curr": "0",
+ "HP_Temp": "0",
+ "HD_Total": "0",
+ "HD_Curr": "0",
+ "Equipment": {
+  "Copper": "0",
+  "Silver": "0",
+  "Electrum": "0",
+  "Gold": "0",
+  "Platinum": "0"
+ },
+ "Death_Saves_Successes": "0",
+ "Death_Saves_Failures": "3",
+ "Skills": {
+  "STR": {
+   "Athletics": {
+    "Mod": "+0",
+    "Proficient": 0
+   }
+  },
+  "DEX": {
+   "Acrobatics": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Slight_of_Hand": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Stealth": {
+    "Mod": "+0",
+    "Proficient": 0
+   }
+  },
+  "INT": {
+   "Arcana": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "History": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Investigation": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Nature": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Religion": {
+    "Mod": "+0",
+    "Proficient": 0
+   }
+  },
+  "WIS": {
+   "Animal_Handling": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Insight": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Medicine": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Perception": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Survival": {
+    "Mod": "+0",
+    "Proficient": 0
+   }
+  },
+  "CHA": {
+   "Deception": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Intimidation": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Performance": {
+    "Mod": "+0",
+    "Proficient": 0
+   },
+   "Persuasion": {
+    "Mod": "+0",
+    "Proficient": 0
+   }
+  }
+ }
+}

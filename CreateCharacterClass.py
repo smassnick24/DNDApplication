@@ -2,8 +2,8 @@ import json
 
 
 class CharacterCreator(object):
-    def __init__(self, data_template="characters/character_sheet.json"):
-        self.data = data_template
+    def __init__(self, character_name="default",):
+        self.data = f"characters/{character_name}.json"
         self.fields = {}
 
         with open(self.data, 'r') as character:
