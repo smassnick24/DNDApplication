@@ -90,6 +90,50 @@ class StatEntryFrame(tk.Frame):
         self.Wis_St_Label = ctk.CTkLabel(self, font=self.font, text="Wisdom")
         self.Cha_St_Label = ctk.CTkLabel(self, font=self.font, text="Charisma+")
 
+        # kinter variables
+        self.NameVar = ctk.StringVar(value="")
+        self.ClassVar = ctk.StringVar(value="")
+        self.LevelVar = ctk.IntVar(value=1)
+        self.RaceVar = ctk.StringVar(value="")
+        self.BackgroundVar = ctk.StringVar(value="")
+        self.AlignmentVar = ctk.StringVar(value="")
+        self.PersonalityVar = ctk.StringVar(value="")
+        self.IdealsVar = ctk.StringVar(value="")
+        self.BondsVar = ctk.StringVar(value="")
+        self.FlawsVar = ctk.StringVar(value="")
+        self.FeaturesVar = ctk.StringVar(value="")
+        self.TraitsVar = ctk.StringVar(value="")
+        self.EquipmentVar = ctk.StringVar(value="")
+        self.Attack1Var = ctk.StringVar(value="")
+        self.Attack2Var = ctk.StringVar(value="")
+        self.Attack3Var = ctk.StringVar(value="")
+        self.STRVar = ctk.IntVar(value=10)
+        self.CONVar = ctk.IntVar(value=10)
+        self.DEXVar = ctk.IntVar(value=10)
+        self.INTVar = ctk.IntVar(value=10)
+        self.WISVar = ctk.IntVar(value=10)
+        self.CHAVar = ctk.IntVar(value=10)
+        self.ACVar = ctk.StringVar(value="")
+        self.SpeedVar = ctk.StringVar(value="0ft")
+        self.ProfBonusVar = ctk.StringVar(value="")
+        self.HPMaxVar = ctk.IntVar(value=0)
+        self.HPCurrVar = ctk.IntVar(value=0)
+        self.HPTempVar = ctk.IntVar(value=0)
+        self.HDTotVar = ctk.IntVar(value=0)
+        self.HDCurrVar = ctk.IntVar(value=0)
+
+
+        # entry widgets
+        self.NameEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.NameVar)
+        self.ClassEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.ClassVar)
+        self.LevelEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.LevelVar)
+        self.RaceEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
+        self.BackgroundEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
+        self.AlignmentEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
+
+
+        # placing attributes on the frame
+
 
 if __name__ == '__main__':
     test = ctk.CTk()
