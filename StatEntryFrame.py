@@ -10,13 +10,16 @@ class StatEntryFrame(tk.Frame):
         super().__init__(master)
         # allowing the new frame to have a CTk obj as a master
         self.master = master
+
+        # defining character creator
+        self.CC = CharacterCreator()
+
         # declaring fonts
+        self.small_font = ctk.CTkFont(family="Rockwell", size=10)
         self.font = ctk.CTkFont(family="Rockwell", size=14)
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
         # labels
-        self.test = ctk.CTkLabel(self, font=self.font, text="Testing")
-        self.test.pack()
 
         self.NameLabel = ctk.CTkLabel(self, font=self.font, text="Character Name")
         self.ClassLabel = ctk.CTkLabel(self, font=self.font, text="Class")
@@ -61,25 +64,7 @@ class StatEntryFrame(tk.Frame):
         self.PlatinumLabel = ctk.CTkLabel(self, font=self.font, text="PP")
         self.CopperLabel = ctk.CTkLabel(self, font=self.font, text="CP")
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
-        self.SkillsLabel = ctk.CTkLabel(self, font=self.font, text="Skills")
-        self.AthleticsLabel = ctk.CTkLabel(self, font=self.font, text="Athletics")
-        self.AcrobaticsLabel = ctk.CTkLabel(self, font=self.font, text="Acrobatics")
-        self.SOFLabel = ctk.CTkLabel(self, font=self.font, text="Slight of Hand")
-        self.StealthLabel = ctk.CTkLabel(self, font=self.font, text="Stealth")
-        self.ArcanaLabel = ctk.CTkLabel(self, font=self.font, text="Arcana")
-        self.HistoryLabel = ctk.CTkLabel(self, font=self.font, text="History")
-        self.InvestigationLabel = ctk.CTkLabel(self, font=self.font, text="Investigation")
-        self.NatureLabel = ctk.CTkLabel(self, font=self.font, text="Nature")
-        self.ReligionLabel = ctk.CTkLabel(self, font=self.font, text="Religion")
-        self.AHLabel = ctk.CTkLabel(self, font=self.font, text="Animal Handling")
-        self.InsightLabel = ctk.CTkLabel(self, font=self.font, text="Insight")
-        self.MedicineLabel = ctk.CTkLabel(self, font=self.font, text="Medicine")
-        self.PerceptionLabel = ctk.CTkLabel(self, font=self.font, text="Perception")
-        self.SurvivalLabel = ctk.CTkLabel(self, font=self.font, text="Survival")
-        self.DeceptionLabel = ctk.CTkLabel(self, font=self.font, text="Deception")
-        self.IntimidationLabel = ctk.CTkLabel(self, font=self.font, text="Intimidation")
-        self.PerformanceLabel = ctk.CTkLabel(self, font=self.font, text="Performance")
-        self.PersuasionLabel = ctk.CTkLabel(self, font=self.font, text="Persuasion")
+
         self.InspirationLabel = ctk.CTkLabel(self, font=self.font, text="Inspiration")
         self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
         self.SavingThrowsLabel = ctk.CTkLabel(self, font=self.font, text="Saving Throws")
@@ -121,7 +106,12 @@ class StatEntryFrame(tk.Frame):
         self.HPTempVar = ctk.IntVar(value=0)
         self.HDTotVar = ctk.IntVar(value=0)
         self.HDCurrVar = ctk.IntVar(value=0)
-
+        self.ElecVar = ctk.IntVar(value=0)
+        self.PlatVar = ctk.IntVar(value=0)
+        self.GoldVar = ctk.IntVar(value=0)
+        self.SilvVar = ctk.IntVar(value=0)
+        self.CoppVar = ctk.IntVar(value=0)
+        # death saves
 
         # entry widgets
         self.NameEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.NameVar)
@@ -131,8 +121,98 @@ class StatEntryFrame(tk.Frame):
         self.BackgroundEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
         self.AlignmentEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
 
+        # skill prof labels
+        self.SkillsLabel = ctk.CTkLabel(self, font=self.font, text="Skills")
+        self.AthleticsLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.AcrobaticsLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.SOHLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.StealthLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.ArcanaLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.HistoryLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.InvestigationLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.NatureLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.ReligionLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.AHLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.InsightLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.MedicineLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.PerceptionLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.SurvivalLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.DeceptionLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.IntimidationLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.PerformanceLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+        self.PersuasionLabel = ctk.CTkLabel(self, font=self.font, text="( )")
+
+        # buttons for skill proficiencies
+        self.AthleticsButton = ctk.CTkButton(self, font=self.small_font, text="Athletics", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AthleticsLabel, stat_key="STR", skill_key="Athletics"))
+        self.AcrobaticsButton = ctk.CTkButton(self, font=self.small_font, text="Acrobatics", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AcrobaticsLabel, stat_key="DEX", skill_key="Acrobatics"))
+        self.SOHButton = ctk.CTkButton(self, font=self.small_font, text="Slight of Hand", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.SOHLabel, stat_key="DEX", skill_key="Slight_of_Hand"))
+        self.StealthButton = ctk.CTkButton(self, font=self.small_font, text="Stealth", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.StealthLabel, stat_key="DEX", skill_key="Stealth"))
+        self.ArcanaButton = ctk.CTkButton(self, font=self.small_font, text="Arcana", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.ArcanaLabel, stat_key="INT", skill_key="Arcana"))
+        self.HistoryButton = ctk.CTkButton(self, font=self.small_font, text="History", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.HistoryLabel, stat_key="INT", skill_key="History"))
+        self.InvestigationButton = ctk.CTkButton(self, font=self.small_font, text="Investigation", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.InvestigationLabel, stat_key="INT", skill_key="Investigation"))
+        self.NatureButton = ctk.CTkButton(self, font=self.small_font, text="Nature", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.NatureLabel, stat_key="INT", skill_key="Nature"))
+        self.ReligionButton = ctk.CTkButton(self, font=self.small_font, text="Religion", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.ReligionLabel, stat_key="INT", skill_key="Religion"))
+        self.AHButton = ctk.CTkButton(self, font=self.small_font, text="Animal Handling", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AHLabel, stat_key="WIS", skill_key="Animal_Handling"))
+        self.InsightButton = ctk.CTkButton(self, font=self.small_font, text="Insight", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.InsightLabel, stat_key="WIS", skill_key="Insight"))
+        self.MedicineButton = ctk.CTkButton(self, font=self.small_font, text="Medicine", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.MedicineLabel, stat_key="WIS", skill_key="Medicine"))
+        self.PerceptionButton = ctk.CTkButton(self, font=self.small_font, text="Perception", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PerceptionLabel, stat_key="WIS", skill_key="Perception"))
+        self.SurvivalButton = ctk.CTkButton(self, font=self.small_font, text="Survival", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.SurvivalLabel, stat_key="WIS", skill_key="Survival"))
+        self.DeceptionButton = ctk.CTkButton(self, font=self.small_font, text="Deception", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.DeceptionLabel, stat_key="CHA", skill_key="Deception"))
+        self.IntimidationButton = ctk.CTkButton(self, font=self.small_font, text="Intimidation", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.IntimidationLabel, stat_key="CHA", skill_key="Intimidation"))
+        self.PerformanceButton = ctk.CTkButton(self, font=self.small_font, text="Performance", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PerformanceLabel, stat_key="CHA", skill_key="Performance"))
+        self.PersuasionButton = ctk.CTkButton(self, font=self.small_font, text="Persuasion", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PersuasionLabel, stat_key="CHA", skill_key="Persuasion"))
+
 
         # placing attributes on the frame
+        self.SkillsLabel.place(x=175, y=20)
+        self.AthleticsLabel.place(x=175, y=43)
+        self.AthleticsButton.place(x=200, y=50)
+        self.AcrobaticsLabel.place(x=175, y=69)
+        self.AcrobaticsButton.place(x=200, y=75)
+        self.SOHLabel.place(x=175, y=95)
+        self.SOHButton.place(x=200, y=100)
+        self.StealthLabel.place(x=175, y=119)
+        self.StealthButton.place(x=200, y=125)
+        self.ArcanaLabel.place(x=175, y=144)
+        self.ArcanaButton.place(x=200, y=150)
+        self.HistoryLabel.place(x=175, y=168)
+        self.HistoryButton.place(x=200, y=175)
+        self.InvestigationLabel.place(x=175, y=193)
+        self.InvestigationButton.place(x=200, y=200)
+        self.NatureLabel.place(x=175, y=218)
+        self.NatureButton.place(x=200, y=225)
+        self.ReligionLabel.place(x=175, y=243)
+        self.ReligionButton.place(x=200, y=250)
+        self.AHLabel.place(x=175, y=268)
+        self.AHButton.place(x=200, y=275)
+        self.InsightLabel.place(x=175, y=293)
+        self.InsightButton.place(x=200, y=300)
+        self.MedicineLabel.place(x=175, y=318)
+        self.MedicineButton.place(x=200, y=325)
+        self.PerceptionLabel.place(x=175, y=343)
+        self.PerceptionButton.place(x=200, y=350)
+        self.SurvivalLabel.place(x=175, y=368)
+        self.SurvivalButton.place(x=200, y=375)
+        self.DeceptionLabel.place(x=175, y=393)
+        self.DeceptionButton.place(x=200, y=400)
+        self.IntimidationLabel.place(x=175, y=418)
+        self.IntimidationButton.place(x=200, y=425)
+        self.PerformanceLabel.place(x=175, y=443)
+        self.PerformanceButton.place(x=200, y=450)
+        self.PersuasionLabel.place(x=175, y=468)
+        self.PersuasionButton.place(x=200, y=475)
+
+    # defining class methods
+    def update_proficiency(self, skill_label: ctk.CTkLabel, stat_key, skill_key):
+        if skill_label.cget("text") == "( )":
+            skill_label.configure(text="(0)")
+            self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 1
+            print(self.CC.fields["Skills"][stat_key][skill_key])
+        else:
+            skill_label.configure(text="( )")
+            self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 0
+            print(self.CC.fields["Skills"][stat_key][skill_key])
+
 
 
 if __name__ == '__main__':

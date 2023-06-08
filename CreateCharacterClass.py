@@ -30,7 +30,7 @@ class CharacterCreator(object):
         self._determine_modifier()
         self._determine_skill()
 
-        self._update_json()
+        self.update_json()
 
     def update_attributes(self, values: list):
         attributes = ["Character_Name", "Class", "Level", "Race", "Background",
@@ -40,7 +40,7 @@ class CharacterCreator(object):
         for attr, val in zip(attributes, values):
             self.fields["Attributes"][attr] = val
 
-        self._update_json()
+        self.update_json()
 
     def update_attacks(self, values: list):
         pass
@@ -63,7 +63,7 @@ class CharacterCreator(object):
     def update_saving_throws(self, values: list):
         pass
 
-    def _update_json(self):
+    def update_json(self):
         """
         Helper method to update the json file.
         This method is mainly for reducing redundancy.
