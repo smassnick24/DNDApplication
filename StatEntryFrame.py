@@ -120,6 +120,12 @@ class StatEntryFrame(tk.Frame):
         self.RaceEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
         self.BackgroundEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
         self.AlignmentEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
+        self.STREntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.STRVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
+        self.CONEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.CONVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
+        self.DEXEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.DEXVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
+        self.INTEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.INTVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
+        self.WISEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.WISVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
+        self.CHAEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.CHAVar, border_width=2, border_color="black", width=40, height=40, justify=ctk.CENTER)
 
         # skill prof labels
         self.SkillsLabel = ctk.CTkLabel(self, font=self.font, text="Skills")
@@ -161,6 +167,10 @@ class StatEntryFrame(tk.Frame):
         self.IntimidationButton = ctk.CTkButton(self, font=self.small_font, text="Intimidation", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.IntimidationLabel, stat_key="CHA", skill_key="Intimidation"))
         self.PerformanceButton = ctk.CTkButton(self, font=self.small_font, text="Performance", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PerformanceLabel, stat_key="CHA", skill_key="Performance"))
         self.PersuasionButton = ctk.CTkButton(self, font=self.small_font, text="Persuasion", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PersuasionLabel, stat_key="CHA", skill_key="Persuasion"))
+
+        # placing stats
+        self.STRLabel.place(x=53, y=19)
+        self.STREntry.place(x=45, y=50)
 
 
         # placing attributes on the frame
