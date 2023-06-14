@@ -143,25 +143,72 @@ class StatEntryFrame(tk.Frame):
         self.PersuasionLabel = ctk.CTkLabel(self, font=self.font, text="( )")
 
         # buttons for skill proficiencies
-        self.AthleticsButton = ctk.CTkButton(self, font=self.small_font, text="Athletics", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AthleticsLabel, stat_key="STR", skill_key="Athletics"))
-        self.AcrobaticsButton = ctk.CTkButton(self, font=self.small_font, text="Acrobatics", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AcrobaticsLabel, stat_key="DEX", skill_key="Acrobatics"))
-        self.SOHButton = ctk.CTkButton(self, font=self.small_font, text="Slight of Hand", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.SOHLabel, stat_key="DEX", skill_key="Slight_of_Hand"))
-        self.StealthButton = ctk.CTkButton(self, font=self.small_font, text="Stealth", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.StealthLabel, stat_key="DEX", skill_key="Stealth"))
-        self.ArcanaButton = ctk.CTkButton(self, font=self.small_font, text="Arcana", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.ArcanaLabel, stat_key="INT", skill_key="Arcana"))
-        self.HistoryButton = ctk.CTkButton(self, font=self.small_font, text="History", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.HistoryLabel, stat_key="INT", skill_key="History"))
-        self.InvestigationButton = ctk.CTkButton(self, font=self.small_font, text="Investigation", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.InvestigationLabel, stat_key="INT", skill_key="Investigation"))
-        self.NatureButton = ctk.CTkButton(self, font=self.small_font, text="Nature", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.NatureLabel, stat_key="INT", skill_key="Nature"))
-        self.ReligionButton = ctk.CTkButton(self, font=self.small_font, text="Religion", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.ReligionLabel, stat_key="INT", skill_key="Religion"))
-        self.AHButton = ctk.CTkButton(self, font=self.small_font, text="Animal Handling", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.AHLabel, stat_key="WIS", skill_key="Animal_Handling"))
-        self.InsightButton = ctk.CTkButton(self, font=self.small_font, text="Insight", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.InsightLabel, stat_key="WIS", skill_key="Insight"))
-        self.MedicineButton = ctk.CTkButton(self, font=self.small_font, text="Medicine", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.MedicineLabel, stat_key="WIS", skill_key="Medicine"))
-        self.PerceptionButton = ctk.CTkButton(self, font=self.small_font, text="Perception", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PerceptionLabel, stat_key="WIS", skill_key="Perception"))
-        self.SurvivalButton = ctk.CTkButton(self, font=self.small_font, text="Survival", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.SurvivalLabel, stat_key="WIS", skill_key="Survival"))
-        self.DeceptionButton = ctk.CTkButton(self, font=self.small_font, text="Deception", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.DeceptionLabel, stat_key="CHA", skill_key="Deception"))
-        self.IntimidationButton = ctk.CTkButton(self, font=self.small_font, text="Intimidation", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.IntimidationLabel, stat_key="CHA", skill_key="Intimidation"))
-        self.PerformanceButton = ctk.CTkButton(self, font=self.small_font, text="Performance", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PerformanceLabel, stat_key="CHA", skill_key="Performance"))
-        self.PersuasionButton = ctk.CTkButton(self, font=self.small_font, text="Persuasion", height=6, width=6, command=lambda: self.update_proficiency(skill_label=self.PersuasionLabel, stat_key="CHA", skill_key="Persuasion"))
-
+        self.AthleticsButton = ctk.CTkButton(self, font=self.small_font, text="Athletics", height=6, width=6,
+                                             command=lambda: self.update_proficiency(skill_label=self.AthleticsLabel,
+                                                                                     stat_key="STR",
+                                                                                     skill_key="Athletics"))
+        self.AcrobaticsButton = ctk.CTkButton(self, font=self.small_font, text="Acrobatics", height=6, width=6,
+                                              command=lambda: self.update_proficiency(skill_label=self.AcrobaticsLabel,
+                                                                                      stat_key="DEX",
+                                                                                      skill_key="Acrobatics"))
+        self.SOHButton = ctk.CTkButton(self, font=self.small_font, text="Slight of Hand", height=6, width=6,
+                                       command=lambda: self.update_proficiency(skill_label=self.SOHLabel,
+                                                                               stat_key="DEX",
+                                                                               skill_key="Slight_of_Hand"))
+        self.StealthButton = ctk.CTkButton(self, font=self.small_font, text="Stealth", height=6, width=6,
+                                           command=lambda: self.update_proficiency(skill_label=self.StealthLabel,
+                                                                                   stat_key="DEX", skill_key="Stealth"))
+        self.ArcanaButton = ctk.CTkButton(self, font=self.small_font, text="Arcana", height=6, width=6,
+                                          command=lambda: self.update_proficiency(skill_label=self.ArcanaLabel,
+                                                                                  stat_key="INT", skill_key="Arcana"))
+        self.HistoryButton = ctk.CTkButton(self, font=self.small_font, text="History", height=6, width=6,
+                                           command=lambda: self.update_proficiency(skill_label=self.HistoryLabel,
+                                                                                   stat_key="INT", skill_key="History"))
+        self.InvestigationButton = ctk.CTkButton(self, font=self.small_font, text="Investigation", height=6, width=6,
+                                                 command=lambda: self.update_proficiency(
+                                                     skill_label=self.InvestigationLabel, stat_key="INT",
+                                                     skill_key="Investigation"))
+        self.NatureButton = ctk.CTkButton(self, font=self.small_font, text="Nature", height=6, width=6,
+                                          command=lambda: self.update_proficiency(skill_label=self.NatureLabel,
+                                                                                  stat_key="INT", skill_key="Nature"))
+        self.ReligionButton = ctk.CTkButton(self, font=self.small_font, text="Religion", height=6, width=6,
+                                            command=lambda: self.update_proficiency(skill_label=self.ReligionLabel,
+                                                                                    stat_key="INT",
+                                                                                    skill_key="Religion"))
+        self.AHButton = ctk.CTkButton(self, font=self.small_font, text="Animal Handling", height=6, width=6,
+                                      command=lambda: self.update_proficiency(skill_label=self.AHLabel, stat_key="WIS",
+                                                                              skill_key="Animal_Handling"))
+        self.InsightButton = ctk.CTkButton(self, font=self.small_font, text="Insight", height=6, width=6,
+                                           command=lambda: self.update_proficiency(skill_label=self.InsightLabel,
+                                                                                   stat_key="WIS", skill_key="Insight"))
+        self.MedicineButton = ctk.CTkButton(self, font=self.small_font, text="Medicine", height=6, width=6,
+                                            command=lambda: self.update_proficiency(skill_label=self.MedicineLabel,
+                                                                                    stat_key="WIS",
+                                                                                    skill_key="Medicine"))
+        self.PerceptionButton = ctk.CTkButton(self, font=self.small_font, text="Perception", height=6, width=6,
+                                              command=lambda: self.update_proficiency(skill_label=self.PerceptionLabel,
+                                                                                      stat_key="WIS",
+                                                                                      skill_key="Perception"))
+        self.SurvivalButton = ctk.CTkButton(self, font=self.small_font, text="Survival", height=6, width=6,
+                                            command=lambda: self.update_proficiency(skill_label=self.SurvivalLabel,
+                                                                                    stat_key="WIS",
+                                                                                    skill_key="Survival"))
+        self.DeceptionButton = ctk.CTkButton(self, font=self.small_font, text="Deception", height=6, width=6,
+                                             command=lambda: self.update_proficiency(skill_label=self.DeceptionLabel,
+                                                                                     stat_key="CHA",
+                                                                                     skill_key="Deception"))
+        self.IntimidationButton = ctk.CTkButton(self, font=self.small_font, text="Intimidation", height=6, width=6,
+                                                command=lambda: self.update_proficiency(
+                                                    skill_label=self.IntimidationLabel, stat_key="CHA",
+                                                    skill_key="Intimidation"))
+        self.PerformanceButton = ctk.CTkButton(self, font=self.small_font, text="Performance", height=6, width=6,
+                                               command=lambda: self.update_proficiency(
+                                                   skill_label=self.PerformanceLabel, stat_key="CHA",
+                                                   skill_key="Performance"))
+        self.PersuasionButton = ctk.CTkButton(self, font=self.small_font, text="Persuasion", height=6, width=6,
+                                              command=lambda: self.update_proficiency(skill_label=self.PersuasionLabel,
+                                                                                      stat_key="CHA",
+                                                                                      skill_key="Persuasion"))
 
         # placing attributes on the frame
         self.SkillsLabel.place(x=175, y=20)
@@ -205,14 +252,13 @@ class StatEntryFrame(tk.Frame):
     # defining class methods
     def update_proficiency(self, skill_label: ctk.CTkLabel, stat_key, skill_key):
         if skill_label.cget("text") == "( )":
-            skill_label.configure(text="(0)")
+            skill_label.configure(text="(o)")
             self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 1
             print(self.CC.fields["Skills"][stat_key][skill_key])
         else:
             skill_label.configure(text="( )")
             self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 0
             print(self.CC.fields["Skills"][stat_key][skill_key])
-
 
 
 if __name__ == '__main__':
