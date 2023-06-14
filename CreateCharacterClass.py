@@ -121,7 +121,7 @@ class CharacterCreator(object):
                   "INT": self.fields["Skills"]["INT"], "WIS": self.fields["Skills"]["WIS"],
                   "CHA": self.fields["Skills"]["CHA"]}
         mods = []
-        prof_bonus = self.fields["Prof_Bonus"]
+        prof_bonus = self.fields["Auxiliary"]["Prof_Bonus"]
 
         for key in self.fields["Stat_Modifiers"].keys():  # collecting modifiers for future use
             if key == "CON":
@@ -139,4 +139,4 @@ class CharacterCreator(object):
 
 
 if __name__ == '__main__':
-    CharacterCreator().update_attributes(["Test"] * 13)
+    CharacterCreator().update_stats([15, 12, 7, 19, 20, 10])
