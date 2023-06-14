@@ -15,15 +15,16 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Attack_1": "",
-  "Attack_2": "",
-  "Attack_3": "",
-  "Attack_1_Bonus": "",
-  "Attack_2_Bonus": "",
-  "Attack_3_Bonus": "",
-  "Attack_1_Type": "",
-  "Attack_2_Type": "",
-  "Attack_3_Type": ""
+  "Equipment": "Null",
+  "Attack_1": "Sword",
+  "Attack_2": "Axe",
+  "Attack_3": "Hammer",
+  "Attack_1_Bonus": "+2",
+  "Attack_2_Bonus": "+2",
+  "Attack_3_Bonus": "+2",
+  "Attack_1_Type": "Slash",
+  "Attack_2_Type": "Pierce",
+  "Attack_3_Type": "Bludgeon"
  },
  "Stats": {
   "STR": "15",
