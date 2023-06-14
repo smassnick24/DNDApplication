@@ -1,16 +1,16 @@
 {
  "Attributes": {
-  "Character_Name": "Test",
-  "Class": "Test",
-  "Level": "Test",
-  "Race": "Test",
-  "Background": "Test",
-  "Alignment": "Test",
-  "Experience": "Test",
-  "Personality": "Test",
-  "Ideals": "Test",
-  "Bonds": "Test",
-  "Flaws": "Test",
+  "Character_Name": "Cliffdawg",
+  "Class": "Artificer",
+  "Level": "8",
+  "Race": "Human",
+  "Background": "Military",
+  "Alignment": "True Good",
+  "Experience": "100xp",
+  "Personality": "Loves the taste of copper pieces",
+  "Ideals": "Hammer",
+  "Bonds": "More hammer",
+  "Flaws": "Hates the taste of platinum pieces. Loves the taste of blood",
   "Features": "Test",
   "Traits": "test"
  },
@@ -155,7 +155,7 @@
   "Death_Saves_Failures": "3"
  },
  "Auxiliary": {
-  "Inspiration": 0,
+  "Inspiration": false,
   "Prof_Bonus": "+2",
   "AC": "0",
   "Init": "0",

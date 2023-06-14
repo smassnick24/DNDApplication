@@ -28,7 +28,8 @@ class StatEntryFrame(tk.Frame):
         self.RaceLabel = ctk.CTkLabel(self, font=self.font, text="Race")
         self.BackgroundLabel = ctk.CTkLabel(self, font=self.font, text="Background")
         self.AlignmentLabel = ctk.CTkLabel(self, font=self.font, text="Alignment")
-        self.PersonalityLabel = ctk.CTkLabel(self, font=self.font, text="Personality")
+        self.ExperienceLabel = ctk.CTkLabel(self, font=self.font, text="Experience")
+        self.PersonalityLabel = ctk.CTkLabel(self, font=self.font, text="Personality Traits")
         self.IdealsLabel = ctk.CTkLabel(self, font=self.font, text="Ideals")
         self.BondsLabel = ctk.CTkLabel(self, font=self.font, text="Bonds")
         self.FlawsLabel = ctk.CTkLabel(self, font=self.font, text="Flaws")
@@ -89,10 +90,7 @@ class StatEntryFrame(tk.Frame):
         self.RaceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Race"])
         self.BackgroundVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Background"])
         self.AlignmentVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Alignment"])
-        self.PersonalityVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Personality"])
-        self.IdealsVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Ideals"])
-        self.BondsVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Bonds"])
-        self.FlawsVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Flaws"])
+        self.ExperienceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Experience"])
         self.FeaturesVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Features"])
         self.TraitsVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Traits"])
         self.EquipmentVar = ctk.StringVar(value=self.CC.fields["Attacks"]["Equipment"])
@@ -131,8 +129,13 @@ class StatEntryFrame(tk.Frame):
         self.ClassEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.ClassVar)
         self.LevelEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.LevelVar)
         self.RaceEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
-        self.BackgroundEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
-        self.AlignmentEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.RaceVar)
+        self.BackgroundEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.BackgroundVar)
+        self.AlignmentEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.AlignmentVar)
+        self.ExperienceEntry = ctk.CTkEntry(self, font=self.font, textvariable=self.ExperienceVar)
+        self.PersonalityEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.IdealsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.BondsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.FlawsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
         self.STREntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.STRVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
         self.CONEntry = ctk.CTkEntry(self, font=self.special_font, textvariable=self.CONVar, border_width=3,
@@ -147,6 +150,8 @@ class StatEntryFrame(tk.Frame):
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
 
         # skill prof labels
+        self.SkillBackground = tk.Label(self, bd=2, relief="solid", width=20, height=32)
+
         self.SkillsLabel = ctk.CTkLabel(self, font=self.font, text="Skills")
         self.AthleticsLabel = ctk.CTkLabel(self, font=self.font, text="( )")
         self.AcrobaticsLabel = ctk.CTkLabel(self, font=self.font, text="( )")
@@ -321,7 +326,8 @@ class StatEntryFrame(tk.Frame):
         self.CHAEntry.place(x=35, y=540)
         self.CHABonusLabel.place(x=50, y=583)
 
-        # placing attributes on the frame
+        # placing skills on the frame
+        self.SkillBackground.place(x=160, y=15)
         self.SkillsLabel.place(x=175, y=20)
         self.AthleticsLabel.place(x=175, y=43)
         self.AthleticsButton.place(x=200, y=50)
@@ -359,6 +365,41 @@ class StatEntryFrame(tk.Frame):
         self.PerformanceButton.place(x=200, y=450)
         self.PersuasionLabel.place(x=175, y=468)
         self.PersuasionButton.place(x=200, y=475)
+
+        # placing attributes on the frame
+        # column 1
+        # row 1
+        self.NameLabel.place(x=315, y=20)
+        self.NameEntry.place(x=315, y=50)
+        self.ClassLabel.place(x=470, y=20)
+        self.ClassEntry.place(x=470, y=50)
+        self.LevelLabel.place(x=625, y=20)
+        self.LevelEntry.place(x=625, y=50)
+
+        # row 2
+        self.RaceLabel.place(x=315, y=90)
+        self.RaceEntry.place(x=315, y=120)
+        self.AlignmentLabel.place(x=470, y=90)
+        self.AlignmentEntry.place(x=470, y=120)
+        self.ExperienceLabel.place(x=625, y=90)
+        self.ExperienceEntry.place(x=625, y=120)
+
+        # column 2
+        # row 1
+        self.PersonalityLabel.place(x=825, y=20)
+        self.PersonalityEntry.place(x=825, y=50)
+        self.IdealsLabel.place(x=825, y=170)
+        self.IdealsEntry.place(x=825, y=200)
+        self.BondsLabel.place(x=825, y=320)
+        self.BondsEntry.place(x=825, y=350)
+        self.FlawsLabel.place(x=825, y=470)
+        self.FlawsEntry.place(x=825, y=500)
+
+        # configuring textbox widgets
+        self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
+        self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
+        self.BondsEntry.insert("0.0", self.CC.fields["Attributes"]["Bonds"])
+        self.FlawsEntry.insert("0.0", self.CC.fields["Attributes"]["Flaws"])
 
     # defining class methods
     def update_proficiency(self, skill_label: ctk.CTkLabel, stat_key, skill_key):
