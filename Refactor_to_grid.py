@@ -418,7 +418,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
 
         # gridding containters
-        self.stat_div.grid(row=0, column=0)
+        self.stat_div.grid(row=0, column=0, sticky=ctk.NW)
         self.attr_div.grid(row=0, column=2, sticky=ctk.N, padx=5)
 
         # defining class methods
