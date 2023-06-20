@@ -2,6 +2,8 @@ import tkinter as tk
 import customtkinter as ctk
 from CreateCharacterClass import CharacterCreator
 
+ctk.set_appearance_mode("Dark")
+
 
 class SamsScrollableFrame(ctk.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
@@ -13,6 +15,11 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
         self.attr_div = ctk.CTkFrame(self, border_width=2, border_color="blue")
+        self.traits_div = ctk.CTkFrame(self, border_width=2, border_color="orange")
+        self.health_div = ctk.CTkFrame(self, border_width=2, border_color="pink")
+        self.attacks_div = ctk.CTkFrame(self, border_width=2, border_color="purple")
+        self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="yellow")
+        self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="green")
 
         # declaring fonts
         self.small_font = ctk.CTkFont(family="Rockwell", size=10)
@@ -20,8 +27,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.bold_font = ctk.CTkFont(family="Rockwell", size=14, weight="bold")
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
-        # labels
 
+        # labels
         self.NameLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Character Name")
         self.ClassLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Class")
         self.LevelLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Level")
@@ -30,13 +37,13 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.AlignmentLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Alignment")
         self.ExperienceLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Experience")
 
-        self.PersonalityLabel = ctk.CTkLabel(self, font=self.font, text="Personality Traits")
-        self.IdealsLabel = ctk.CTkLabel(self, font=self.font, text="Ideals")
-        self.BondsLabel = ctk.CTkLabel(self, font=self.font, text="Bonds")
-        self.FlawsLabel = ctk.CTkLabel(self, font=self.font, text="Flaws")
-        self.FeaturesLabel = ctk.CTkLabel(self, font=self.font, text="Features")
-        self.TraitsLabel = ctk.CTkLabel(self, font=self.font, text="Traits")
-        self.EquipmentLabel = ctk.CTkLabel(self, font=self.font, text="Equipment")
+        self.PersonalityLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Personality Traits")
+        self.IdealsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Ideals")
+        self.BondsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Bonds")
+        self.FlawsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Flaws")
+        self.FeaturesLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Features")
+        self.TraitsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Traits")
+        self.EquipmentLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Equipment")
         self.Attack1Label = ctk.CTkLabel(self, font=self.font, text="Attack 1")
         self.Attack2Label = ctk.CTkLabel(self, font=self.font, text="Attack 2")
         self.Attack3Label = ctk.CTkLabel(self, font=self.font, text="Attack 3")
@@ -64,16 +71,16 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
         self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
         self.ProfBonusLabel = ctk.CTkLabel(self, font=self.font, text="Proficiency Bonus")
-        self.HPMAXLabel = ctk.CTkLabel(self, font=self.font, text="Maximum HP")
-        self.HPCURRLabel = ctk.CTkLabel(self, font=self.font, text="Current HP")
-        self.HPTEMPLabel = ctk.CTkLabel(self, font=self.font, text="Temporary HP")
-        self.HDTOTLabel = ctk.CTkLabel(self, font=self.font, text="Total Hit Dice")
-        self.HDCURRLabel = ctk.CTkLabel(self, font=self.font, text="Current Hit Dice")
-        self.ElectrumLabel = ctk.CTkLabel(self, font=self.font, text="EP")
-        self.SilverLabel = ctk.CTkLabel(self, font=self.font, text="SP")
-        self.GoldLabel = ctk.CTkLabel(self, font=self.font, text="GP")
-        self.PlatinumLabel = ctk.CTkLabel(self, font=self.font, text="PP")
-        self.CopperLabel = ctk.CTkLabel(self, font=self.font, text="CP")
+        self.HPMAXLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Maximum HP")
+        self.HPCURRLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Current HP")
+        self.HPTEMPLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Temporary HP")
+        self.HDTOTLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Total Hit Dice")
+        self.HDCURRLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Current Hit Dice")
+        self.ElectrumLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="EP")
+        self.SilverLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="SP")
+        self.GoldLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="GP")
+        self.PlatinumLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="PP")
+        self.CopperLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="CP")
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
 
         self.InspirationLabel = ctk.CTkLabel(self, font=self.font, text="Inspiration")
@@ -94,7 +101,6 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.BackgroundVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Background"])
         self.AlignmentVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Alignment"])
         self.ExperienceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Experience"])
-        self.EquipmentVar = ctk.StringVar(value=self.CC.fields["Attacks"]["Equipment"])
         self.Attack1Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1"])
         self.Attack2Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2"])
         self.Attack3Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3"])
@@ -133,12 +139,20 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.BackgroundEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.BackgroundVar)
         self.AlignmentEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.AlignmentVar)
         self.ExperienceEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.ExperienceVar)
-        self.PersonalityEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.IdealsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.BondsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.FlawsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.FeaturesEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.TraitsEntry = ctk.CTkTextbox(self, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.PersonalityEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.IdealsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.BondsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.FlawsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.FeaturesEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.TraitsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+
+        # equipment entry
+        self.CopperEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.CoppVar, width=30, justify=ctk.CENTER)
+        self.SilverEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.SilvVar, width=30, justify=ctk.CENTER)
+        self.ElectrumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.ElecVar, width=30, justify=ctk.CENTER)
+        self.GoldEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.GoldVar, width=30, justify=ctk.CENTER)
+        self.PlatinumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.PlatVar, width=30, justify=ctk.CENTER)
+        self.EquipmentEntry = ctk.CTkTextbox(self.inner_attacks_div, font=self.font)
 
         self.STREntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.STRVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
@@ -152,6 +166,13 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
         self.CHAEntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.CHAVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
+        # hp entry
+        self.HPMAXEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPMaxVar, justify=ctk.CENTER, width=50)
+        self.HPCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPCurrVar, justify=ctk.CENTER, width=50)
+        self.HPTEMPEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPTempVar, justify=ctk.CENTER, width=50)
+        self.HDTOTEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDTotVar, justify=ctk.CENTER, width=50)
+        self.HDCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDCurrVar, justify=ctk.CENTER, width=50)
+
 
         # skill prof labels
         self.SkillBackground = tk.Label(self, bd=2, relief="solid", width=20, height=32)
@@ -312,6 +333,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
         # whitespace labels
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
+        self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------", font=self.font)
 
         # placing stats
         self.STRLabel.grid(row=0, column=0)
@@ -392,34 +414,76 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.AlignmentEntry.grid(row=3, column=1, padx=2, pady=1)
         self.ExperienceLabel.grid(row=2, column=2, padx=2, pady=1)
         self.ExperienceEntry.grid(row=3, column=2, padx=2, pady=1)
-        #
-        # # column 2
-        # # row 1
-        # self.PersonalityLabel.grid(row=0, column=0)
-        # self.PersonalityEntry.grid(row=0, column=0)
-        # # row 2
-        # self.IdealsLabel.grid(row=0, column=0)
-        # self.IdealsEntry.grid(row=0, column=0)
-        # # row 3
-        # self.BondsLabel.grid(row=0, column=0)
-        # self.BondsEntry.grid(row=0, column=0)
-        # # row 4
-        # self.FlawsLabel.grid(row=0, column=0)
-        # self.FlawsEntry.grid(row=0, column=0)
-        # # row 5
-        # self.FeaturesLabel.grid(row=0, column=0)
-        # self.FeaturesEntry.grid(row=0, column=0)
+
+        # column 2
+        # row 1
+        self.PersonalityLabel.grid(row=0, column=0, padx=2, pady=2)
+        self.PersonalityEntry.grid(row=1, column=0, padx=2, pady=2)
+        # row 2
+        self.IdealsLabel.grid(row=2, column=0, padx=2, pady=2)
+        self.IdealsEntry.grid(row=3, column=0, padx=2, pady=2)
+        # row 3
+        self.BondsLabel.grid(row=4, column=0, padx=2, pady=2)
+        self.BondsEntry.grid(row=5, column=0, padx=2, pady=2)
+        # row 4
+        self.FlawsLabel.grid(row=6, column=0, padx=2, pady=2)
+        self.FlawsEntry.grid(row=7, column=0, padx=2, pady=2)
+        # row 5
+        self.FeaturesLabel.grid(row=8, column=0, padx=2, pady=2)
+        self.FeaturesEntry.grid(row=9, column=0, padx=2, pady=2)
+
+        self.TraitsLabel.grid(row=10, column=0, padx=2, pady=2)
+        self.TraitsEntry.grid(row=11, column=0, padx=2, pady=2)
+
+        # placing equipment
+        self.CopperEntry.grid(row=0, column=0, padx=2, pady=2)
+        self.CopperLabel.grid(row=0, column=1, padx=2, pady=2)
+        self.SilverEntry.grid(row=1, column=0, padx=2, pady=2)
+        self.SilverLabel.grid(row=1, column=1, padx=2, pady=2)
+        self.ElectrumEntry.grid(row=2, column=0, padx=2, pady=2)
+        self.ElectrumLabel.grid(row=2, column=1, padx=2, pady=2)
+        self.GoldEntry.grid(row=3, column=0, padx=2, pady=2)
+        self.GoldLabel.grid(row=3, column=1, padx=2, pady=2)
+        self.PlatinumEntry.grid(row=4, column=0, padx=2, pady=2)
+        self.PlatinumLabel.grid(row=4, column=1, padx=2, pady=2)
+        self.EquipmentLabel.grid(row=0, column=0)
+        self.EquipmentEntry.grid(row=1, column=0)
+
+        # health frame grid
+        self.HPMAXLabel.grid(row=0, column=0, padx=2, pady=2)
+        self.HPMAXEntry.grid(row=0, column=1, padx=2, pady=2)
+        self.HPCURRLabel.grid(row=1, column=0, padx=2, pady=2)
+        self.HPCURREntry.grid(row=1, column=1, padx=2, pady=2)
+        self.HPTEMPLabel.grid(row=2, column=0, padx=2, pady=2)
+        self.HPTEMPEntry.grid(row=2, column=1, padx=2, pady=2)
+        self.sep_lab.grid(row=3, column=0, sticky=ctk.S, columnspan=2)
+        self.HDTOTLabel.grid(row=4, column=0)
+        self.HDTOTEntry.grid(row=4, column=1)
+        self.HDCURRLabel.grid(row=5, column=0)
+        self.HDCURREntry.grid(row=5, column=1)
+
+        
 
         # configuring textbox widgets
         self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
         self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
         self.BondsEntry.insert("0.0", self.CC.fields["Attributes"]["Bonds"])
         self.FlawsEntry.insert("0.0", self.CC.fields["Attributes"]["Flaws"])
+        self.FeaturesEntry.insert("0.0", self.CC.fields["Attributes"]["Features"])
+        self.TraitsEntry.insert("0.0", self.CC.fields["Attributes"]["Traits"])
+        self.EquipmentEntry.insert("0.0", self.CC.fields["Attacks"]["Equipment"])
 
 
         # gridding containters
-        self.stat_div.grid(row=0, column=0, sticky=ctk.NW)
-        self.attr_div.grid(row=0, column=2, sticky=ctk.N, padx=5)
+        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=10, padx=10)
+        self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5)
+        self.health_div.grid(row=1, column=1, padx=10)
+
+        self.attacks_div.grid(row=2, column=1, padx=10, ipadx=5, ipady=5)
+        self.equipment_div.grid(row=0, column=0, padx=10, ipadx=5, ipady=5, sticky=ctk.NW)
+        self.inner_attacks_div.grid(row=0, column=1)
+
+        self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
 
         # defining class methods
 
@@ -436,11 +500,10 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
 if __name__ == '__main__':
     test = ctk.CTk()
-    test.geometry("1280x720")
+    test.geometry("1080x720")
 
     ssf = SamsScrollableFrame(test)
-    ssf.configure(width=1280)
-    ssf.configure(height=720)
+
 
     ssf.pack(fill=ctk.BOTH, expand=True)
 

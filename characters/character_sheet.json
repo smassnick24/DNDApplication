@@ -15,7 +15,7 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "Null",
+  "Equipment": "Glacial Avalanche\nStrahd's Armor\nMarcus' Balls",
   "Attack_1": "Sword",
   "Attack_2": "Axe",
   "Attack_3": "Hammer",
@@ -51,10 +51,10 @@
   "CHA": "+0"
  },
  "Equipment": {
-  "Copper": "0",
-  "Silver": "0",
+  "Copper": "20",
+  "Silver": "1",
   "Electrum": "0",
-  "Gold": "0",
+  "Gold": "3",
   "Platinum": "0"
  },
  "Skills": {
@@ -142,13 +142,13 @@
   }
  },
  "HitPoints": {
-  "HP_Max": "0",
-  "HP_Curr": "0",
-  "HP_Temp": "0"
+  "HP_Max": "75",
+  "HP_Curr": "63",
+  "HP_Temp": "10"
  },
  "HitDice": {
-  "HD_Total": "0",
-  "HD_Curr": "0"
+  "HD_Total": "5 d8",
+  "HD_Curr": "3 d8"
  },
  "DeathSaves": {
   "Death_Saves_Successes": "0",
