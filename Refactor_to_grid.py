@@ -20,6 +20,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.attacks_div = ctk.CTkFrame(self, border_width=2, border_color="purple")
         self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="yellow")
         self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="green")
+        self.passivep_div = ctk.CTkFrame(self, border_width=2, border_color="indigo")
 
         # declaring fonts
         self.small_font = ctk.CTkFont(family="Rockwell", size=10)
@@ -66,8 +67,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.CHALabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="CHA")
         self.CHABonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
                                       text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}")
+        self.PassivePerceptionLabel = ctk.CTkLabel(self.passivep_div, font=self.small_font, text="Passive Wisdom (Perception)")
 
-        self.PassivePerceptionLabel = ctk.CTkLabel(self, font=self.font, text="Passive Wisdom (Perception)")
         self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
         self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
         self.ProfBonusLabel = ctk.CTkLabel(self, font=self.font, text="Proficiency Bonus")
@@ -116,6 +117,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.INTVar = ctk.StringVar(value=self.CC.fields["Stats"]["INT"])
         self.WISVar = ctk.StringVar(value=self.CC.fields["Stats"]["WIS"])
         self.CHAVar = ctk.StringVar(value=self.CC.fields["Stats"]["CHA"])
+        self.PassivePVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Passive_Perception"])
         self.ACVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["AC"])
         self.SpeedVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Speed"])
         self.ProfBonusVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Prof_Bonus"])
@@ -139,19 +141,30 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.BackgroundEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.BackgroundVar)
         self.AlignmentEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.AlignmentVar)
         self.ExperienceEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.ExperienceVar)
-        self.PersonalityEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.IdealsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.BondsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.FlawsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.FeaturesEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
-        self.TraitsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2, wrap='word')
+        self.PersonalityEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                               wrap='word')
+        self.IdealsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                          wrap='word')
+        self.BondsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                         wrap='word')
+        self.FlawsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                         wrap='word')
+        self.FeaturesEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                            wrap='word')
+        self.TraitsEntry = ctk.CTkTextbox(self.traits_div, font=self.font, width=250, height=100, border_width=2,
+                                          wrap='word')
 
         # equipment entry
-        self.CopperEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.CoppVar, width=30, justify=ctk.CENTER)
-        self.SilverEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.SilvVar, width=30, justify=ctk.CENTER)
-        self.ElectrumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.ElecVar, width=30, justify=ctk.CENTER)
-        self.GoldEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.GoldVar, width=30, justify=ctk.CENTER)
-        self.PlatinumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.PlatVar, width=30, justify=ctk.CENTER)
+        self.CopperEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.CoppVar, width=30,
+                                        justify=ctk.CENTER)
+        self.SilverEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.SilvVar, width=30,
+                                        justify=ctk.CENTER)
+        self.ElectrumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.ElecVar, width=30,
+                                          justify=ctk.CENTER)
+        self.GoldEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.GoldVar, width=30,
+                                      justify=ctk.CENTER)
+        self.PlatinumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.PlatVar, width=30,
+                                          justify=ctk.CENTER)
         self.EquipmentEntry = ctk.CTkTextbox(self.inner_attacks_div, font=self.font)
 
         self.STREntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.STRVar, border_width=3,
@@ -166,13 +179,21 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
         self.CHAEntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.CHAVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
-        # hp entry
-        self.HPMAXEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPMaxVar, justify=ctk.CENTER, width=50)
-        self.HPCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPCurrVar, justify=ctk.CENTER, width=50)
-        self.HPTEMPEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPTempVar, justify=ctk.CENTER, width=50)
-        self.HDTOTEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDTotVar, justify=ctk.CENTER, width=50)
-        self.HDCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDCurrVar, justify=ctk.CENTER, width=50)
+        self.PassivePEntry = ctk.CTkEntry(self.passivep_div, font=self.special_font, textvariable=self.PassivePVar,
+                                          border_width=3, border_color="black", width=75, height=45, justify=ctk.CENTER,
+                                          corner_radius=25)
 
+        # hp entry
+        self.HPMAXEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPMaxVar, justify=ctk.CENTER,
+                                       width=50)
+        self.HPCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPCurrVar,
+                                        justify=ctk.CENTER, width=50)
+        self.HPTEMPEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HPTempVar,
+                                        justify=ctk.CENTER, width=50)
+        self.HDTOTEntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDTotVar, justify=ctk.CENTER,
+                                       width=50)
+        self.HDCURREntry = ctk.CTkEntry(self.health_div, font=self.font, textvariable=self.HDCurrVar,
+                                        justify=ctk.CENTER, width=50)
 
         # skill prof labels
         self.SkillBackground = tk.Label(self, bd=2, relief="solid", width=20, height=32)
@@ -219,7 +240,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.HistoryButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="History", height=6, width=6,
                                            command=lambda: self.update_proficiency(skill_label=self.HistoryLabel,
                                                                                    stat_key="INT", skill_key="History"))
-        self.InvestigationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Investigation", height=6, width=6,
+        self.InvestigationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Investigation", height=6,
+                                                 width=6,
                                                  command=lambda: self.update_proficiency(
                                                      skill_label=self.InvestigationLabel, stat_key="INT",
                                                      skill_key="Investigation"))
@@ -252,11 +274,13 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                                              command=lambda: self.update_proficiency(skill_label=self.DeceptionLabel,
                                                                                      stat_key="CHA",
                                                                                      skill_key="Deception"))
-        self.IntimidationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Intimidation", height=6, width=6,
+        self.IntimidationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Intimidation", height=6,
+                                                width=6,
                                                 command=lambda: self.update_proficiency(
                                                     skill_label=self.IntimidationLabel, stat_key="CHA",
                                                     skill_key="Intimidation"))
-        self.PerformanceButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Performance", height=6, width=6,
+        self.PerformanceButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Performance", height=6,
+                                               width=6,
                                                command=lambda: self.update_proficiency(
                                                    skill_label=self.PerformanceLabel, stat_key="CHA",
                                                    skill_key="Performance"))
@@ -285,7 +309,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.HistoryButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="History", height=6, width=6,
                                            command=lambda: self.update_proficiency(skill_label=self.HistoryLabel,
                                                                                    stat_key="INT", skill_key="History"))
-        self.InvestigationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Investigation", height=6, width=6,
+        self.InvestigationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Investigation", height=6,
+                                                 width=6,
                                                  command=lambda: self.update_proficiency(
                                                      skill_label=self.InvestigationLabel, stat_key="INT",
                                                      skill_key="Investigation"))
@@ -318,11 +343,13 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                                              command=lambda: self.update_proficiency(skill_label=self.DeceptionLabel,
                                                                                      stat_key="CHA",
                                                                                      skill_key="Deception"))
-        self.IntimidationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Intimidation", height=6, width=6,
+        self.IntimidationButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Intimidation", height=6,
+                                                width=6,
                                                 command=lambda: self.update_proficiency(
                                                     skill_label=self.IntimidationLabel, stat_key="CHA",
                                                     skill_key="Intimidation"))
-        self.PerformanceButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Performance", height=6, width=6,
+        self.PerformanceButton = ctk.CTkButton(self.stat_div, font=self.small_font, text="Performance", height=6,
+                                               width=6,
                                                command=lambda: self.update_proficiency(
                                                    skill_label=self.PerformanceLabel, stat_key="CHA",
                                                    skill_key="Performance"))
@@ -333,7 +360,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
         # whitespace labels
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
-        self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------", font=self.font)
+        self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------",
+                                    font=self.font)
 
         # placing stats
         self.STRLabel.grid(row=0, column=0)
@@ -354,6 +382,9 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.CHALabel.grid(row=15, column=0)
         self.CHAEntry.grid(row=16, column=0)
         self.CHABonusLabel.grid(row=17, column=0)
+        self.PassivePEntry.grid(row=0, column=0, pady=15, rowspan=2)
+        self.PassivePerceptionLabel.grid(row=0, column=1, pady=15, rowspan=2)
+
 
         # need whitespace here
         self.whitespace1.grid(row=0, column=1)
@@ -462,8 +493,6 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.HDCURRLabel.grid(row=5, column=0)
         self.HDCURREntry.grid(row=5, column=1)
 
-        
-
         # configuring textbox widgets
         self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
         self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
@@ -473,9 +502,9 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.TraitsEntry.insert("0.0", self.CC.fields["Attributes"]["Traits"])
         self.EquipmentEntry.insert("0.0", self.CC.fields["Attacks"]["Equipment"])
 
-
         # gridding containters
-        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=10, padx=10)
+        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=5, padx=10)
+        self.passivep_div.grid(row=5, column=0)
         self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5)
         self.health_div.grid(row=1, column=1, padx=10)
 
@@ -503,7 +532,6 @@ if __name__ == '__main__':
     test.geometry("1080x720")
 
     ssf = SamsScrollableFrame(test)
-
 
     ssf.pack(fill=ctk.BOTH, expand=True)
 

@@ -159,6 +159,7 @@
   "Prof_Bonus": "+2",
   "AC": "0",
   "Init": "0",
-  "Speed": "0ft"
+  "Speed": "0ft",
+  "Passive_Perception": "12"
  }
 }
