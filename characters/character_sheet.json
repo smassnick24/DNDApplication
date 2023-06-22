@@ -28,7 +28,7 @@
  },
  "Stats": {
   "STR": "10",
-  "DEX": "11",
+  "DEX": "15",
   "CON": "12",
   "INT": "14",
   "WIS": "17",
@@ -36,7 +36,7 @@
  },
  "Stat_Modifiers": {
   "STR_Mod": "+0",
-  "DEX_Mod": "+0",
+  "DEX_Mod": "+2",
   "CON_Mod": "+1",
   "INT_Mod": "+2",
   "WIS_Mod": "+3",
@@ -66,15 +66,15 @@
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+2",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+2",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+2",
+    "Mod": "+4",
     "Proficient": 1
    }
   },

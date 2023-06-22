@@ -22,9 +22,10 @@ class CharacterCreator(object):
         :return:
         """
         stats = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-        storage = [int(val) for val in values]
-        for stat, val in zip(stats, storage):
-            if not isinstance(val, int):
+        for stat, val in zip(stats, values):
+            try:
+                val = int(val)
+            except ValueError:
                 val = 10
             self.fields["Stats"][stat] = str(val)
 

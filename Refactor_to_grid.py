@@ -504,7 +504,6 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.TraitsEntry.insert("0.0", self.CC.fields["Attributes"]["Traits"])
         self.EquipmentEntry.insert("0.0", self.CC.fields["Attacks"]["Equipment"])
 
-
         # gridding containters
         self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=5, padx=10)
         self.passivep_div.grid(row=5, column=0)
@@ -531,27 +530,44 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
             self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 0
             print(self.CC.fields["Skills"][stat_key][skill_key])
 
-    def save(self):
-        current = {"stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(), self.CHAVar.get()],
-                   "attr": [self.NameVar.get(), self.ClassVar.get(), self.LevelVar.get(), self.RaceVar.get(), self.BackgroundVar.get(), self.AlignmentVar.get(), self.ExperienceVar.get(), self.PersonalityEntry.get("0.0", "end"), self.IdealsEntry.get("0.0", "end"), self.BondsEntry.get("0.0", "end")],
-                   "hit_points": [],
-                   "hit_dice": [],
-                   "death_saves": [],
-                   "saving_throws": [],
-                   "auxiliary": [],
-                   "equipment": [],
-                   "attacks": []}
+    def save(self, event):
+        current = {
+            "stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(),
+                      self.CHAVar.get()],
+            "attr": [self.NameVar.get(), self.ClassVar.get(), self.LevelVar.get(), self.RaceVar.get(),
+                     self.BackgroundVar.get(), self.AlignmentVar.get(), self.ExperienceVar.get(),
+                     self.PersonalityEntry.get("0.0", "end"), self.IdealsEntry.get("0.0", "end"),
+                     self.BondsEntry.get("0.0", "end")],
+            "hit_points": [],
+            "hit_dice": [],
+            "death_saves": [],
+            "saving_throws": [],
+            "auxiliary": [],
+            "equipment": [],
+            "attacks": []}
         self.CC.update_stats(values=current['stats'])
 
         self._update_stat_mod()
+        self._update_stats()
 
     def _update_stat_mod(self):
+        """helper function to update the stat modifiers while the application is running"""
         self.STRBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['STR_Mod']}")
         self.DEXBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['DEX_Mod']}")
         self.CONBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['CON_Mod']}")
         self.INTBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['INT_Mod']}")
         self.WISBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['WIS_Mod']}")
         self.CHABonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}")
+
+    def _update_stats(self):
+        """helper function to update the stat values in case any bad inputs are given"""
+        self.STRVar.set(value=f"{self.CC.fields['Stats']['STR']}")
+        self.DEXVar.set(value=f"{self.CC.fields['Stats']['DEX']}")
+        self.CONVar.set(value=f"{self.CC.fields['Stats']['CON']}")
+        self.INTVar.set(value=f"{self.CC.fields['Stats']['INT']}")
+        self.WISVar.set(value=f"{self.CC.fields['Stats']['WIS']}")
+        self.CHAVar.set(value=f"{self.CC.fields['Stats']['CHA']}")
+
 
 
 if __name__ == '__main__':
@@ -561,6 +577,8 @@ if __name__ == '__main__':
     test.title("Character Sheet")
 
     ssf = SamsScrollableFrame(test)
+
+    test.bind('<Control-s>', ssf.save)
 
     ssf.pack(fill=ctk.BOTH, expand=True)
 
