@@ -533,7 +533,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
     def save(self):
         current = {"stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(), self.CHAVar.get()],
-                   "attr": [],
+                   "attr": [self.NameVar.get(), self.ClassVar.get(), self.LevelVar.get(), self.RaceVar.get(), self.BackgroundVar.get(), self.AlignmentVar.get(), self.ExperienceVar.get(), self.PersonalityEntry.get("0.0", "end"), self.IdealsEntry.get("0.0", "end"), self.BondsEntry.get("0.0", "end")],
                    "hit_points": [],
                    "hit_dice": [],
                    "death_saves": [],
@@ -542,6 +542,16 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                    "equipment": [],
                    "attacks": []}
         self.CC.update_stats(values=current['stats'])
+
+        self._update_stat_mod()
+
+    def _update_stat_mod(self):
+        self.STRBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['STR_Mod']}")
+        self.DEXBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['DEX_Mod']}")
+        self.CONBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['CON_Mod']}")
+        self.INTBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['INT_Mod']}")
+        self.WISBonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['WIS_Mod']}")
+        self.CHABonusLabel.configure(text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}")
 
 
 if __name__ == '__main__':

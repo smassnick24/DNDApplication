@@ -27,20 +27,20 @@
   "Attack_3_Type": "Bludgeon"
  },
  "Stats": {
-  "STR": "15",
-  "DEX": "20",
-  "CON": "7",
-  "INT": "4",
-  "WIS": "20",
-  "CHA": "10"
+  "STR": "10",
+  "DEX": "11",
+  "CON": "12",
+  "INT": "14",
+  "WIS": "17",
+  "CHA": "20"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+2",
-  "DEX_Mod": "+5",
-  "CON_Mod": "-2",
-  "INT_Mod": "-3",
-  "WIS_Mod": "+5",
-  "CHA_Mod": "+0"
+  "STR_Mod": "+0",
+  "DEX_Mod": "+0",
+  "CON_Mod": "+1",
+  "INT_Mod": "+2",
+  "WIS_Mod": "+3",
+  "CHA_Mod": "+5"
  },
  "SavingThrows": {
   "STR": "+0",
@@ -60,83 +60,83 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+4",
+    "Mod": "+2",
     "Proficient": 1
    }
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+7",
+    "Mod": "+2",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+7",
+    "Mod": "+2",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+7",
+    "Mod": "+2",
     "Proficient": 1
    }
   },
   "INT": {
    "Arcana": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 1
    },
    "History": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 1
    },
    "Nature": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 1
    },
    "Religion": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 1
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "-1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Insight": {
-    "Mod": "-1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Medicine": {
-    "Mod": "-1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "-1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Survival": {
-    "Mod": "-1",
+    "Mod": "+4",
     "Proficient": 1
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "+7",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Intimidation": {
-    "Mod": "+7",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Performance": {
-    "Mod": "+7",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Persuasion": {
-    "Mod": "+7",
+    "Mod": "+5",
     "Proficient": 1
    }
   }

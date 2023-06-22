@@ -35,7 +35,7 @@ class CharacterCreator(object):
 
     def update_attributes(self, values: list):
         attributes = ["Character_Name", "Class", "Level", "Race", "Background",
-                      "Alignment", "Experience", "Personality", "Ideals", "Ideals",
+                      "Alignment", "Experience", "Personality", "Ideals",
                       "Bonds", "Flaws", "Features", "Traits"]
 
         for attr, val in zip(attributes, values):
