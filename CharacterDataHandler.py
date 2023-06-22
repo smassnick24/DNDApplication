@@ -1,7 +1,7 @@
 import json
 
 
-class CharacterCreator(object):
+class DataHandler(object):
     def __init__(self, character_name="character_sheet", ):
         self.data = f"characters/{character_name}.json"
         self.fields = {}
@@ -141,4 +141,4 @@ class CharacterCreator(object):
 
 
 if __name__ == '__main__':
-    CharacterCreator().update_stats([15, 12, 7, 19, 20, 10])
+    DataHandler().update_stats([15, 12, 7, 19, 20, 10])

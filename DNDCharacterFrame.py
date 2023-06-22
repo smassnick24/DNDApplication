@@ -1,16 +1,16 @@
 import tkinter as tk
 import customtkinter as ctk
-from CreateCharacterClass import CharacterCreator
+from CharacterDataHandler import DataHandler
 
 ctk.set_appearance_mode("Dark")
 
 
-class SamsScrollableFrame(ctk.CTkScrollableFrame):
-    def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
+class DNDCharacterFrame(ctk.CTkScrollableFrame):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         # defining character creator
-        self.CC = CharacterCreator()
+        self.CC = DataHandler()
 
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
@@ -576,7 +576,7 @@ if __name__ == '__main__':
     test.iconbitmap("dice-icon.ico")
     test.title("Character Sheet")
 
-    ssf = SamsScrollableFrame(test)
+    ssf = DNDCharacterFrame(test)
 
     test.bind('<Control-s>', ssf.save)
 

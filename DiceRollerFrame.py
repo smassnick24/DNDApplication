@@ -6,10 +6,9 @@ ctk.set_appearance_mode("Light")
 
 
 class DiceRollFrame(tk.Frame):
-    def __init__(self, master=None, dm=True):
-        super().__init__(master)
+    def __init__(self, dm=True, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         # house-keeping
-        self.master = master
         self.dm = dm
         self.font = ctk.CTkFont(family="Rockwell", size=14)
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)

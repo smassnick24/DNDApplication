@@ -27,7 +27,7 @@
   "Attack_3_Type": "Bludgeon"
  },
  "Stats": {
-  "STR": "10",
+  "STR": "14",
   "DEX": "15",
   "CON": "12",
   "INT": "14",
@@ -35,7 +35,7 @@
   "CHA": "20"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+0",
+  "STR_Mod": "+2",
   "DEX_Mod": "+2",
   "CON_Mod": "+1",
   "INT_Mod": "+2",
@@ -60,7 +60,7 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+2",
+    "Mod": "+4",
     "Proficient": 1
    }
   },
