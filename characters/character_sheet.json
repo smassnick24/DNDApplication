@@ -28,17 +28,17 @@
  },
  "Stats": {
   "STR": "15",
-  "DEX": "12",
+  "DEX": "20",
   "CON": "7",
-  "INT": "19",
+  "INT": "4",
   "WIS": "20",
   "CHA": "10"
  },
  "Stat_Modifiers": {
   "STR_Mod": "+2",
-  "DEX_Mod": "+1",
+  "DEX_Mod": "+5",
   "CON_Mod": "-2",
-  "INT_Mod": "+4",
+  "INT_Mod": "-3",
   "WIS_Mod": "+5",
   "CHA_Mod": "+0"
  },
@@ -66,15 +66,15 @@
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+3",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+3",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+3",
+    "Mod": "+7",
     "Proficient": 1
    }
   },
@@ -102,23 +102,23 @@
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+6",
+    "Mod": "-1",
     "Proficient": 1
    },
    "Insight": {
-    "Mod": "+6",
+    "Mod": "-1",
     "Proficient": 1
    },
    "Medicine": {
-    "Mod": "+6",
+    "Mod": "-1",
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "+6",
+    "Mod": "-1",
     "Proficient": 1
    },
    "Survival": {
-    "Mod": "+6",
+    "Mod": "-1",
     "Proficient": 1
    }
   },

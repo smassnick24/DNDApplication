@@ -51,23 +51,24 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
 
         self.STRLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="STR")
         self.STRBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['STR_Mod']}")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['STR_Mod']}", bg="#2B2B2B", fg="white")
         self.DEXLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="DEX")
         self.DEXBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['DEX_Mod']}")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['DEX_Mod']}", bg="#2B2B2B", fg="white")
         self.CONLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="CON")
         self.CONBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['CON_Mod']}")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['CON_Mod']}", bg="#2B2B2B", fg="white")
         self.INTLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="INT")
         self.INTBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['INT_Mod']}")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['INT_Mod']}", bg="#2B2B2B", fg="white")
         self.WISLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="WIS")
         self.WISBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['WIS_Mod']}")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['WIS_Mod']}", bg="#2B2B2B", fg="white")
         self.CHALabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="CHA")
         self.CHABonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
-                                      text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}")
-        self.PassivePerceptionLabel = ctk.CTkLabel(self.passivep_div, font=self.small_font, text="Passive Wisdom (Perception)")
+                                      text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}", bg="#2B2B2B", fg="white")
+        self.PassivePerceptionLabel = ctk.CTkLabel(self.passivep_div, font=self.small_font,
+                                                   text="Passive Wisdom (Perception)")
 
         self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
         self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
@@ -358,6 +359,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
                                                                                       stat_key="CHA",
                                                                                       skill_key="Persuasion"))
 
+        self.SaveButton = ctk.CTkButton(self, text="Save", command=self.save)
+
         # whitespace labels
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
         self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------",
@@ -384,7 +387,6 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.CHABonusLabel.grid(row=17, column=0)
         self.PassivePEntry.grid(row=0, column=0, pady=15, rowspan=2)
         self.PassivePerceptionLabel.grid(row=0, column=1, pady=15, rowspan=2)
-
 
         # need whitespace here
         self.whitespace1.grid(row=0, column=1)
@@ -502,6 +504,7 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.TraitsEntry.insert("0.0", self.CC.fields["Attributes"]["Traits"])
         self.EquipmentEntry.insert("0.0", self.CC.fields["Attacks"]["Equipment"])
 
+
         # gridding containters
         self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=5, padx=10)
         self.passivep_div.grid(row=5, column=0)
@@ -513,6 +516,8 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
         self.inner_attacks_div.grid(row=0, column=1)
 
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
+
+        self.SaveButton.grid()
 
         # defining class methods
 
@@ -526,10 +531,24 @@ class SamsScrollableFrame(ctk.CTkScrollableFrame):
             self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 0
             print(self.CC.fields["Skills"][stat_key][skill_key])
 
+    def save(self):
+        current = {"stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(), self.CHAVar.get()],
+                   "attr": [],
+                   "hit_points": [],
+                   "hit_dice": [],
+                   "death_saves": [],
+                   "saving_throws": [],
+                   "auxiliary": [],
+                   "equipment": [],
+                   "attacks": []}
+        self.CC.update_stats(values=current['stats'])
+
 
 if __name__ == '__main__':
     test = ctk.CTk()
     test.geometry("1080x720")
+    test.iconbitmap("dice-icon.ico")
+    test.title("Character Sheet")
 
     ssf = SamsScrollableFrame(test)
 
