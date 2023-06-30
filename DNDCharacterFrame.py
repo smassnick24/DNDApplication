@@ -21,6 +21,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="yellow")
         self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="green")
         self.passivep_div = ctk.CTkFrame(self, border_width=2, border_color="indigo")
+        self.saving_throws_div = ctk.CTkFrame(self, border_width=2, border_color="teal")
 
         # declaring fonts
         self.small_font = ctk.CTkFont(family="Rockwell", size=10)
@@ -72,7 +73,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
 
         self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
         self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
-        self.ProfBonusLabel = ctk.CTkLabel(self, font=self.font, text="Proficiency Bonus")
         self.HPMAXLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Maximum HP")
         self.HPCURRLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Current HP")
         self.HPTEMPLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Temporary HP")
@@ -84,16 +84,35 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.PlatinumLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="PP")
         self.CopperLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="CP")
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
-
-        self.InspirationLabel = ctk.CTkLabel(self, font=self.font, text="Inspiration")
         self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
-        self.SavingThrowsLabel = ctk.CTkLabel(self, font=self.font, text="Saving Throws")
-        self.Str_St_Label = ctk.CTkLabel(self, font=self.font, text="Strength")
-        self.Dex_St_Label = ctk.CTkLabel(self, font=self.font, text="Dexterity")
-        self.Con_St_Label = ctk.CTkLabel(self, font=self.font, text="Constitution")
-        self.Int_St_Label = ctk.CTkLabel(self, font=self.font, text="Intelligence")
-        self.Wis_St_Label = ctk.CTkLabel(self, font=self.font, text="Wisdom")
-        self.Cha_St_Label = ctk.CTkLabel(self, font=self.font, text="Charisma+")
+
+        self.InspirationLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Inspiration")
+        self.ProfBonusLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Proficiency Bonus")
+        self.SavingThrowsLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Saving Throws")
+        self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength")
+        self.Dex_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Dexterity")
+        self.Con_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Constitution")
+        self.Int_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Intelligence")
+        self.Wis_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Wisdom")
+        self.Cha_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Charisma+")
+
+        # labels for the buttons
+        self.Str_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+        self.Dex_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+        self.Con_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+        self.Int_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+        self.Wis_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+        self.Cha_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
+
+        # respective entry/buttons
+        self.InspirationEntry = ctk.CTkEntry(self.saving_throws_div)
+        self.ProfBonusEntry = ctk.CTkEntry(self.saving_throws_div)
+        self.Str_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Dex_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Con_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Int_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Wis_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Cha_St_Entry = ctk.CTkEntry(self.saving_throws_div)
 
         # kinter variables
         self.NameVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Character_Name"])
@@ -567,7 +586,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.INTVar.set(value=f"{self.CC.fields['Stats']['INT']}")
         self.WISVar.set(value=f"{self.CC.fields['Stats']['WIS']}")
         self.CHAVar.set(value=f"{self.CC.fields['Stats']['CHA']}")
-
 
 
 if __name__ == '__main__':

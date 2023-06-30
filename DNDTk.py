@@ -14,21 +14,23 @@ class DNDApp(ctk.CTk):
 
         self.geometry("1422x603")
 
-    def CharFramePack(self):
-        print("Control + 1")
-        # self.DiceRoller.pack_forget()
-        # self.CharFrame.pack(fill=ctk.BOTH, expand=True, sticky=ctk.NW)
+    def CharFramePack(self, event):
+        print("Event Triggered")
+        self.DiceRoller.pack_forget()
+        self.CharFrame.pack(fill=ctk.BOTH, expand=True)
+        self.geometry("1080x720")
 
-    def DiceRollerPack(self):
-        print("Control + 2")
-        # self.CharFrame.pack_forget()
-        # self.DiceRoller.pack(fill=ctk.BOTH, expand=True, sticky=ctk.NW)
+    def DiceRollerPack(self, event):
+        print("Event Triggered")
+        self.CharFrame.pack_forget()
+        self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
+        self.geometry("1422x603")
 
 
 if __name__ == '__main__':
     t = DNDApp()
-    t.bind("<Control-q>", lambda: t.CharFramePack())
-    t.bind("<Control-w>", lambda: t.DiceRollerPack())
+    t.bind("<Control-q>", t.CharFramePack)
+    t.bind("<Control-w>", t.DiceRollerPack)
     t.mainloop()
 
 

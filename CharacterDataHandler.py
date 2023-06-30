@@ -138,7 +138,3 @@ class DataHandler(object):
                     self.fields["Skills"][stat][skill]["Mod"] = "+" + str(total) if total >= 0 else str(total)
                 else:
                     self.fields["Skills"][stat][skill]["Mod"] = mod
-
-
-if __name__ == '__main__':
-    DataHandler().update_stats([15, 12, 7, 19, 20, 10])
