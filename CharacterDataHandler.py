@@ -65,6 +65,10 @@ class DataHandler(object):
     def update_saving_throws(self, values: list):
         pass
 
+    def update_prof_bonus(self, value: str):
+        self.fields["Auxiliary"]["Prof_Bonus"] = value
+        self.update_json()
+
     def update_json(self):
         """
         Helper method to update the json file.
@@ -74,6 +78,8 @@ class DataHandler(object):
         updated = json.dumps(self.fields, indent=True)
         with open(self.data, 'w') as data:
             data.write(updated)
+
+
 
     def _determine_modifier(self):
         """

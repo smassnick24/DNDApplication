@@ -12,6 +12,8 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # defining character creator
         self.CC = DataHandler()
 
+        self.stat_keys = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
         self.attr_div = ctk.CTkFrame(self, border_width=2, border_color="blue")
@@ -29,6 +31,52 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.bold_font = ctk.CTkFont(family="Rockwell", size=14, weight="bold")
         self.special_font = ctk.CTkFont(family="Rockwell", size=18)
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
+
+        # variables
+        # kinter variables
+        self.NameVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Character_Name"])
+        self.ClassVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Class"])
+        self.LevelVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Level"])
+        self.RaceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Race"])
+        self.BackgroundVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Background"])
+        self.AlignmentVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Alignment"])
+        self.ExperienceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Experience"])
+        self.Attack1Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1"])
+        self.Attack2Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2"])
+        self.Attack3Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3"])
+        self.Attack1Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1_Bonus"])
+        self.Attack2Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2_Bonus"])
+        self.Attack3Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3_Bonus"])
+        self.Attack1Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1_Type"])
+        self.Attack2Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2_Type"])
+        self.Attack3Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3_Type"])
+        self.STRVar = ctk.StringVar(value=self.CC.fields["Stats"]["STR"])
+        self.CONVar = ctk.StringVar(value=self.CC.fields["Stats"]["CON"])
+        self.DEXVar = ctk.StringVar(value=self.CC.fields["Stats"]["DEX"])
+        self.INTVar = ctk.StringVar(value=self.CC.fields["Stats"]["INT"])
+        self.WISVar = ctk.StringVar(value=self.CC.fields["Stats"]["WIS"])
+        self.CHAVar = ctk.StringVar(value=self.CC.fields["Stats"]["CHA"])
+        self.PassivePVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Passive_Perception"])
+        self.ACVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["AC"])
+        self.SpeedVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Speed"])
+        self.ProfBonusVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Prof_Bonus"])
+        self.HPMaxVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Max"])
+        self.HPCurrVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Curr"])
+        self.HPTempVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Temp"])
+        self.HDTotVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Total"])
+        self.HDCurrVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Curr"])
+        self.ElecVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Electrum"])
+        self.PlatVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Platinum"])
+        self.GoldVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Gold"])
+        self.SilvVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Silver"])
+        self.CoppVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Copper"])
+        self.InspirationVar = ctk.StringVar()
+        self.Str_St_Var = ctk.StringVar()
+        self.Dex_St_Var = ctk.StringVar()
+        self.Con_St_Var = ctk.StringVar()
+        self.Int_St_Var = ctk.StringVar()
+        self.Wis_St_Var = ctk.StringVar()
+        self.Cha_St_Var = ctk.StringVar()
 
         # labels
         self.NameLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Character Name")
@@ -86,15 +134,15 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
         self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
 
-        self.InspirationLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Inspiration")
+        self.InspirationLabel = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Inspiration", width=60)
         self.ProfBonusLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Proficiency Bonus")
         self.SavingThrowsLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Saving Throws")
-        self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength")
-        self.Dex_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Dexterity")
-        self.Con_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Constitution")
-        self.Int_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Intelligence")
-        self.Wis_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Wisdom")
-        self.Cha_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Charisma+")
+        self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength", width=50, command=lambda: self.update_saving_throws(st_label=self.Str_St_Label, stat_key="STR", second_label=self.Str_St_Label_2))
+        self.Dex_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Dexterity", width=50, command=lambda: self.update_saving_throws(st_label=self.Dex_St_Label, stat_key="DEX", second_label=self.Dex_St_Label_2))
+        self.Con_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Constitution", width=50, command=lambda: self.update_saving_throws(st_label=self.Con_St_Label, stat_key="CON", second_label=self.Con_St_Label_2))
+        self.Int_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Intelligence", width=50, command=lambda: self.update_saving_throws(st_label=self.Int_St_Label, stat_key="INT", second_label=self.Int_St_Label_2))
+        self.Wis_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Wisdom", width=50, command=lambda: self.update_saving_throws(st_label=self.Wis_St_Label, stat_key="WIS", second_label=self.Wis_St_Label_2))
+        self.Cha_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Charisma", width=50, command=lambda: self.update_saving_throws(st_label=self.Cha_St_Label, stat_key="CHA", second_label=self.Cha_St_Label_2))
 
         # labels for the buttons
         self.Str_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
@@ -104,54 +152,18 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Wis_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
         self.Cha_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
 
-        # respective entry/buttons
-        self.InspirationEntry = ctk.CTkEntry(self.saving_throws_div)
-        self.ProfBonusEntry = ctk.CTkEntry(self.saving_throws_div)
-        self.Str_St_Entry = ctk.CTkEntry(self.saving_throws_div)
-        self.Dex_St_Entry = ctk.CTkEntry(self.saving_throws_div)
-        self.Con_St_Entry = ctk.CTkEntry(self.saving_throws_div)
-        self.Int_St_Entry = ctk.CTkEntry(self.saving_throws_div)
-        self.Wis_St_Entry = ctk.CTkEntry(self.saving_throws_div)
-        self.Cha_St_Entry = ctk.CTkEntry(self.saving_throws_div)
+        self.Str_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
+        self.Dex_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
+        self.Con_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
+        self.Int_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
+        self.Wis_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
+        self.Cha_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
 
-        # kinter variables
-        self.NameVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Character_Name"])
-        self.ClassVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Class"])
-        self.LevelVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Level"])
-        self.RaceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Race"])
-        self.BackgroundVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Background"])
-        self.AlignmentVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Alignment"])
-        self.ExperienceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Experience"])
-        self.Attack1Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1"])
-        self.Attack2Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2"])
-        self.Attack3Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3"])
-        self.Attack1Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1_Bonus"])
-        self.Attack2Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2_Bonus"])
-        self.Attack3Bonus = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3_Bonus"])
-        self.Attack1Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1_Type"])
-        self.Attack2Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2_Type"])
-        self.Attack3Type = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3_Type"])
-        self.STRVar = ctk.StringVar(value=self.CC.fields["Stats"]["STR"])
-        self.CONVar = ctk.StringVar(value=self.CC.fields["Stats"]["CON"])
-        self.DEXVar = ctk.StringVar(value=self.CC.fields["Stats"]["DEX"])
-        self.INTVar = ctk.StringVar(value=self.CC.fields["Stats"]["INT"])
-        self.WISVar = ctk.StringVar(value=self.CC.fields["Stats"]["WIS"])
-        self.CHAVar = ctk.StringVar(value=self.CC.fields["Stats"]["CHA"])
-        self.PassivePVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Passive_Perception"])
-        self.ACVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["AC"])
-        self.SpeedVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Speed"])
-        self.ProfBonusVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Prof_Bonus"])
-        self.HPMaxVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Max"])
-        self.HPCurrVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Curr"])
-        self.HPTempVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Temp"])
-        self.HDTotVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Total"])
-        self.HDCurrVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Curr"])
-        self.ElecVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Electrum"])
-        self.PlatVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Platinum"])
-        self.GoldVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Gold"])
-        self.SilvVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Silver"])
-        self.CoppVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Copper"])
-        # death saves
+        # respective entry/buttons
+        self.InspirationEntry = ctk.CTkLabel(self.saving_throws_div, text="( )")
+        self.ProfBonusEntry = ctk.CTkEntry(self.saving_throws_div, textvariable=self.ProfBonusVar, width=30)
+
+
 
         # entry widgets
         self.NameEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.NameVar)
@@ -514,6 +526,38 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.HDCURRLabel.grid(row=5, column=0)
         self.HDCURREntry.grid(row=5, column=1)
 
+        # packing saving throw div
+        self.InspirationEntry.grid(row=0, column=0)
+        self.InspirationLabel.grid(row=0, column=1, columnspan=2)
+        self.ProfBonusEntry.grid(row=1, column=0)
+        self.ProfBonusLabel.grid(row=1, column=1, columnspan=2, padx=5)
+        self.SavingThrowsLabel.grid(row=2, column=0, columnspan=3, pady=20)
+
+        self.Str_St_Label.grid(row=3, column=0)
+        self.Str_St_Label_2.grid(row=3, column=1)
+        self.Str_St_Button.grid(row=3, column=2)
+
+        self.Dex_St_Label.grid(row=4, column=0)
+        self.Dex_St_Label_2.grid(row=4, column=1)
+        self.Dex_St_Button.grid(row=4, column=2)
+
+        self.Con_St_Label.grid(row=5, column=0)
+        self.Con_St_Label_2.grid(row=5, column=1)
+        self.Con_St_Button.grid(row=5, column=2)
+
+        self.Int_St_Label.grid(row=6, column=0)
+        self.Int_St_Label_2.grid(row=6, column=1)
+        self.Int_St_Button.grid(row=6, column=2)
+
+        self.Wis_St_Label.grid(row=7, column=0)
+        self.Wis_St_Label_2.grid(row=7, column=1)
+        self.Wis_St_Button.grid(row=7, column=2)
+
+        self.Cha_St_Label.grid(row=8, column=0)
+        self.Cha_St_Label_2.grid(row=8, column=1)
+        self.Cha_St_Button.grid(row=8, column=2)
+
+
         # configuring textbox widgets
         self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
         self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
@@ -523,17 +567,31 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.TraitsEntry.insert("0.0", self.CC.fields["Attributes"]["Traits"])
         self.EquipmentEntry.insert("0.0", self.CC.fields["Attacks"]["Equipment"])
 
+        # inserting last data for saving throws
+        temp = [self.Str_St_Label, self.Dex_St_Label, self.Con_St_Label,
+                  self.Int_St_Label, self.Wis_St_Label, self.Cha_St_Label]
+        temp2 = [self.Str_St_Label_2, self.Dex_St_Label_2, self.Con_St_Label_2,
+                  self.Int_St_Label_2, self.Wis_St_Label_2, self.Cha_St_Label_2]
+        for label, label2, key in zip(temp, temp2, self.stat_keys):
+            if self.CC.fields["SavingThrows"][key]["Proficient"] == 1:
+                label.configure(text=f"{'(' + chr(215) + ')'}")
+                label2.configure(text=self.CC.fields["Auxiliary"]["Prof_Bonus"])
+
+
         # gridding containters
-        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=5, padx=10)
+        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=8, padx=10)
         self.passivep_div.grid(row=5, column=0)
         self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5)
-        self.health_div.grid(row=1, column=1, padx=10)
+        self.saving_throws_div.grid(row=1, column=1, padx=10, columnspan=2)
+        self.health_div.grid(row=1, column=3, padx=10)
 
-        self.attacks_div.grid(row=2, column=1, padx=10, ipadx=5, ipady=5)
+        self.attacks_div.grid(row=2, column=3, padx=10, ipadx=5, ipady=5)
         self.equipment_div.grid(row=0, column=0, padx=10, ipadx=5, ipady=5, sticky=ctk.NW)
         self.inner_attacks_div.grid(row=0, column=1)
 
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
+
+
 
         self.SaveButton.grid()
 
@@ -549,6 +607,18 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             self.CC.fields["Skills"][stat_key][skill_key]["Proficient"] = 0
             print(self.CC.fields["Skills"][stat_key][skill_key])
 
+    def update_saving_throws(self, st_label: ctk.CTkLabel, second_label: ctk.CTkLabel, stat_key):
+        if st_label.cget("text") == "( )":
+            st_label.configure(text="(" + chr(215) + ")")
+            self.CC.fields["SavingThrows"][stat_key]["Proficient"] = 1
+            second_label.configure(text=f"{self.CC.fields['Auxiliary']['Prof_Bonus']}")
+        else:
+            st_label.configure(text="( )")
+            self.CC.fields["SavingThrows"][stat_key]["Proficient"] = 0
+            second_label.configure(text="+0")
+
+
+
     def save(self, event):
         current = {
             "stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(),
@@ -563,11 +633,14 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             "saving_throws": [],
             "auxiliary": [],
             "equipment": [],
-            "attacks": []}
+            "attacks": [],
+            "ProfBonus": self.ProfBonusVar.get(),
+        }
         self.CC.update_stats(values=current['stats'])
-
+        self.CC.update_prof_bonus(value=current["ProfBonus"])
         self._update_stat_mod()
         self._update_stats()
+        self._update_st()
 
     def _update_stat_mod(self):
         """helper function to update the stat modifiers while the application is running"""
@@ -586,6 +659,13 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.INTVar.set(value=f"{self.CC.fields['Stats']['INT']}")
         self.WISVar.set(value=f"{self.CC.fields['Stats']['WIS']}")
         self.CHAVar.set(value=f"{self.CC.fields['Stats']['CHA']}")
+
+    def _update_st(self):
+        labels = [self.Str_St_Label_2, self.Dex_St_Label_2, self.Con_St_Label_2,
+                  self.Int_St_Label_2, self.Wis_St_Label_2, self.Cha_St_Label_2]
+        for stat, label in zip(self.stat_keys, labels):
+            if self.CC.fields["SavingThrows"][stat]["Proficient"] == 1:
+                label.configure(text=f"{self.CC.fields['Auxiliary']['Prof_Bonus']}")
 
 
 if __name__ == '__main__':
