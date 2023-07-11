@@ -24,9 +24,11 @@ class DataHandler(object):
         stats = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
         for stat, val in zip(stats, values):
             try:
+                if len(val) > 2:
+                    val = val[0:2]
                 val = int(val)
             except ValueError:
-                val = 10
+                val = 0
             self.fields["Stats"][stat] = str(val)
 
         self._determine_modifier()

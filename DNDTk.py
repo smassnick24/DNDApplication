@@ -26,11 +26,22 @@ class DNDApp(ctk.CTk):
         self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
         self.geometry("1422x603")
 
+    def quit_pressed(self, event):
+        self.quit()
+
 
 if __name__ == '__main__':
     t = DNDApp()
     t.bind("<Control-q>", t.CharFramePack)
     t.bind("<Control-w>", t.DiceRollerPack)
+    t.bind("<Control-s>", t.CharFrame.save)
+    t.bind("<Control-KeyPress-1>", t.quit_pressed)
+    t.CharFrame.STREntry.bind("<KeyRelease>", t.CharFrame.save)
+    t.CharFrame.DEXEntry.bind("<KeyRelease>", t.CharFrame.save)
+    t.CharFrame.CONEntry.bind("<KeyRelease>", t.CharFrame.save)
+    t.CharFrame.INTEntry.bind("<KeyRelease>", t.CharFrame.save)
+    t.CharFrame.WISEntry.bind("<KeyRelease>", t.CharFrame.save)
+    t.CharFrame.CHAEntry.bind("<KeyRelease>", t.CharFrame.save)
     t.mainloop()
 
 

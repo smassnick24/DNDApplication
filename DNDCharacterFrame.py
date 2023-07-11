@@ -25,6 +25,19 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.passivep_div = ctk.CTkFrame(self, border_width=2, border_color="indigo")
         self.saving_throws_div = ctk.CTkFrame(self, border_width=2, border_color="teal")
 
+        # spell divs
+        self.master_spell_div = ctk.CTkFrame(self, border_width=2, border_color="black")
+        self.cantrips_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="red")
+        self.first_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.second_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.third_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.fourth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.fifth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.sixth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.seventh_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.eighth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.ninth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+
         # declaring fonts
         self.small_font = ctk.CTkFont(family="Rockwell", size=10)
         self.font = ctk.CTkFont(family="Rockwell", size=14)
@@ -77,6 +90,57 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Int_St_Var = ctk.StringVar()
         self.Wis_St_Var = ctk.StringVar()
         self.Cha_St_Var = ctk.StringVar()
+
+        # spell vars
+        self.CantripContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                 "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                 "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                 "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.FirstLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.SecondLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.ThirdLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.FourthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.FifthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.SixthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.SeventhLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                      "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                      "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                      "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.EighthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+
+        self.NinthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
+                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
+                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
+                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
 
         # labels
         self.NameLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Character Name")
@@ -137,12 +201,30 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.InspirationLabel = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Inspiration", width=60)
         self.ProfBonusLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Proficiency Bonus")
         self.SavingThrowsLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Saving Throws")
-        self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength", width=50, command=lambda: self.update_saving_throws(st_label=self.Str_St_Label, stat_key="STR", second_label=self.Str_St_Label_2))
-        self.Dex_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Dexterity", width=50, command=lambda: self.update_saving_throws(st_label=self.Dex_St_Label, stat_key="DEX", second_label=self.Dex_St_Label_2))
-        self.Con_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Constitution", width=50, command=lambda: self.update_saving_throws(st_label=self.Con_St_Label, stat_key="CON", second_label=self.Con_St_Label_2))
-        self.Int_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Intelligence", width=50, command=lambda: self.update_saving_throws(st_label=self.Int_St_Label, stat_key="INT", second_label=self.Int_St_Label_2))
-        self.Wis_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Wisdom", width=50, command=lambda: self.update_saving_throws(st_label=self.Wis_St_Label, stat_key="WIS", second_label=self.Wis_St_Label_2))
-        self.Cha_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Charisma", width=50, command=lambda: self.update_saving_throws(st_label=self.Cha_St_Label, stat_key="CHA", second_label=self.Cha_St_Label_2))
+        self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Str_St_Label,
+                                                                                     stat_key="STR",
+                                                                                     second_label=self.Str_St_Label_2))
+        self.Dex_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Dexterity", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Dex_St_Label,
+                                                                                     stat_key="DEX",
+                                                                                     second_label=self.Dex_St_Label_2))
+        self.Con_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Constitution", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Con_St_Label,
+                                                                                     stat_key="CON",
+                                                                                     second_label=self.Con_St_Label_2))
+        self.Int_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Intelligence", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Int_St_Label,
+                                                                                     stat_key="INT",
+                                                                                     second_label=self.Int_St_Label_2))
+        self.Wis_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Wisdom", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Wis_St_Label,
+                                                                                     stat_key="WIS",
+                                                                                     second_label=self.Wis_St_Label_2))
+        self.Cha_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Charisma", width=50,
+                                           command=lambda: self.update_saving_throws(st_label=self.Cha_St_Label,
+                                                                                     stat_key="CHA",
+                                                                                     second_label=self.Cha_St_Label_2))
 
         # labels for the buttons
         self.Str_St_Label = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="( )")
@@ -162,8 +244,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # respective entry/buttons
         self.InspirationEntry = ctk.CTkLabel(self.saving_throws_div, text="( )")
         self.ProfBonusEntry = ctk.CTkEntry(self.saving_throws_div, textvariable=self.ProfBonusVar, width=30)
-
-
 
         # entry widgets
         self.NameEntry = ctk.CTkEntry(self.attr_div, font=self.font, textvariable=self.NameVar)
@@ -390,7 +470,41 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                                                                                       stat_key="CHA",
                                                                                       skill_key="Persuasion"))
 
-        self.SaveButton = ctk.CTkButton(self, text="Save", command=self.save)
+        # spell label and entry
+        self.CantripsLabel = ctk.CTkLabel(self.cantrips_div, text="Cantrips")
+        self.FirstLevelLabel = ctk.CTkLabel(self.first_level_div, text="1st Level")
+        self.SecondLevelLabel = ctk.CTkLabel(self.first_level_div, text="2nd Level")
+        self.ThirdLevelLabel = ctk.CTkLabel(self.first_level_div, text="3rd Level")
+        self.FourthLevelLabel = ctk.CTkLabel(self.first_level_div, text="4th Level")
+        self.FifthLevelLabel = ctk.CTkLabel(self.first_level_div, text="5th Level")
+        self.SixthLevelLabel = ctk.CTkLabel(self.first_level_div, text="6th Level")
+        self.SeventhLevelLabel = ctk.CTkLabel(self.first_level_div, text="7th Level")
+        self.EightLevelLabel = ctk.CTkLabel(self.first_level_div, text="8th Level")
+        self.NinthLevelLabel = ctk.CTkLabel(self.first_level_div, text="9th Level")
+
+        # spell entry
+        self.FirstLevelSpells = [ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["0"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["1"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["2"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["3"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["4"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["5"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["6"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["7"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["8"]),
+                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["9"])]
+
+        self.SecondLevelSpells = [ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["0"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["1"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["2"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["3"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["4"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["5"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["6"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["7"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["8"]),
+                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["9"])]
+
 
         # whitespace labels
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
@@ -557,7 +671,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Cha_St_Label_2.grid(row=8, column=1)
         self.Cha_St_Button.grid(row=8, column=2)
 
-
         # configuring textbox widgets
         self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
         self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
@@ -569,14 +682,13 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
 
         # inserting last data for saving throws
         temp = [self.Str_St_Label, self.Dex_St_Label, self.Con_St_Label,
-                  self.Int_St_Label, self.Wis_St_Label, self.Cha_St_Label]
+                self.Int_St_Label, self.Wis_St_Label, self.Cha_St_Label]
         temp2 = [self.Str_St_Label_2, self.Dex_St_Label_2, self.Con_St_Label_2,
-                  self.Int_St_Label_2, self.Wis_St_Label_2, self.Cha_St_Label_2]
+                 self.Int_St_Label_2, self.Wis_St_Label_2, self.Cha_St_Label_2]
         for label, label2, key in zip(temp, temp2, self.stat_keys):
             if self.CC.fields["SavingThrows"][key]["Proficient"] == 1:
                 label.configure(text=f"{'(' + chr(215) + ')'}")
                 label2.configure(text=self.CC.fields["Auxiliary"]["Prof_Bonus"])
-
 
         # gridding containters
         self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=8, padx=10)
@@ -590,10 +702,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.inner_attacks_div.grid(row=0, column=1)
 
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
-
-
-
-        self.SaveButton.grid()
 
         # defining class methods
 
@@ -616,8 +724,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             st_label.configure(text="( )")
             self.CC.fields["SavingThrows"][stat_key]["Proficient"] = 0
             second_label.configure(text="+0")
-
-
 
     def save(self, event):
         current = {

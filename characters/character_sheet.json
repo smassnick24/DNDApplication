@@ -27,17 +27,17 @@
   "Attack_3_Type": "Bludgeon"
  },
  "Stats": {
-  "STR": "14",
-  "DEX": "15",
-  "CON": "12",
+  "STR": "12",
+  "DEX": "14",
+  "CON": "20",
   "INT": "14",
   "WIS": "17",
   "CHA": "20"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+2",
+  "STR_Mod": "+1",
   "DEX_Mod": "+2",
-  "CON_Mod": "+1",
+  "CON_Mod": "+5",
   "INT_Mod": "+2",
   "WIS_Mod": "+3",
   "CHA_Mod": "+5"
@@ -56,7 +56,7 @@
    "Proficient": 1
   },
   "WIS": {
-   "Proficient": 0
+   "Proficient": 1
   },
   "CHA": {
    "Proficient": 0
@@ -72,83 +72,83 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+4",
+    "Mod": "+6",
     "Proficient": 1
    }
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    }
   },
   "INT": {
    "Arcana": {
-    "Mod": "+3",
+    "Mod": "+10",
     "Proficient": 1
    },
    "History": {
-    "Mod": "+3",
+    "Mod": "+10",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+3",
+    "Mod": "+10",
     "Proficient": 1
    },
    "Nature": {
-    "Mod": "+3",
+    "Mod": "+10",
     "Proficient": 1
    },
    "Religion": {
-    "Mod": "+3",
+    "Mod": "+10",
     "Proficient": 1
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Insight": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Medicine": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Survival": {
-    "Mod": "+4",
+    "Mod": "+7",
     "Proficient": 1
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "+5",
+    "Mod": "+8",
     "Proficient": 1
    },
    "Intimidation": {
-    "Mod": "+5",
+    "Mod": "+8",
     "Proficient": 1
    },
    "Performance": {
-    "Mod": "+5",
+    "Mod": "+8",
     "Proficient": 1
    },
    "Persuasion": {
-    "Mod": "+5",
+    "Mod": "+8",
     "Proficient": 1
    }
   }
@@ -168,10 +168,132 @@
  },
  "Auxiliary": {
   "Inspiration": false,
-  "Prof_Bonus": "+3",
+  "Prof_Bonus": "+5",
   "AC": "0",
   "Init": "0",
   "Speed": "0ft",
   "Passive_Perception": "12"
+ },
+ "Spells": {
+  "Cantrips": {
+   "Cantrip_Slot_0": "",
+   "Cantrip_Slot_1": "",
+   "Cantrip_Slot_2": "",
+   "Cantrip_Slot_3": "",
+   "Cantrip_Slot_4": "",
+   "Cantrip_Slot_5": "",
+   "Cantrip_Slot_6": "",
+   "Cantrip_Slot_7": "",
+   "Cantrip_Slot_8": "",
+   "Cantrip_Slot_9": ""
+  },
+  "First_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Second_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Third_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Fourth_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Fifth_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Sixth_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Seventh_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Eighth_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  },
+  "Ninth_Level": {
+   "Spell_Slot_0": "",
+   "Spell_Slot_1": "",
+   "Spell_Slot_2": "",
+   "Spell_Slot_3": "",
+   "Spell_Slot_4": "",
+   "Spell_Slot_5": "",
+   "Spell_Slot_6": "",
+   "Spell_Slot_7": "",
+   "Spell_Slot_8": "",
+   "Spell_Slot_9": ""
+  }
  }
 }

@@ -1,31 +1,18 @@
 import tkinter as tk
+import customtkinter as ctk
 
-root = tk.Tk()
+test = ctk.CTk()
 
-# Create a Canvas widget
-canvas = tk.Canvas(root, width=300, height=200)
-canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+wid_var = ctk.StringVar(value="")
+wid = ctk.CTkEntry(test, textvariable=wid_var)
 
-# Create a Vertical Scrollbar widget
-scrollbar_y = tk.Scrollbar(root, orient=tk.VERTICAL, command=canvas.yview)
-scrollbar_y.pack(side=tk.RIGHT, fill=tk.Y)
-canvas.configure(yscrollcommand=scrollbar_y.set)
+wid.pack()
 
-# Create a Horizontal Scrollbar widget
-scrollbar_x = tk.Scrollbar(root, orient=tk.HORIZONTAL, command=canvas.xview)
-scrollbar_x.pack(side=tk.BOTTOM, fill=tk.X)
-canvas.configure(xscrollcommand=scrollbar_x.set)
 
-# Create a Frame to hold the content
-frame = tk.Frame(canvas)
-canvas.create_window((0, 0), window=frame, anchor=tk.NW)
+def on_entry_change(event):
+    print(f"Entry Modified: {wid_var.get()}")
 
-# Add content to the Frame
-for i in range(50):
-    tk.Label(frame, text=f"Label {i}").pack()
 
-# Configure the Canvas to resize with the window
-frame.update_idletasks()
-canvas.config(scrollregion=canvas.bbox("all"))
+wid.bind("<KeyRelease>", on_entry_change)
 
-root.mainloop()
+test.mainloop()
