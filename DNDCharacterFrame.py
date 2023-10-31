@@ -30,7 +30,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.attacks_div = ctk.CTkFrame(self, border_width=2, border_color="purple")
         self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="yellow")
         self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="green")
-        self.passivep_div = ctk.CTkFrame(self, border_width=2, border_color="indigo")
         self.saving_throws_div = ctk.CTkFrame(self, border_width=2, border_color="teal")
 
         # spell divs
@@ -259,12 +258,12 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.CHALabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="CHA")
         self.CHABonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
                                       text=f"{self.CC.fields['Stat_Modifiers']['CHA_Mod']}", bg="#2B2B2B", fg="white")
-        self.PassivePerceptionLabel = ctk.CTkLabel(self.passivep_div, font=self.small_font,
+        self.PassivePerceptionLabel = ctk.CTkLabel(self.stat_div, font=self.small_font,
                                                    text="Passive Wisdom (Perception)")
 
-        self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
-        self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
-        self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
+        self.ACLabel = ctk.CTkLabel(self.aux_attr_div, font=self.font, text="Armor Class")
+        self.InitiativeLabel = ctk.CTkLabel(self.aux_attr_div, font=self.font, text="Initiative")
+        self.SpeedLabel = ctk.CTkLabel(self.aux_attr_div, font=self.font, text="Speed")
         self.HPMAXLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Maximum HP")
         self.HPCURRLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Current HP")
         self.HPTEMPLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Temporary HP")
@@ -375,7 +374,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
         self.CHAEntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.CHAVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
-        self.PassivePEntry = ctk.CTkEntry(self.passivep_div, font=self.special_font, textvariable=self.PassivePVar,
+        self.PassivePEntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.PassivePVar,
                                           border_width=3, border_color="black", width=75, height=45, justify=ctk.CENTER,
                                           corner_radius=25)
 
@@ -696,6 +695,14 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
         self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------",
                                     font=self.font)
+        # placing auxiliary attributes
+        self.ACLabel.grid(row=0, column=0)
+        self.InitiativeLabel.grid(row=0, column=1)
+        self.SpeedLabel.grid(row=0, column=2)
+        self.ACEntry.grid(row=1, column=0)
+        self.InitEntry.grid(row=1, column=1)
+        self.SpeedEntry.grid(row=1, column=2)
+
 
         # placing stats
         self.STRLabel.grid(row=0, column=0)
@@ -716,8 +723,8 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.CHALabel.grid(row=15, column=0)
         self.CHAEntry.grid(row=16, column=0)
         self.CHABonusLabel.grid(row=17, column=0)
-        self.PassivePEntry.grid(row=0, column=0, pady=15, rowspan=2)
-        self.PassivePerceptionLabel.grid(row=0, column=1, pady=15, rowspan=2)
+        self.PassivePEntry.grid(row=19, column=0)
+        self.PassivePerceptionLabel.grid(row=19, column=2, columnspan=2)
 
         # need whitespace here
         self.whitespace1.grid(row=0, column=1)
@@ -810,7 +817,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.GoldLabel.grid(row=3, column=1, padx=2, pady=2)
         self.PlatinumEntry.grid(row=4, column=0, padx=2, pady=2)
         self.PlatinumLabel.grid(row=4, column=1, padx=2, pady=2)
-        self.EquipmentLabel.grid(row=5, column=0, columnspan=3)
+        self.EquipmentLabel.grid(row=5, column=0, columnspan=3, pady=10)
         self.EquipmentEntry.grid(row=6, column=0, columnspan=3)
 
         # placing attacks
@@ -948,19 +955,16 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                 label2.configure(text=self.CC.fields["Auxiliary"]["Prof_Bonus"])
 
         # gridding containters
-        self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=8, padx=10)
-        self.passivep_div.grid(row=5, column=0)
-        self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5, rowspan=2)
-        self.saving_throws_div.grid(row=2, column=1, padx=10, columnspan=2)
-        self.health_div.grid(row=2, column=3, padx=10)
-
-        self.attacks_div.grid(row=3, column=3, padx=10, ipadx=5, ipady=5, rowspan=3)
-        self.equipment_div.grid(row=0, column=0, padx=10, ipadx=5, ipady=5, sticky=ctk.NW)
-        self.inner_attacks_div.grid(row=0, column=2, columnspan=2)
-
-        self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
-
-        self.master_spell_div.grid(columnspan=12)
+        self.stat_div.grid(row=0, column=0, rowspan=10)
+        self.attr_div.grid(row=0, column=2, rowspan=2, columnspan=2)
+        self.aux_attr_div.grid(row=2, column=2, columnspan=2)
+        self.saving_throws_div.grid(row=0, column=1, rowspan=4)
+        self.health_div.grid(row=3, column=2, columnspan=2, rowspan=3)
+        self.attacks_div.grid(row=6, column=2, columnspan=2, rowspan=5, padx=5)
+        self.equipment_div.grid(row=0, column=0, padx=10, rowspan=2)
+        self.inner_attacks_div.grid(row=0, column=1, rowspan=4)
+        self.traits_div.grid(row=0, column=7, rowspan=10)
+        self.master_spell_div.grid(row=10, column=0, rowspan=20, columnspan=30)
 
         # defining class methods
 
