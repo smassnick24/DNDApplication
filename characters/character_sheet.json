@@ -15,16 +15,16 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "",
-  "Attack_1": "Sword",
-  "Attack_2": "Axe",
-  "Attack_3": "Hammer",
+  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n",
+  "Attack_1": "Glacial Avalance",
+  "Attack_2": "Glacial Spear",
+  "Attack_3": "Ketheric's Hammer",
   "Attack_1_Bonus": "+2",
   "Attack_2_Bonus": "+2",
   "Attack_3_Bonus": "+2",
   "Attack_1_Type": "2d8 Slash",
-  "Attack_2_Type": "1d10 Pierce",
-  "Attack_3_Type": "1d12 Bludgeon"
+  "Attack_2_Type": "2d10 Pierce",
+  "Attack_3_Type": "1d12 + 5 Bludgeon"
  },
  "Stats": {
   "STR": "20",
@@ -92,8 +92,8 @@
   },
   "INT": {
    "Arcana": {
-    "Mod": "+2",
-    "Proficient": 1
+    "Mod": "+0",
+    "Proficient": 0
    },
    "History": {
     "Mod": "+2",
@@ -108,14 +108,14 @@
     "Proficient": 1
    },
    "Religion": {
-    "Mod": "+2",
-    "Proficient": 1
+    "Mod": "+0",
+    "Proficient": 0
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+1",
-    "Proficient": 1
+    "Mod": "-1",
+    "Proficient": 0
    },
    "Insight": {
     "Mod": "+1",
@@ -167,7 +167,7 @@
   "Death_Saves_Failures": "3"
  },
  "Auxiliary": {
-  "Inspiration": false,
+  "Inspiration": "true",
   "Prof_Bonus": "+2",
   "AC": "0",
   "Init": "0",

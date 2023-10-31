@@ -24,6 +24,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
         self.attr_div = ctk.CTkFrame(self, border_width=2, border_color="blue")
+        self.aux_attr_div = ctk.CTkFrame(self, border_width=2, border_color="violet")
         self.traits_div = ctk.CTkFrame(self, border_width=2, border_color="orange")
         self.health_div = ctk.CTkFrame(self, border_width=2, border_color="pink")
         self.attacks_div = ctk.CTkFrame(self, border_width=2, border_color="purple")
@@ -72,6 +73,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.CHAVar = ctk.StringVar(value=self.CC.fields["Stats"]["CHA"])
         self.PassivePVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Passive_Perception"])
         self.ACVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["AC"])
+        self.InitVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Init"])
         self.SpeedVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Speed"])
         self.ProfBonusVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Prof_Bonus"])
         self.HPMaxVar = ctk.StringVar(value=self.CC.fields["HitPoints"]["HP_Max"])
@@ -84,7 +86,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.GoldVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Gold"])
         self.SilvVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Silver"])
         self.CoppVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Copper"])
-        self.InspirationVar = ctk.StringVar()
         self.Str_St_Var = ctk.StringVar()
         self.Dex_St_Var = ctk.StringVar()
         self.Con_St_Var = ctk.StringVar()
@@ -224,12 +225,18 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.EquipmentLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Equipment")
 
         # attacks
+        self.AttackNameLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Name")
+        self.AttackBonusLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Bonus")
+        self.AttackTypeLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Type")
         self.Attack1NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Var)
         self.Attack2NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Var)
         self.Attack3NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Var)
-        self.Attack1BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Bonus)
-        self.Attack2BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Bonus)
-        self.Attack3BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Bonus)
+        self.Attack1BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Bonus,
+                                              width=35)
+        self.Attack2BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Bonus,
+                                              width=35)
+        self.Attack3BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Bonus,
+                                              width=35)
         self.Attack1TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Type)
         self.Attack2TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Type)
         self.Attack3TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Type)
@@ -256,6 +263,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                                                    text="Passive Wisdom (Perception)")
 
         self.ACLabel = ctk.CTkLabel(self, font=self.font, text="Armor Class")
+        self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
         self.SpeedLabel = ctk.CTkLabel(self, font=self.font, text="Speed")
         self.HPMAXLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Maximum HP")
         self.HPCURRLabel = ctk.CTkLabel(self.health_div, font=self.font, text="Current HP")
@@ -268,9 +276,13 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.PlatinumLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="PP")
         self.CopperLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="CP")
         self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
-        self.InitiativeLabel = ctk.CTkLabel(self, font=self.font, text="Initiative")
 
-        self.InspirationLabel = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Inspiration", width=60)
+        self.ACEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.ACVar)
+        self.InitEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.InitVar)
+        self.SpeedEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.SpeedVar)
+
+        self.InspirationButton = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Inspiration", width=60,
+                                               command=self._update_inspiration)
         self.ProfBonusLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Proficiency Bonus")
         self.SavingThrowsLabel = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="Saving Throws")
         self.Str_St_Button = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Strength", width=50,
@@ -314,7 +326,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Cha_St_Label_2 = ctk.CTkLabel(self.saving_throws_div, font=self.font, text="+0")
 
         # respective entry/buttons
-        self.InspirationEntry = ctk.CTkLabel(self.saving_throws_div, text="( )")
+        self.InspirationLabel = ctk.CTkLabel(self.saving_throws_div, text="( )")
         self.ProfBonusEntry = ctk.CTkEntry(self.saving_throws_div, textvariable=self.ProfBonusVar, width=30)
 
         # entry widgets
@@ -349,7 +361,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                                       justify=ctk.CENTER)
         self.PlatinumEntry = ctk.CTkEntry(self.equipment_div, font=self.font, textvariable=self.PlatVar, width=30,
                                           justify=ctk.CENTER)
-        self.EquipmentEntry = ctk.CTkTextbox(self.inner_attacks_div, font=self.font)
+        self.EquipmentEntry = ctk.CTkTextbox(self.inner_attacks_div, font=self.font, width=400)
 
         self.STREntry = ctk.CTkEntry(self.stat_div, font=self.special_font, textvariable=self.STRVar, border_width=3,
                                      border_color="black", width=62, height=45, justify=ctk.CENTER, corner_radius=20)
@@ -798,8 +810,22 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.GoldLabel.grid(row=3, column=1, padx=2, pady=2)
         self.PlatinumEntry.grid(row=4, column=0, padx=2, pady=2)
         self.PlatinumLabel.grid(row=4, column=1, padx=2, pady=2)
-        self.EquipmentLabel.grid(row=0, column=0)
-        self.EquipmentEntry.grid(row=1, column=0)
+        self.EquipmentLabel.grid(row=5, column=0, columnspan=3)
+        self.EquipmentEntry.grid(row=6, column=0, columnspan=3)
+
+        # placing attacks
+        self.AttackNameLabel.grid(row=0, column=0)
+        self.AttackBonusLabel.grid(row=0, column=1)
+        self.AttackTypeLabel.grid(row=0, column=2)
+        self.Attack1NameEntry.grid(row=1, column=0)
+        self.Attack1BonusEntry.grid(row=1, column=1)
+        self.Attack1TypeEntry.grid(row=1, column=2)
+        self.Attack2NameEntry.grid(row=2, column=0)
+        self.Attack2BonusEntry.grid(row=2, column=1)
+        self.Attack2TypeEntry.grid(row=2, column=2)
+        self.Attack3NameEntry.grid(row=3, column=0)
+        self.Attack3BonusEntry.grid(row=3, column=1)
+        self.Attack3TypeEntry.grid(row=3, column=2)
 
         # health frame grid
         self.HPMAXLabel.grid(row=0, column=0, padx=2, pady=2)
@@ -815,8 +841,8 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.HDCURREntry.grid(row=5, column=1)
 
         # packing saving throw div
-        self.InspirationEntry.grid(row=0, column=0)
-        self.InspirationLabel.grid(row=0, column=1, columnspan=2)
+        self.InspirationLabel.grid(row=0, column=0)
+        self.InspirationButton.grid(row=0, column=1, columnspan=2)
         self.ProfBonusEntry.grid(row=1, column=0)
         self.ProfBonusLabel.grid(row=1, column=1, columnspan=2, padx=5)
         self.SavingThrowsLabel.grid(row=2, column=0, columnspan=3, pady=20)
@@ -924,13 +950,13 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # gridding containters
         self.stat_div.grid(row=0, column=0, sticky=ctk.NW, rowspan=8, padx=10)
         self.passivep_div.grid(row=5, column=0)
-        self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5)
-        self.saving_throws_div.grid(row=1, column=1, padx=10, columnspan=2)
-        self.health_div.grid(row=1, column=3, padx=10)
+        self.attr_div.grid(row=0, column=1, sticky=ctk.N, padx=10, columnspan=10, ipadx=5, ipady=5, rowspan=2)
+        self.saving_throws_div.grid(row=2, column=1, padx=10, columnspan=2)
+        self.health_div.grid(row=2, column=3, padx=10)
 
-        self.attacks_div.grid(row=2, column=3, padx=10, ipadx=5, ipady=5)
+        self.attacks_div.grid(row=3, column=3, padx=10, ipadx=5, ipady=5, rowspan=3)
         self.equipment_div.grid(row=0, column=0, padx=10, ipadx=5, ipady=5, sticky=ctk.NW)
-        self.inner_attacks_div.grid(row=0, column=1)
+        self.inner_attacks_div.grid(row=0, column=2, columnspan=2)
 
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
 
@@ -958,6 +984,16 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             self.CC.fields["SavingThrows"][stat_key]["Proficient"] = 0
             second_label.configure(text="+0")
 
+    def _update_inspiration(self):
+        if self.InspirationLabel.cget('text') == '( )':
+            self.InspirationLabel.configure(text='(' + chr(215) + ')')
+            self.CC.fields["Auxiliary"]["Inspiration"] = "true"
+        else:
+            self.InspirationLabel.configure(text="( )")
+            self.CC.fields["Auxiliary"]["Inspiration"] = "false"
+
+        self.CC.update_json()
+
     def save(self, event):
         spell_levels = [
 
@@ -969,13 +1005,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                      self.BackgroundVar.get(), self.AlignmentVar.get(), self.ExperienceVar.get(),
                      self.PersonalityEntry.get("0.0", "end"), self.IdealsEntry.get("0.0", "end"),
                      self.BondsEntry.get("0.0", "end")],
-            "hit_points": [],
-            "hit_dice": [],
-            "death_saves": [],
-            "saving_throws": [],
-            "auxiliary": [],
-            "equipment": [],
-            "attacks": [],
             "ProfBonus": self.ProfBonusVar.get(),
         }
         self.CC.update_stats(values=current['stats'])
@@ -995,6 +1024,16 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self._save_9th_spells()
         self._save_money()
         self._save_attacks()
+        self._save_hp()
+        self._save_hd()
+
+    def _save_hp(self):
+        to_save = [self.HPMaxVar.get(), self.HPCurrVar.get(), self.HPTempVar.get()]
+        self.CC.update_hit_points(to_save)
+
+    def _save_hd(self):
+        to_save = [self.HDTotVar.get(), self.HDCurrVar.get()]
+        self.CC.update_hit_dice(to_save)
 
     def _save_money(self):
         to_save = [self.CoppVar.get(), self.SilvVar.get(), self.ElecVar.get(),
@@ -1002,7 +1041,11 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.CC.update_money(to_save)
 
     def _save_attacks(self):
-        pass
+        to_save = [self.EquipmentEntry.get('0.0', ctk.END), self.Attack1Var.get(), self.Attack2Var.get(),
+                   self.Attack3Var.get(),
+                   self.Attack1Bonus.get(), self.Attack2Bonus.get(), self.Attack3Bonus.get(),
+                   self.Attack1Type.get(), self.Attack2Type.get(), self.Attack3Type.get()]
+        self.CC.update_attacks(to_save)
 
     def _save_cantrips(self):
         to_save = []
