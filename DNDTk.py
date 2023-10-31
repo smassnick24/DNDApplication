@@ -9,22 +9,41 @@ class DNDApp(ctk.CTk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.header_font = ctk.CTkFont(family="Rockwell", size=28)
+        self.attributes('-fullscreen', True)
+        self.geometry("1920x1080")
+
+        self.welcome_frame = ctk.CTkFrame(master=self)
         self.CharFrame = DNDCharacterFrame(master=self)
         self.DiceRoller = DiceRollFrame(master=self)
 
-        self.geometry("1422x603")
+        self.welcome = ctk.CTkLabel(master=self.welcome_frame, text="DND AIO", font=self.header_font)
+        self.prototype_button = ctk.CTkButton(master=self.welcome_frame, text="Get Started", font=self.header_font, width=20,
+                                              height=10)
+
+        self.welcome.place(x=900, y=300)
+        self.prototype_button.place(x=900, y=350)
+
+        self.welcome_frame.pack(fill=ctk.BOTH, expand=True)
 
     def CharFramePack(self, event):
         print("Event Triggered")
+        self.welcome_frame.pack_forget()
         self.DiceRoller.pack_forget()
         self.CharFrame.pack(fill=ctk.BOTH, expand=True)
-        self.geometry("1080x720")
+        self.geometry("1980x1020")
 
     def DiceRollerPack(self, event):
         print("Event Triggered")
+        self.welcome_frame.pack_forget()
         self.CharFrame.pack_forget()
         self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
-        self.geometry("1422x603")
+        self.geometry("1980x1020")
+
+    def Func_DiceRollerPack(self):
+        self.CharFrame.pack_forget()
+        self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
+        self.geometry("1980x1020")
 
     def quit_pressed(self, event):
         self.quit()
@@ -43,5 +62,3 @@ if __name__ == '__main__':
     t.CharFrame.WISEntry.bind("<KeyRelease>", t.CharFrame.save)
     t.CharFrame.CHAEntry.bind("<KeyRelease>", t.CharFrame.save)
     t.mainloop()
-
-

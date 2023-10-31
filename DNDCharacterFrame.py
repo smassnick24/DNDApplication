@@ -12,7 +12,18 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # defining character creator
         self.CC = DataHandler()
 
+        # declaring fonts
+        self.small_font = ctk.CTkFont(family="Rockwell", size=10)
+        self.font = ctk.CTkFont(family="Rockwell", size=14)
+        self.bold_font = ctk.CTkFont(family="Rockwell", size=14, weight="bold")
+        self.special_font = ctk.CTkFont(family="Rockwell", size=18)
+        self.header_font = ctk.CTkFont(family="Rockwell", size=28)
+
         self.stat_keys = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+
+        # prototyping buttons
+        self.Dice_Roller = ctk.CTkButton(self, text="Dice Roller", width=20, height=10, font=self.header_font)
+        self.Load_Data = ctk.CTkButton(self, text="Load_Data", width=20, height=10, font=self.header_font)
 
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
@@ -28,22 +39,15 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         # spell divs
         self.master_spell_div = ctk.CTkFrame(self, border_width=2, border_color="black")
         self.cantrips_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="red")
-        self.first_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
+        self.first_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="green")
         self.second_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.third_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.fourth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.fifth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.sixth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.seventh_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.eighth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.ninth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-
-        # declaring fonts
-        self.small_font = ctk.CTkFont(family="Rockwell", size=10)
-        self.font = ctk.CTkFont(family="Rockwell", size=14)
-        self.bold_font = ctk.CTkFont(family="Rockwell", size=14, weight="bold")
-        self.special_font = ctk.CTkFont(family="Rockwell", size=18)
-        self.header_font = ctk.CTkFont(family="Rockwell", size=28)
+        self.third_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="orange")
+        self.fourth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="cyan")
+        self.fifth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="indigo")
+        self.sixth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="violet")
+        self.seventh_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="purple")
+        self.eighth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="pink")
+        self.ninth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="brown")
 
         # variables
         # kinter variables
@@ -54,6 +58,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.BackgroundVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Background"])
         self.AlignmentVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Alignment"])
         self.ExperienceVar = ctk.StringVar(value=self.CC.fields["Attributes"]["Experience"])
+        self.EquipmentVar = ctk.StringVar(value=self.CC.fields["Attacks"]["Equipment"])
         self.Attack1Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_1"])
         self.Attack2Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_2"])
         self.Attack3Var = ctk.StringVar(value=self.CC.fields["Attacks"]["Attack_3"])
@@ -73,11 +78,11 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.ACVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["AC"])
         self.SpeedVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Speed"])
         self.ProfBonusVar = ctk.StringVar(value=self.CC.fields["Auxiliary"]["Prof_Bonus"])
-        self.HPMaxVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Max"])
-        self.HPCurrVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Curr"])
-        self.HPTempVar = ctk.IntVar(value=self.CC.fields["HitPoints"]["HP_Temp"])
-        self.HDTotVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Total"])
-        self.HDCurrVar = ctk.IntVar(value=self.CC.fields["HitDice"]["HD_Curr"])
+        self.HPMaxVar = ctk.StringVar(value=self.CC.fields["HitPoints"]["HP_Max"])
+        self.HPCurrVar = ctk.StringVar(value=self.CC.fields["HitPoints"]["HP_Curr"])
+        self.HPTempVar = ctk.StringVar(value=self.CC.fields["HitPoints"]["HP_Temp"])
+        self.HDTotVar = ctk.StringVar(value=self.CC.fields["HitDice"]["HD_Total"])
+        self.HDCurrVar = ctk.StringVar(value=self.CC.fields["HitDice"]["HD_Curr"])
         self.ElecVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Electrum"])
         self.PlatVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Platinum"])
         self.GoldVar = ctk.IntVar(value=self.CC.fields["Equipment"]["Gold"])
@@ -92,55 +97,118 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Cha_St_Var = ctk.StringVar()
 
         # spell vars
-        self.CantripContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                 "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                 "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                 "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.SpellSlots = ctk.StringVar(value=self.CC.fields['Spells']['Spell_Slots'])
 
-        self.FirstLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.CantripContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_0']),
+                                 "1": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_1']),
+                                 "2": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_2']),
+                                 "3": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_3']),
+                                 "4": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_4']),
+                                 "5": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_5']),
+                                 "6": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_6']),
+                                 "7": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_7']),
+                                 "8": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_8']),
+                                 "9": ctk.StringVar(value=self.CC.fields['Spells']['Cantrips']['Cantrip_Slot_9'])}
 
-        self.SecondLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.FirstLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_0']),
+                                    "1": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_1']),
+                                    "2": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_2']),
+                                    "3": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_3']),
+                                    "4": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_4']),
+                                    "5": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_5']),
+                                    "6": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_6']),
+                                    "7": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_7']),
+                                    "8": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_8']),
+                                    "9": ctk.StringVar(value=self.CC.fields['Spells']['First_Level']['Spell_Slot_9'])}
 
-        self.ThirdLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.SecondLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_0']),
+                                     "1": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_1']),
+                                     "2": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_2']),
+                                     "3": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_3']),
+                                     "4": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_4']),
+                                     "5": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_5']),
+                                     "6": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_6']),
+                                     "7": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_7']),
+                                     "8": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_8']),
+                                     "9": ctk.StringVar(value=self.CC.fields['Spells']['Second_Level']['Spell_Slot_9'])}
 
-        self.FourthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.ThirdLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_0']),
+                                    "1": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_1']),
+                                    "2": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_2']),
+                                    "3": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_3']),
+                                    "4": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_4']),
+                                    "5": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_5']),
+                                    "6": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_6']),
+                                    "7": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_7']),
+                                    "8": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_8']),
+                                    "9": ctk.StringVar(value=self.CC.fields['Spells']['Third_Level']['Spell_Slot_9'])}
 
-        self.FifthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.FourthLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_0']),
+                                     "1": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_1']),
+                                     "2": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_2']),
+                                     "3": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_3']),
+                                     "4": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_4']),
+                                     "5": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_5']),
+                                     "6": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_6']),
+                                     "7": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_7']),
+                                     "8": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_8']),
+                                     "9": ctk.StringVar(value=self.CC.fields['Spells']['Fourth_Level']['Spell_Slot_9'])}
 
-        self.SixthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.FifthLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_0']),
+                                    "1": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_1']),
+                                    "2": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_2']),
+                                    "3": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_3']),
+                                    "4": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_4']),
+                                    "5": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_5']),
+                                    "6": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_6']),
+                                    "7": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_7']),
+                                    "8": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_8']),
+                                    "9": ctk.StringVar(value=self.CC.fields['Spells']['Fifth_Level']['Spell_Slot_9'])}
 
-        self.SeventhLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                      "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                      "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                      "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.SixthLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_0']),
+                                    "1": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_1']),
+                                    "2": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_2']),
+                                    "3": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_3']),
+                                    "4": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_4']),
+                                    "5": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_5']),
+                                    "6": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_6']),
+                                    "7": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_7']),
+                                    "8": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_8']),
+                                    "9": ctk.StringVar(value=self.CC.fields['Spells']['Sixth_Level']['Spell_Slot_9'])}
 
-        self.EighthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                     "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                     "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                     "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.SeventhLevelContainer = {
+            "0": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_0']),
+            "1": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_1']),
+            "2": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_2']),
+            "3": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_3']),
+            "4": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_4']),
+            "5": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_5']),
+            "6": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_6']),
+            "7": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_7']),
+            "8": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_8']),
+            "9": ctk.StringVar(value=self.CC.fields['Spells']['Seventh_Level']['Spell_Slot_9'])}
 
-        self.NinthLevelContainer = {"0": ctk.StringVar(), "1": ctk.StringVar(), "2": ctk.StringVar(),
-                                    "3": ctk.StringVar(), "4": ctk.StringVar(),
-                                    "5": ctk.StringVar(), "6": ctk.StringVar(), "7": ctk.StringVar(),
-                                    "8": ctk.StringVar(), "9": ctk.StringVar()}
+        self.EighthLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_0']),
+                                     "1": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_1']),
+                                     "2": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_2']),
+                                     "3": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_3']),
+                                     "4": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_4']),
+                                     "5": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_5']),
+                                     "6": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_6']),
+                                     "7": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_7']),
+                                     "8": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_8']),
+                                     "9": ctk.StringVar(value=self.CC.fields['Spells']['Eighth_Level']['Spell_Slot_9'])}
+
+        self.NinthLevelContainer = {"0": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_0']),
+                                    "1": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_1']),
+                                    "2": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_2']),
+                                    "3": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_3']),
+                                    "4": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_4']),
+                                    "5": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_5']),
+                                    "6": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_6']),
+                                    "7": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_7']),
+                                    "8": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_8']),
+                                    "9": ctk.StringVar(value=self.CC.fields['Spells']['Ninth_Level']['Spell_Slot_9'])}
 
         # labels
         self.NameLabel = ctk.CTkLabel(self.attr_div, font=self.font, text="Character Name")
@@ -158,9 +226,9 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.FeaturesLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Features")
         self.TraitsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Traits")
         self.EquipmentLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Equipment")
-        self.Attack1Label = ctk.CTkLabel(self, font=self.font, text="Attack 1")
-        self.Attack2Label = ctk.CTkLabel(self, font=self.font, text="Attack 2")
-        self.Attack3Label = ctk.CTkLabel(self, font=self.font, text="Attack 3")
+        self.Attack1Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 1")
+        self.Attack2Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 2")
+        self.Attack3Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 3")
 
         self.STRLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="STR")
         self.STRBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
@@ -471,40 +539,142 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                                                                                       skill_key="Persuasion"))
 
         # spell label and entry
-        self.CantripsLabel = ctk.CTkLabel(self.cantrips_div, text="Cantrips")
-        self.FirstLevelLabel = ctk.CTkLabel(self.first_level_div, text="1st Level")
-        self.SecondLevelLabel = ctk.CTkLabel(self.first_level_div, text="2nd Level")
-        self.ThirdLevelLabel = ctk.CTkLabel(self.first_level_div, text="3rd Level")
-        self.FourthLevelLabel = ctk.CTkLabel(self.first_level_div, text="4th Level")
-        self.FifthLevelLabel = ctk.CTkLabel(self.first_level_div, text="5th Level")
-        self.SixthLevelLabel = ctk.CTkLabel(self.first_level_div, text="6th Level")
-        self.SeventhLevelLabel = ctk.CTkLabel(self.first_level_div, text="7th Level")
-        self.EightLevelLabel = ctk.CTkLabel(self.first_level_div, text="8th Level")
-        self.NinthLevelLabel = ctk.CTkLabel(self.first_level_div, text="9th Level")
+        self.MasterSpellsLabel = ctk.CTkLabel(self.master_spell_div, text="Spell Casting", font=self.header_font)
+        self.SpellSlotsLabel = ctk.CTkLabel(self.master_spell_div, text="Spell Slots:", font=self.header_font)
+
+        self.CantripsLabel = ctk.CTkLabel(self.cantrips_div, text="Cantrips", font=self.font)
+        self.FirstLevelLabel = ctk.CTkLabel(self.first_level_div, text="1st Level", font=self.font)
+        self.SecondLevelLabel = ctk.CTkLabel(self.second_level_div, text="2nd Level", font=self.font)
+        self.ThirdLevelLabel = ctk.CTkLabel(self.third_level_div, text="3rd Level", font=self.font)
+        self.FourthLevelLabel = ctk.CTkLabel(self.fourth_level_div, text="4th Level", font=self.font)
+        self.FifthLevelLabel = ctk.CTkLabel(self.fifth_level_div, text="5th Level", font=self.font)
+        self.SixthLevelLabel = ctk.CTkLabel(self.sixth_level_div, text="6th Level", font=self.font)
+        self.SeventhLevelLabel = ctk.CTkLabel(self.seventh_level_div, text="7th Level", font=self.font)
+        self.EighthLevelLabel = ctk.CTkLabel(self.eighth_level_div, text="8th Level", font=self.font)
+        self.NinthLevelLabel = ctk.CTkLabel(self.ninth_level_div, text="9th Level", font=self.font)
 
         # spell entry
-        self.FirstLevelSpells = [ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["0"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["1"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["2"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["3"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["4"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["5"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["6"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["7"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["8"]),
-                                 ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["9"])]
+        self.SpellSlotEntry = ctk.CTkEntry(self.master_spell_div, textvariable=self.SpellSlots, font=self.header_font)
 
-        self.SecondLevelSpells = [ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["0"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["1"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["2"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["3"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["4"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["5"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["6"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["7"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["8"]),
-                                  ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["9"])]
+        self.CantripSpells = [
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['0'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['1'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['2'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['3'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['4'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['5'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['6'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['7'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['8'], font=self.font),
+            ctk.CTkEntry(self.cantrips_div, textvariable=self.CantripContainer['9'], font=self.font),
+        ]
+        self.FirstLevelSpells = [
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.first_level_div, textvariable=self.FirstLevelContainer["9"], font=self.font)]
 
+        self.SecondLevelSpells = [
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.second_level_div, textvariable=self.SecondLevelContainer["9"], font=self.font)]
+
+        self.ThirdLevelSpells = [
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.third_level_div, textvariable=self.ThirdLevelContainer["9"], font=self.font)]
+
+        self.FourthLevelSpells = [
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.fourth_level_div, textvariable=self.FourthLevelContainer["9"], font=self.font)]
+
+        self.FifthLevelSpells = [
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.fifth_level_div, textvariable=self.FifthLevelContainer["9"], font=self.font)]
+
+        self.SixthLevelSpells = [
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.sixth_level_div, textvariable=self.SixthLevelContainer["9"], font=self.font)]
+
+        self.SeventhLevelSpells = [
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.seventh_level_div, textvariable=self.SeventhLevelContainer["9"], font=self.font)]
+
+        self.EighthLevelSpells = [
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.eighth_level_div, textvariable=self.EighthLevelContainer["9"], font=self.font)]
+
+        self.NinthLevelSpells = [
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["0"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["1"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["2"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["3"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["4"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["5"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["6"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["7"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["8"], font=self.font),
+            ctk.CTkEntry(self.ninth_level_div, textvariable=self.NinthLevelContainer["9"], font=self.font)]
 
         # whitespace labels
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
@@ -671,6 +841,63 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.Cha_St_Label_2.grid(row=8, column=1)
         self.Cha_St_Button.grid(row=8, column=2)
 
+        # placing spells inside divs
+        self.MasterSpellsLabel.grid(row=0, column=1, padx=5, pady=5, columnspan=2)
+        self.SpellSlotsLabel.grid(row=0, column=3, padx=5, pady=5, columnspan=1)
+        self.SpellSlotEntry.grid(row=0, column=4, padx=5, pady=5, columnspan=1)
+
+        self.cantrips_div.grid(row=1, column=0, padx=5, pady=5)
+        self.first_level_div.grid(row=1, column=1, padx=5, pady=5)
+        self.second_level_div.grid(row=1, column=2, padx=5, pady=5)
+        self.third_level_div.grid(row=1, column=3, padx=5, pady=5)
+        self.fourth_level_div.grid(row=1, column=4, padx=5, pady=5)
+        self.fifth_level_div.grid(row=1, column=5, padx=5, pady=5)
+        self.sixth_level_div.grid(row=2, column=0, padx=5, pady=5)
+        self.seventh_level_div.grid(row=2, column=1, padx=5, pady=5)
+        self.eighth_level_div.grid(row=2, column=2, padx=5, pady=5)
+        self.ninth_level_div.grid(row=2, column=3, padx=5, pady=5)
+
+        self.CantripsLabel.grid()
+        self.FirstLevelLabel.grid()
+        self.SecondLevelLabel.grid()
+        self.ThirdLevelLabel.grid()
+        self.FourthLevelLabel.grid()
+        self.FifthLevelLabel.grid()
+        self.SixthLevelLabel.grid()
+        self.SeventhLevelLabel.grid()
+        self.EighthLevelLabel.grid()
+        self.NinthLevelLabel.grid()
+
+        for slot in self.CantripSpells:
+            slot.grid(pady=3)
+
+        for slot in self.FirstLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.SecondLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.ThirdLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.FourthLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.FifthLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.SixthLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.SeventhLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.EighthLevelSpells:
+            slot.grid(pady=3)
+
+        for slot in self.NinthLevelSpells:
+            slot.grid(pady=3)
+
         # configuring textbox widgets
         self.PersonalityEntry.insert("0.0", self.CC.fields["Attributes"]["Personality"])
         self.IdealsEntry.insert("0.0", self.CC.fields["Attributes"]["Ideals"])
@@ -703,6 +930,10 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
 
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
 
+        self.master_spell_div.grid(columnspan=12)
+        self.Dice_Roller.grid(row=0, column=20)
+        self.Load_Data.grid(row=1, column=20)
+
         # defining class methods
 
     def update_proficiency(self, skill_label: ctk.CTkLabel, stat_key, skill_key):
@@ -726,6 +957,9 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             second_label.configure(text="+0")
 
     def save(self, event):
+        spell_levels = [
+
+        ]
         current = {
             "stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(),
                       self.CHAVar.get()],
@@ -747,6 +981,86 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self._update_stat_mod()
         self._update_stats()
         self._update_st()
+        self._save_cantrips()
+        self._save_1st_spells()
+        self._save_2nd_spells()
+        self._save_3rd_spells()
+        self._save_4th_spells()
+        self._save_5th_spells()
+        self._save_6th_spells()
+        self._save_7th_spells()
+        self._save_8th_spells()
+        self._save_9th_spells()
+        self._save_money()
+        self._save_attacks()
+
+    def _save_money(self):
+        to_save = [self.CoppVar.get(), self.SilvVar.get(), self.ElecVar.get(),
+                   self.GoldVar.get(), self.PlatVar.get()]
+        self.CC.update_money(to_save)
+
+    def _save_attacks(self):
+        pass
+
+    def _save_cantrips(self):
+        to_save = []
+        for key in self.CantripContainer.keys():
+            to_save.append(self.CantripContainer[key].get())
+        self.CC.update_cantrip(to_save)
+
+    def _save_1st_spells(self):
+        to_save = []
+        for key in self.FirstLevelContainer.keys():
+            to_save.append(self.FirstLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="First_Level")
+
+    def _save_2nd_spells(self):
+        to_save = []
+        for key in self.SecondLevelContainer.keys():
+            to_save.append(self.SecondLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Second_Level")
+
+    def _save_3rd_spells(self):
+        to_save = []
+        for key in self.ThirdLevelContainer.keys():
+            to_save.append(self.ThirdLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Third_Level")
+
+    def _save_4th_spells(self):
+        to_save = []
+        for key in self.FourthLevelContainer.keys():
+            to_save.append(self.FourthLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Fourth_Level")
+
+    def _save_5th_spells(self):
+        to_save = []
+        for key in self.FifthLevelContainer.keys():
+            to_save.append(self.FifthLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Fifth_Level")
+
+    def _save_6th_spells(self):
+        to_save = []
+        for key in self.SixthLevelContainer.keys():
+            to_save.append(self.SixthLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Sixth_Level")
+
+    def _save_7th_spells(self):
+        to_save = []
+        for key in self.SeventhLevelContainer.keys():
+            to_save.append(self.SeventhLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Seventh_Level")
+
+    def _save_8th_spells(self):
+        to_save = []
+        for key in self.EighthLevelContainer.keys():
+            to_save.append(self.EighthLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Eighth_Level")
+
+    def _save_9th_spells(self):
+        to_save = []
+        for key in self.NinthLevelContainer.keys():
+            to_save.append(self.NinthLevelContainer[key].get())
+        self.CC.update_spells(values=to_save, level="Ninth_Level")
 
     def _update_stat_mod(self):
         """helper function to update the stat modifiers while the application is running"""

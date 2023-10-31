@@ -36,6 +36,18 @@ class DataHandler(object):
 
         self.update_json()
 
+    def update_cantrip(self, values: list):
+        count = 0
+        for val in values:
+            self.fields["Spells"]["Cantrips"][f'Cantrip_Slot_{count}'] = val
+            count += 1
+
+    def update_spells(self, values: list, level: str):
+        count = 0
+        for val in values:
+            self.fields["Spells"][level][f'Spell_Slot_{count}'] = val
+            count += 1
+
     def update_attributes(self, values: list):
         attributes = ["Character_Name", "Class", "Level", "Race", "Background",
                       "Alignment", "Experience", "Personality", "Ideals",
@@ -47,16 +59,30 @@ class DataHandler(object):
         self.update_json()
 
     def update_attacks(self, values: list):
-        pass
+        arr = ["Equipment", "Attack_1", "Attack_2", "Attack_3", "Attack_1_Bonus", "Attack_2_Bonus", "Attack_3_Bonus",\
+                  "Attack_1_Type", "Attack_2_Type", "Attack_3_Type"]
+        for attr, val in zip(arr, values):
+            self.fields["Attacks"][attr] = val
 
-    def update_equipment(self, values: list):
-        pass
+    def update_money(self, values: list):
+        arr = ["Copper", "Silver", "Electrum", "Gold", "Platinum"]
+        for attr, val in zip(arr, values):
+            try:
+                val = int(val)
+            except ValueError:
+                val = 0
+
+            self.fields["Equipment"][attr] = val
 
     def update_hit_points(self, values: list):
-        pass
+        arr = ["HP_Max", "HP_Curr", "HP_Temp"]
+        for attr, val in zip(arr, values):
+            self.fields["HitPoints"][attr] = val
 
     def update_hit_dice(self, values: list):
-        pass
+        arr = ["HD_Total", "HD_Curr"]
+        for attr, val in zip(arr, values):
+            self.fields["HitDice"][attr] = val
 
     def update_death_saves(self, values: list):
         pass
@@ -68,6 +94,8 @@ class DataHandler(object):
         pass
 
     def update_prof_bonus(self, value: str):
+        if value == "" or value == " ":
+            value = "0"
         self.fields["Auxiliary"]["Prof_Bonus"] = value
         self.update_json()
 

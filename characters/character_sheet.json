@@ -1,6 +1,6 @@
 {
  "Attributes": {
-  "Character_Name": "Cliffdawg",
+  "Character_Name": "Michael",
   "Class": "Artificer",
   "Level": "8",
   "Race": "Human",
@@ -10,12 +10,12 @@
   "Personality": "Loves the taste of copper pieces",
   "Ideals": "Hammer",
   "Bonds": "More hammer",
-  "Flaws": "Hates the taste of platinum pieces. Loves the taste of blood",
+  "Flaws": "Test",
   "Features": "Test",
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "Glacial Avalanche\nStrahd's Armor\nMarcus' Balls",
+  "Equipment": "",
   "Attack_1": "Sword",
   "Attack_2": "Axe",
   "Attack_3": "Hammer",
@@ -27,20 +27,20 @@
   "Attack_3_Type": "Bludgeon"
  },
  "Stats": {
-  "STR": "12",
-  "DEX": "14",
-  "CON": "20",
-  "INT": "14",
-  "WIS": "17",
-  "CHA": "20"
+  "STR": "20",
+  "DEX": "12",
+  "CON": "11",
+  "INT": "9",
+  "WIS": "20",
+  "CHA": "15"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+1",
-  "DEX_Mod": "+2",
-  "CON_Mod": "+5",
-  "INT_Mod": "+2",
-  "WIS_Mod": "+3",
-  "CHA_Mod": "+5"
+  "STR_Mod": "+5",
+  "DEX_Mod": "+1",
+  "CON_Mod": "+0",
+  "INT_Mod": "-1",
+  "WIS_Mod": "+5",
+  "CHA_Mod": "+2"
  },
  "SavingThrows": {
   "STR": {
@@ -56,99 +56,99 @@
    "Proficient": 1
   },
   "WIS": {
-   "Proficient": 1
+   "Proficient": 0
   },
   "CHA": {
    "Proficient": 0
   }
  },
  "Equipment": {
-  "Copper": "20",
-  "Silver": "1",
-  "Electrum": "0",
-  "Gold": "3",
-  "Platinum": "0"
+  "Copper": 2,
+  "Silver": 3,
+  "Electrum": 4,
+  "Gold": 5,
+  "Platinum": 6
  },
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+6",
+    "Mod": "+7",
     "Proficient": 1
    }
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+7",
+    "Mod": "+3",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+7",
+    "Mod": "+3",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+7",
+    "Mod": "+3",
     "Proficient": 1
    }
   },
   "INT": {
    "Arcana": {
-    "Mod": "+10",
+    "Mod": "+2",
     "Proficient": 1
    },
    "History": {
-    "Mod": "+10",
+    "Mod": "+2",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+10",
+    "Mod": "+2",
     "Proficient": 1
    },
    "Nature": {
-    "Mod": "+10",
+    "Mod": "+2",
     "Proficient": 1
    },
    "Religion": {
-    "Mod": "+10",
+    "Mod": "+2",
     "Proficient": 1
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Insight": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Medicine": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Survival": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "+8",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Intimidation": {
-    "Mod": "+8",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Performance": {
-    "Mod": "+8",
+    "Mod": "+7",
     "Proficient": 1
    },
    "Persuasion": {
-    "Mod": "+8",
+    "Mod": "+7",
     "Proficient": 1
    }
   }
@@ -168,32 +168,33 @@
  },
  "Auxiliary": {
   "Inspiration": false,
-  "Prof_Bonus": "+5",
+  "Prof_Bonus": "+2",
   "AC": "0",
   "Init": "0",
   "Speed": "0ft",
-  "Passive_Perception": "12"
+  "Passive_Perception": "10"
  },
  "Spells": {
+  "Spell_Slots": "0",
   "Cantrips": {
-   "Cantrip_Slot_0": "",
-   "Cantrip_Slot_1": "",
-   "Cantrip_Slot_2": "",
-   "Cantrip_Slot_3": "",
-   "Cantrip_Slot_4": "",
-   "Cantrip_Slot_5": "",
-   "Cantrip_Slot_6": "",
-   "Cantrip_Slot_7": "",
-   "Cantrip_Slot_8": "",
-   "Cantrip_Slot_9": ""
+   "Cantrip_Slot_0": "aawdawd",
+   "Cantrip_Slot_1": "aawdawd",
+   "Cantrip_Slot_2": "aawdawd",
+   "Cantrip_Slot_3": "aawdawd",
+   "Cantrip_Slot_4": "aawdawd",
+   "Cantrip_Slot_5": "aawdawd",
+   "Cantrip_Slot_6": "aawdawd",
+   "Cantrip_Slot_7": "aawdawd",
+   "Cantrip_Slot_8": "aawdawd",
+   "Cantrip_Slot_9": "aawdawd"
   },
   "First_Level": {
-   "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
-   "Spell_Slot_3": "",
-   "Spell_Slot_4": "",
-   "Spell_Slot_5": "",
+   "Spell_Slot_0": "qweqew",
+   "Spell_Slot_1": "qweqwe",
+   "Spell_Slot_2": "qweqwe",
+   "Spell_Slot_3": "qweqwe",
+   "Spell_Slot_4": "qweqwe",
+   "Spell_Slot_5": "qweqwe",
    "Spell_Slot_6": "",
    "Spell_Slot_7": "",
    "Spell_Slot_8": "",
@@ -201,11 +202,11 @@
   },
   "Second_Level": {
    "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
-   "Spell_Slot_3": "",
+   "Spell_Slot_1": "qweqwe",
+   "Spell_Slot_2": "qweqweqweqw",
+   "Spell_Slot_3": "qweqwe",
    "Spell_Slot_4": "",
-   "Spell_Slot_5": "",
+   "Spell_Slot_5": "qeqwe",
    "Spell_Slot_6": "",
    "Spell_Slot_7": "",
    "Spell_Slot_8": "",
@@ -214,9 +215,9 @@
   "Third_Level": {
    "Spell_Slot_0": "",
    "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_2": "qweqwe",
    "Spell_Slot_3": "",
-   "Spell_Slot_4": "",
+   "Spell_Slot_4": "qweqweqweqw",
    "Spell_Slot_5": "",
    "Spell_Slot_6": "",
    "Spell_Slot_7": "",
@@ -226,7 +227,7 @@
   "Fourth_Level": {
    "Spell_Slot_0": "",
    "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_2": "qweqwe",
    "Spell_Slot_3": "",
    "Spell_Slot_4": "",
    "Spell_Slot_5": "",
@@ -240,41 +241,41 @@
    "Spell_Slot_1": "",
    "Spell_Slot_2": "",
    "Spell_Slot_3": "",
-   "Spell_Slot_4": "",
+   "Spell_Slot_4": "qewqweqwe",
    "Spell_Slot_5": "",
    "Spell_Slot_6": "",
    "Spell_Slot_7": "",
    "Spell_Slot_8": "",
-   "Spell_Slot_9": ""
+   "Spell_Slot_9": "qweqweqwe"
   },
   "Sixth_Level": {
-   "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_0": "qweqweqwe",
+   "Spell_Slot_1": "qwqwe",
+   "Spell_Slot_2": "qweq",
    "Spell_Slot_3": "",
-   "Spell_Slot_4": "",
+   "Spell_Slot_4": "qweqweqweq",
    "Spell_Slot_5": "",
-   "Spell_Slot_6": "",
+   "Spell_Slot_6": "weqweq",
    "Spell_Slot_7": "",
    "Spell_Slot_8": "",
    "Spell_Slot_9": ""
   },
   "Seventh_Level": {
-   "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_0": "qweq",
+   "Spell_Slot_1": "weqweq",
+   "Spell_Slot_2": "weqweq",
    "Spell_Slot_3": "",
-   "Spell_Slot_4": "",
-   "Spell_Slot_5": "",
-   "Spell_Slot_6": "",
+   "Spell_Slot_4": "weqweqw",
+   "Spell_Slot_5": "eqweq",
+   "Spell_Slot_6": "weqweqweqwe",
    "Spell_Slot_7": "",
    "Spell_Slot_8": "",
    "Spell_Slot_9": ""
   },
   "Eighth_Level": {
-   "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_0": "eqweqwe",
+   "Spell_Slot_1": "qweqwe",
+   "Spell_Slot_2": "qweqweqw",
    "Spell_Slot_3": "",
    "Spell_Slot_4": "",
    "Spell_Slot_5": "",
@@ -284,9 +285,9 @@
    "Spell_Slot_9": ""
   },
   "Ninth_Level": {
-   "Spell_Slot_0": "",
-   "Spell_Slot_1": "",
-   "Spell_Slot_2": "",
+   "Spell_Slot_0": "qewqwe",
+   "Spell_Slot_1": "qweqwe",
+   "Spell_Slot_2": "qweqweqwq",
    "Spell_Slot_3": "",
    "Spell_Slot_4": "",
    "Spell_Slot_5": "",
