@@ -10,7 +10,7 @@ class DNDApp(ctk.CTk):
         super().__init__(*args, **kwargs)
 
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
-        self.attributes('-fullscreen', True)
+        #self.attributes('-fullscreen', True)
         self.geometry("1920x1080")
 
         self.welcome_frame = ctk.CTkFrame(master=self)
@@ -18,11 +18,8 @@ class DNDApp(ctk.CTk):
         self.DiceRoller = DiceRollFrame(master=self)
 
         self.welcome = ctk.CTkLabel(master=self.welcome_frame, text="DND AIO", font=self.header_font)
-        self.prototype_button = ctk.CTkButton(master=self.welcome_frame, text="Get Started", font=self.header_font, width=20,
-                                              height=10)
 
         self.welcome.place(x=900, y=300)
-        self.prototype_button.place(x=900, y=350)
 
         self.welcome_frame.pack(fill=ctk.BOTH, expand=True)
 

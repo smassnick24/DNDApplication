@@ -22,9 +22,9 @@
   "Attack_1_Bonus": "+2",
   "Attack_2_Bonus": "+2",
   "Attack_3_Bonus": "+2",
-  "Attack_1_Type": "Slash",
-  "Attack_2_Type": "Pierce",
-  "Attack_3_Type": "Bludgeon"
+  "Attack_1_Type": "2d8 Slash",
+  "Attack_2_Type": "1d10 Pierce",
+  "Attack_3_Type": "1d12 Bludgeon"
  },
  "Stats": {
   "STR": "20",

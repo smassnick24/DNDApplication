@@ -21,7 +21,6 @@ class DiceRollFrame(tk.Frame):
         self.count = 0
         self.recent_rolls = []
 
-        self.Character_Sheet = ctk.CTkButton(self, text="Character Sheet", width=20, height=10, font=self.header_font)
         self.Roll_Dice = ctk.CTkButton(self, text="Character Sheet", width=20, height=10, font=self.header_font)
 
         # button widgets
@@ -112,7 +111,6 @@ class DiceRollFrame(tk.Frame):
         self.Recent4.place(x=480, y=370)
         self.Recent5.place(x=480, y=410)
 
-        self.Character_Sheet.place(x=500, y=600)
 
     def RollD4(self):
         self.DiceRoller.num_dice = self._set_num_dice()

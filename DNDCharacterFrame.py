@@ -21,10 +21,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
 
         self.stat_keys = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 
-        # prototyping buttons
-        self.Dice_Roller = ctk.CTkButton(self, text="Dice Roller", width=20, height=10, font=self.header_font)
-        self.Load_Data = ctk.CTkButton(self, text="Load_Data", width=20, height=10, font=self.header_font)
-
         # creating container frames or "divs"
         self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
         self.attr_div = ctk.CTkFrame(self, border_width=2, border_color="blue")
@@ -226,9 +222,17 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.FeaturesLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Features")
         self.TraitsLabel = ctk.CTkLabel(self.traits_div, font=self.font, text="Traits")
         self.EquipmentLabel = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Equipment")
-        self.Attack1Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 1")
-        self.Attack2Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 2")
-        self.Attack3Label = ctk.CTkLabel(self.inner_attacks_div, font=self.font, text="Attack 3")
+
+        # attacks
+        self.Attack1NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Var)
+        self.Attack2NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Var)
+        self.Attack3NameEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Var)
+        self.Attack1BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Bonus)
+        self.Attack2BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Bonus)
+        self.Attack3BonusEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Bonus)
+        self.Attack1TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack1Type)
+        self.Attack2TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack2Type)
+        self.Attack3TypeEntry = ctk.CTkEntry(self.inner_attacks_div, font=self.font, textvariable=self.Attack3Type)
 
         self.STRLabel = ctk.CTkLabel(self.stat_div, font=self.bold_font, text="STR")
         self.STRBonusLabel = tk.Label(self.stat_div, bd=2, width=3, relief="solid", font=self.font,
@@ -931,8 +935,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.traits_div.grid(row=0, column=11, sticky=ctk.NE, rowspan=10, padx=10)
 
         self.master_spell_div.grid(columnspan=12)
-        self.Dice_Roller.grid(row=0, column=20)
-        self.Load_Data.grid(row=1, column=20)
 
         # defining class methods
 
