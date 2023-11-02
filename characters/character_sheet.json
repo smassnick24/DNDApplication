@@ -15,7 +15,7 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n\n\n\n\n\n",
+  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n\n\n\n\n\n\n\n",
   "Attack_1": "Glacial Avalance",
   "Attack_2": "Glacial Spear",
   "Attack_3": "Ketheric's Hammer",
@@ -154,13 +154,13 @@
   }
  },
  "HitPoints": {
-  "HP_Max": "75",
-  "HP_Curr": "63",
-  "HP_Temp": "10"
+  "HP_Max": "100",
+  "HP_Curr": "50",
+  "HP_Temp": "11"
  },
  "HitDice": {
-  "HD_Total": "5 d8",
-  "HD_Curr": "3 d8"
+  "HD_Total": "q2q2",
+  "HD_Curr": "wdqwq"
  },
  "DeathSaves": {
   "Death_Saves_Successes1": "false",
@@ -173,9 +173,9 @@
  "Auxiliary": {
   "Inspiration": "false",
   "Prof_Bonus": "+2",
-  "AC": "0",
-  "Init": "0",
-  "Speed": "0ft",
+  "AC": "0awdawd",
+  "Init": "0awdaw",
+  "Speed": "0ftawdawd",
   "Passive_Perception": "10"
  },
  "Spells": {

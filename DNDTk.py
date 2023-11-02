@@ -19,7 +19,7 @@ class DNDApp(ctk.CTk):
 
         self.welcome = ctk.CTkLabel(master=self.welcome_frame, text="DND AIO", font=self.header_font)
 
-        self.welcome.grid()
+        self.welcome.pack()
 
         self.welcome_frame.pack(fill=ctk.BOTH, expand=True)
 
