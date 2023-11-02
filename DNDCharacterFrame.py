@@ -22,28 +22,29 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.stat_keys = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
 
         # creating container frames or "divs"
-        self.stat_div = ctk.CTkFrame(self, border_width=2, border_color="red")
-        self.attr_div = ctk.CTkFrame(self, border_width=2, border_color="blue")
-        self.aux_attr_div = ctk.CTkFrame(self, border_width=2, border_color="violet")
-        self.traits_div = ctk.CTkFrame(self, border_width=2, border_color="orange")
-        self.health_div = ctk.CTkFrame(self, border_width=2, border_color="pink")
-        self.attacks_div = ctk.CTkFrame(self, border_width=2, border_color="purple")
-        self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="yellow")
-        self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=2, border_color="green")
-        self.saving_throws_div = ctk.CTkFrame(self, border_width=2, border_color="teal")
+        self.stat_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.attr_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.aux_attr_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.traits_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.health_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.attacks_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.inner_attacks_div = ctk.CTkFrame(self.attacks_div, border_width=1, border_color="black")
+        self.equipment_div = ctk.CTkFrame(self.attacks_div, border_width=1, border_color="black")
+        self.saving_throws_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.death_save_div = ctk.CTkFrame(self.health_div, border_width=1, border_color="black")
 
         # spell divs
-        self.master_spell_div = ctk.CTkFrame(self, border_width=2, border_color="black")
-        self.cantrips_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="red")
-        self.first_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="green")
-        self.second_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="blue")
-        self.third_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="orange")
-        self.fourth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="cyan")
-        self.fifth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="indigo")
-        self.sixth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="violet")
-        self.seventh_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="purple")
-        self.eighth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="pink")
-        self.ninth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=2, border_color="brown")
+        self.master_spell_div = ctk.CTkFrame(self, border_width=1, border_color="black")
+        self.cantrips_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="red")
+        self.first_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="green")
+        self.second_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="blue")
+        self.third_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="orange")
+        self.fourth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="cyan")
+        self.fifth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="indigo")
+        self.sixth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="violet")
+        self.seventh_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="purple")
+        self.eighth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="pink")
+        self.ninth_level_div = ctk.CTkFrame(self.master_spell_div, border_width=0, border_color="brown")
 
         # variables
         # kinter variables
@@ -274,11 +275,20 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.GoldLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="GP")
         self.PlatinumLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="PP")
         self.CopperLabel = ctk.CTkLabel(self.equipment_div, font=self.font, text="CP")
-        self.DeathSavesLabel = ctk.CTkLabel(self, font=self.font, text="Death Saves")
+        self.DeathSavesLabel = ctk.CTkLabel(self.death_save_div, font=self.font, text="Death Saves")
+        self.DSSLabel = ctk.CTkLabel(self.death_save_div, font=self.font, text="Successes: ")
+        self.DSFLabel = ctk.CTkLabel(self.death_save_div, font=self.font, text="Failures: ")
 
         self.ACEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.ACVar)
         self.InitEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.InitVar)
         self.SpeedEntry = ctk.CTkEntry(self.aux_attr_div, font=self.font, textvariable=self.SpeedVar)
+
+        self.DSSButton1 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_success1, width=10)
+        self.DSSButton2 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_success2, width=10)
+        self.DSSButton3 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_success3, width=10)
+        self.DSFButton1 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_failures1, width=10)
+        self.DSFButton2 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_failures2, width=10)
+        self.DSFButton3 = ctk.CTkButton(self.death_save_div, text="( )", command=self._update_death_save_failures3, width=10)
 
         self.InspirationButton = ctk.CTkButton(self.saving_throws_div, font=self.font, text="Inspiration", width=60,
                                                command=self._update_inspiration)
@@ -695,6 +705,18 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.whitespace1 = ctk.CTkLabel(self.stat_div, text="            ")
         self.sep_lab = ctk.CTkLabel(self.health_div, text="------------------------------------------------------",
                                     font=self.font)
+
+        # placing death save widgets
+        self.DeathSavesLabel.grid(row=0, column=0)
+        self.DSSLabel.grid(row=1, column=0)
+        self.DSSButton1.grid(row=1, column=1, padx=5, ipadx=5)
+        self.DSSButton2.grid(row=1, column=2, padx=5, ipadx=5)
+        self.DSSButton3.grid(row=1, column=3, padx=5, ipadx=5)
+        self.DSFLabel.grid(row=2, column=0)
+        self.DSFButton1.grid(row=2, column=1, padx=5, ipadx=5)
+        self.DSFButton2.grid(row=2, column=2, padx=5, ipadx=5)
+        self.DSFButton3.grid(row=2, column=3, padx=5, ipadx=5)
+
         # placing auxiliary attributes
         self.ACLabel.grid(row=0, column=0)
         self.InitiativeLabel.grid(row=0, column=1)
@@ -702,7 +724,6 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.ACEntry.grid(row=1, column=0)
         self.InitEntry.grid(row=1, column=1)
         self.SpeedEntry.grid(row=1, column=2)
-
 
         # placing stats
         self.STRLabel.grid(row=0, column=0)
@@ -846,6 +867,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self.HDTOTEntry.grid(row=4, column=1)
         self.HDCURRLabel.grid(row=5, column=0)
         self.HDCURREntry.grid(row=5, column=1)
+        self.death_save_div.grid(row=6, column=0)
 
         # packing saving throw div
         self.InspirationLabel.grid(row=0, column=0)
@@ -954,17 +976,21 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
                 label.configure(text=f"{'(' + chr(215) + ')'}")
                 label2.configure(text=self.CC.fields["Auxiliary"]["Prof_Bonus"])
 
+        self._load_ds()
+        self._load_skills()
+        self._load_insp()
+
         # gridding containters
-        self.stat_div.grid(row=0, column=0, rowspan=10)
-        self.attr_div.grid(row=0, column=2, rowspan=2, columnspan=2)
+        self.stat_div.grid(row=0, column=0, rowspan=10, ipadx=10, ipady=10)
+        self.attr_div.grid(row=0, column=2, rowspan=2, columnspan=2, ipadx=10, ipady=10)
         self.aux_attr_div.grid(row=2, column=2, columnspan=2)
         self.saving_throws_div.grid(row=0, column=1, rowspan=4)
-        self.health_div.grid(row=3, column=2, columnspan=2, rowspan=3)
-        self.attacks_div.grid(row=6, column=2, columnspan=2, rowspan=5, padx=5)
+        self.health_div.grid(row=3, column=2, columnspan=2, rowspan=4)
+        self.attacks_div.grid(row=7, column=2, columnspan=2, rowspan=6, padx=5)
         self.equipment_div.grid(row=0, column=0, padx=10, rowspan=2)
         self.inner_attacks_div.grid(row=0, column=1, rowspan=4)
         self.traits_div.grid(row=0, column=7, rowspan=10)
-        self.master_spell_div.grid(row=10, column=0, rowspan=20, columnspan=30)
+        self.master_spell_div.grid(row=13, column=0, rowspan=20, columnspan=30)
 
         # defining class methods
 
@@ -988,6 +1014,56 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             self.CC.fields["SavingThrows"][stat_key]["Proficient"] = 0
             second_label.configure(text="+0")
 
+    def _save_spell_slots(self):
+        self.CC.fields["Spells"]["Spell_Slots"] = self.SpellSlots.get()
+    def _update_death_save_success1(self):
+        if self.DSSButton1.cget('text') == "( )":
+            self.DSSButton1.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes1"] = 'true'
+        else:
+            self.DSSButton1.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes1"] = 'false'
+
+    def _update_death_save_success2(self):
+        if self.DSSButton2.cget('text') == "( )":
+            self.DSSButton2.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes2"] = 'true'
+        else:
+            self.DSSButton2.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes2"] = 'false'
+
+    def _update_death_save_success3(self):
+        if self.DSSButton3.cget('text') == "( )":
+            self.DSSButton3.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes3"] = 'true'
+        else:
+            self.DSSButton3.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Successes3"] = 'false'
+
+    def _update_death_save_failures1(self):
+        if self.DSFButton1.cget('text') == "( )":
+            self.DSFButton1.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures1"] = 'true'
+        else:
+            self.DSFButton1.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures1"] = 'false'
+
+    def _update_death_save_failures2(self):
+        if self.DSFButton2.cget('text') == "( )":
+            self.DSFButton2.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures2"] = 'true'
+        else:
+            self.DSFButton2.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures2"] = 'false'
+
+    def _update_death_save_failures3(self):
+        if self.DSFButton3.cget('text') == "( )":
+            self.DSFButton3.configure(text="(" + chr(215) + ")")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures3"] = 'true'
+        else:
+            self.DSFButton3.configure(text="( )")
+            self.CC.fields["DeathSaves"]["Death_Saves_Failures3"] = 'false'
+
     def _update_inspiration(self):
         if self.InspirationLabel.cget('text') == '( )':
             self.InspirationLabel.configure(text='(' + chr(215) + ')')
@@ -996,12 +1072,7 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             self.InspirationLabel.configure(text="( )")
             self.CC.fields["Auxiliary"]["Inspiration"] = "false"
 
-        self.CC.update_json()
-
     def save(self, event):
-        spell_levels = [
-
-        ]
         current = {
             "stats": [self.STRVar.get(), self.DEXVar.get(), self.CONVar.get(), self.INTVar.get(), self.WISVar.get(),
                       self.CHAVar.get()],
@@ -1030,6 +1101,12 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
         self._save_attacks()
         self._save_hp()
         self._save_hd()
+        self._save_aux()
+        self._save_spell_slots()
+
+    def _save_aux(self):
+        to_save = [self.ACVar.get(), self.InitVar.get(), self.SpeedVar.get()]
+        self.CC.update_auxiliary(to_save)
 
     def _save_hp(self):
         to_save = [self.HPMaxVar.get(), self.HPCurrVar.get(), self.HPTempVar.get()]
@@ -1136,10 +1213,57 @@ class DNDCharacterFrame(ctk.CTkScrollableFrame):
             if self.CC.fields["SavingThrows"][stat]["Proficient"] == 1:
                 label.configure(text=f"{self.CC.fields['Auxiliary']['Prof_Bonus']}")
 
+    def _load_ds(self):
+        buttons = [self.DSSButton1, self.DSSButton2, self.DSSButton3, self.DSFButton1,
+                   self.DSFButton2, self.DSFButton3]
+        keys = ["Death_Saves_Successes1", "Death_Saves_Successes2", "Death_Saves_Successes3",
+                "Death_Saves_Failures1", "Death_Saves_Failures2", "Death_Saves_Failures3"]
+        for button, key in zip(buttons, keys):
+            if self.CC.fields["DeathSaves"][key] == "true":
+                button.configure(text="(" + chr(215) + ")")
+            else:
+                button.configure(text="( )")
+
+    def _load_insp(self):
+        if self.CC.fields["Auxiliary"]["Inspiration"] == "true":
+            self.InspirationLabel.configure(text="(" + chr(215) + ")")
+
+    def _load_skills(self):
+        str_labels = [self.AthleticsLabel]
+        dex_labels = [self.AcrobaticsLabel, self.SOHLabel, self.StealthLabel]
+        dex_keys = ["Acrobatics", "Slight_of_Hand", "Stealth"]
+        int_labels = [self.ArcanaLabel, self.HistoryLabel, self.InvestigationLabel, self.NatureLabel, self.ReligionLabel]
+        int_keys = ["Arcana", "History", "Investigation", "Nature", "Religion"]
+        wis_labels = [self.AHLabel, self.InsightLabel, self.MedicineLabel, self.PerceptionLabel, self.SurvivalLabel]
+        wis_keys = ["Animal_Handling", "Insight", "Medicine", "Perception", "Survival"]
+        cha_labels = [self.DeceptionLabel, self.IntimidationLabel, self.PerformanceLabel, self.PersuasionLabel]
+        cha_keys = ["Deception", "Intimidation", "Performance", "Persuasion"]
+
+        # update str
+        if self.CC.fields["Skills"]["STR"]["Athletics"]["Proficient"] == 1:
+            str_labels[0].configure(text="(" + chr(215) + ")")
+
+        for label, key in zip(dex_labels, dex_keys):
+            if self.CC.fields["Skills"]["DEX"][key]["Proficient"] == 1:
+                label.configure(text="(" + chr(215) + ")")
+
+        for label, key in zip(int_labels, int_keys):
+            if self.CC.fields["Skills"]["INT"][key]["Proficient"] == 1:
+                label.configure(text="(" + chr(215) + ")")
+
+        for label, key in zip(wis_labels, wis_keys):
+            if self.CC.fields["Skills"]["WIS"][key]["Proficient"] == 1:
+                label.configure(text="(" + chr(215) + ")")
+
+        for label, key in zip(cha_labels, cha_keys):
+            if self.CC.fields["Skills"]["CHA"][key]["Proficient"] == 1:
+                label.configure(text="(" + chr(215) + ")")
+
+
 
 if __name__ == '__main__':
     test = ctk.CTk()
-    test.geometry("1080x720")
+    test.geometry("1350x820")
     test.iconbitmap("dice-icon.ico")
     test.title("Character Sheet")
 

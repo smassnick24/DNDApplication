@@ -15,7 +15,7 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n",
+  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n\n\n\n\n\n",
   "Attack_1": "Glacial Avalance",
   "Attack_2": "Glacial Spear",
   "Attack_3": "Ketheric's Hammer",
@@ -44,7 +44,7 @@
  },
  "SavingThrows": {
   "STR": {
-   "Proficient": 1
+   "Proficient": 0
   },
   "DEX": {
    "Proficient": 1
@@ -72,8 +72,8 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+7",
-    "Proficient": 1
+    "Mod": "+5",
+    "Proficient": 0
    }
   },
   "DEX": {
@@ -100,8 +100,8 @@
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+2",
-    "Proficient": 1
+    "Mod": "+0",
+    "Proficient": 0
    },
    "Nature": {
     "Mod": "+2",
@@ -114,8 +114,8 @@
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "-1",
-    "Proficient": 0
+    "Mod": "+1",
+    "Proficient": 1
    },
    "Insight": {
     "Mod": "+1",
@@ -126,8 +126,8 @@
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "+1",
-    "Proficient": 1
+    "Mod": "-1",
+    "Proficient": 0
    },
    "Survival": {
     "Mod": "+1",
@@ -144,12 +144,12 @@
     "Proficient": 1
    },
    "Performance": {
-    "Mod": "+7",
-    "Proficient": 1
+    "Mod": "+5",
+    "Proficient": 0
    },
    "Persuasion": {
-    "Mod": "+7",
-    "Proficient": 1
+    "Mod": "+5",
+    "Proficient": 0
    }
   }
  },
@@ -163,11 +163,15 @@
   "HD_Curr": "3 d8"
  },
  "DeathSaves": {
-  "Death_Saves_Successes": "0",
-  "Death_Saves_Failures": "3"
+  "Death_Saves_Successes1": "false",
+  "Death_Saves_Successes2": "true",
+  "Death_Saves_Successes3": "true",
+  "Death_Saves_Failures1": "false",
+  "Death_Saves_Failures2": "false",
+  "Death_Saves_Failures3": "true"
  },
  "Auxiliary": {
-  "Inspiration": "true",
+  "Inspiration": "false",
   "Prof_Bonus": "+2",
   "AC": "0",
   "Init": "0",
@@ -175,7 +179,7 @@
   "Passive_Perception": "10"
  },
  "Spells": {
-  "Spell_Slots": "0",
+  "Spell_Slots": "4",
   "Cantrips": {
    "Cantrip_Slot_0": "aawdawd",
    "Cantrip_Slot_1": "aawdawd",

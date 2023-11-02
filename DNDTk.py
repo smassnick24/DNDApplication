@@ -11,7 +11,7 @@ class DNDApp(ctk.CTk):
 
         self.header_font = ctk.CTkFont(family="Rockwell", size=28)
         #self.attributes('-fullscreen', True)
-        self.geometry("1920x1080")
+        self.geometry("500x500")
 
         self.welcome_frame = ctk.CTkFrame(master=self)
         self.CharFrame = DNDCharacterFrame(master=self)
@@ -19,7 +19,7 @@ class DNDApp(ctk.CTk):
 
         self.welcome = ctk.CTkLabel(master=self.welcome_frame, text="DND AIO", font=self.header_font)
 
-        self.welcome.place(x=900, y=300)
+        self.welcome.grid()
 
         self.welcome_frame.pack(fill=ctk.BOTH, expand=True)
 
@@ -28,19 +28,14 @@ class DNDApp(ctk.CTk):
         self.welcome_frame.pack_forget()
         self.DiceRoller.pack_forget()
         self.CharFrame.pack(fill=ctk.BOTH, expand=True)
-        self.geometry("1980x1020")
+        self.geometry("1350x820")
 
     def DiceRollerPack(self, event):
         print("Event Triggered")
         self.welcome_frame.pack_forget()
         self.CharFrame.pack_forget()
         self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
-        self.geometry("1980x1020")
-
-    def Func_DiceRollerPack(self):
-        self.CharFrame.pack_forget()
-        self.DiceRoller.pack(fill=ctk.BOTH, expand=True)
-        self.geometry("1980x1020")
+        self.geometry("1422x603")
 
     def quit_pressed(self, event):
         self.quit()

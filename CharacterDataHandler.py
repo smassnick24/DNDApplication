@@ -60,7 +60,7 @@ class DataHandler(object):
 
     def update_attacks(self, values: list):
         arr = ["Equipment", "Attack_1", "Attack_2", "Attack_3", "Attack_1_Bonus", "Attack_2_Bonus", "Attack_3_Bonus",
-                  "Attack_1_Type", "Attack_2_Type", "Attack_3_Type"]
+               "Attack_1_Type", "Attack_2_Type", "Attack_3_Type"]
         for attr, val in zip(arr, values):
             self.fields["Attacks"][attr] = val
 
@@ -88,8 +88,9 @@ class DataHandler(object):
         pass
 
     def update_auxiliary(self, values: list):
-        pass
-
+        arr = ["AC", "Init", "Speed"]
+        for attr, val in zip(arr, values):
+            self.fields["Auxiliary"][attr] = val
 
     def update_prof_bonus(self, value: str):
         if value == "" or value == " ":
@@ -106,8 +107,6 @@ class DataHandler(object):
         updated = json.dumps(self.fields, indent=True)
         with open(self.data, 'w') as data:
             data.write(updated)
-
-
 
     def _determine_modifier(self):
         """
