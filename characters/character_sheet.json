@@ -15,7 +15,7 @@
   "Traits": "test"
  },
  "Attacks": {
-  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n\n\n\n\n\n\n\n",
+  "Equipment": "Gortash Bust\nArtisan Tools\nBread\nBed Roll\nThe compliment of the Universal Set\n\n\n\n\n\n\n\n\n\n\n",
   "Attack_1": "Glacial Avalance",
   "Attack_2": "Glacial Spear",
   "Attack_3": "Ketheric's Hammer",
@@ -27,19 +27,19 @@
   "Attack_3_Type": "1d12 + 5 Bludgeon"
  },
  "Stats": {
-  "STR": "20",
-  "DEX": "12",
-  "CON": "11",
-  "INT": "9",
-  "WIS": "20",
+  "STR": "12",
+  "DEX": "15",
+  "CON": "16",
+  "INT": "14",
+  "WIS": "8",
   "CHA": "15"
  },
  "Stat_Modifiers": {
-  "STR_Mod": "+5",
-  "DEX_Mod": "+1",
-  "CON_Mod": "+0",
-  "INT_Mod": "-1",
-  "WIS_Mod": "+5",
+  "STR_Mod": "+1",
+  "DEX_Mod": "+2",
+  "CON_Mod": "+3",
+  "INT_Mod": "+2",
+  "WIS_Mod": "-1",
   "CHA_Mod": "+2"
  },
  "SavingThrows": {
@@ -72,83 +72,83 @@
  "Skills": {
   "STR": {
    "Athletics": {
-    "Mod": "+5",
+    "Mod": "+1",
     "Proficient": 0
    }
   },
   "DEX": {
    "Acrobatics": {
-    "Mod": "+3",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Slight_of_Hand": {
-    "Mod": "+3",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Stealth": {
-    "Mod": "+3",
+    "Mod": "+4",
     "Proficient": 1
    }
   },
   "INT": {
    "Arcana": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 0
    },
    "History": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Investigation": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 0
    },
    "Nature": {
-    "Mod": "+2",
+    "Mod": "+5",
     "Proficient": 1
    },
    "Religion": {
-    "Mod": "+0",
+    "Mod": "+3",
     "Proficient": 0
    }
   },
   "WIS": {
    "Animal_Handling": {
-    "Mod": "+1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Insight": {
-    "Mod": "+1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Medicine": {
-    "Mod": "+1",
+    "Mod": "+4",
     "Proficient": 1
    },
    "Perception": {
-    "Mod": "-1",
+    "Mod": "+2",
     "Proficient": 0
    },
    "Survival": {
-    "Mod": "+1",
+    "Mod": "+4",
     "Proficient": 1
    }
   },
   "CHA": {
    "Deception": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Intimidation": {
-    "Mod": "+7",
+    "Mod": "+1",
     "Proficient": 1
    },
    "Performance": {
-    "Mod": "+5",
+    "Mod": "-1",
     "Proficient": 0
    },
    "Persuasion": {
-    "Mod": "+5",
+    "Mod": "-1",
     "Proficient": 0
    }
   }
