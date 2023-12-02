@@ -26,8 +26,6 @@ class DatabaseLookup:
             print(f"Error: {response.status_code}")
 
 
-
-
 if __name__ == "__main__":
     test = DatabaseLookup()
-    print(test.query(mode=0, user_query="fireball"))
+    print(test.query(mode=0, user_query="mage armor"))
